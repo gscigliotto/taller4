@@ -1,0 +1,5 @@
+C:\Users\30333280\Source\Repos\taller4\Delibiery\Entities\bin\Debug\Entities.dll
+C:\Users\30333280\Source\Repos\taller4\Delibiery\Entities\bin\Debug\Entities.pdb
+C:\Users\30333280\Source\Repos\taller4\Delibiery\Entities\obj\Debug\Entities.csprojResolveAssemblyReference.cache
+C:\Users\30333280\Source\Repos\taller4\Delibiery\Entities\obj\Debug\Entities.dll
+C:\Users\30333280\Source\Repos\taller4\Delibiery\Entities\obj\Debug\Entities.pdb
