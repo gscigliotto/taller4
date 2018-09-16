@@ -269,9 +269,9 @@
       <Project>{61a115d2-65b9-466b-8c24-d5fb802e0fda}</Project>
       <Name>Datos</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Entities\Entities.csproj">
+    <ProjectReference Include="..\Entities\Entidades.csproj">
       <Project>{7a71e3c2-2f03-4a3e-8f61-1d5ff574e63d}</Project>
-      <Name>Entities</Name>
+      <Name>Entidades</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
