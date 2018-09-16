@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -22,7 +23,7 @@ namespace MyFirstWebApp.Models
         public int cantidadLlevar { get; set; }
 
 
-
+                       /*                                           W
         public Promocion(int id, string tipo, string descripcion, Articulo articulo, int cantLleva, int cantPaga, int descuento, int cantidadLlevar)
         {
             this.id = id;
@@ -34,7 +35,7 @@ namespace MyFirstWebApp.Models
             this.descuento = descuento;
             this.cantidadLlevar = cantidadLlevar;
         }
-
+        */
 
 
         public PromoAlgoritmo getPromocion(string tipo)
