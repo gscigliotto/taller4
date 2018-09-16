@@ -45,6 +45,9 @@
     <Compile Include="ItemArticulo.cs" />
     <Compile Include="Pedido.cs" />
     <Compile Include="PromoAlgoritmo.cs" />
+    <Compile Include="Promocion.cs" />
+    <Compile Include="PromoDescuento.cs" />
+    <Compile Include="PromoXy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
