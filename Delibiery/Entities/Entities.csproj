@@ -43,6 +43,7 @@
     <Compile Include="Articulo.cs" />
     <Compile Include="ItemPromo.cs" />
     <Compile Include="ItemArticulo.cs" />
+    <Compile Include="Menu.cs" />
     <Compile Include="Pedido.cs" />
     <Compile Include="PromoAlgoritmo.cs" />
     <Compile Include="Promocion.cs" />
