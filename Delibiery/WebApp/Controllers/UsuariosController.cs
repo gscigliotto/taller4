@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using Datos;
 using Entities;
+using WebApp.Models;
 
 namespace WebApp.Controllers
 {
@@ -73,6 +74,10 @@ namespace WebApp.Controllers
             }
             return View(usuario);
         }
+
+
+
+
 
         // POST: Usuarios/Edit/5
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
