@@ -1,16 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
+
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Entities;
+using System.Configuration;
+using System.Data.Entity;
 
 namespace Datos
 {
     public class ContextDB : DbContext
     {
-        public ContextDB() : base("DefaultConnection")
+        public ContextDB() : base(ConfigurationManager.ConnectionStrings["ConnString"].ConnectionString)
         {
             this.Configuration.LazyLoadingEnabled = false;
 
@@ -20,10 +22,8 @@ namespace Datos
         //public DbSet<PromoAlgoritmo> promos { get; set; }
         public DbSet<ItemArticulo> itemsArticulos { get; set; }
 
-        public System.Data.Entity.DbSet<Entities.Usuario> Usuarios { get; set; }
-        //public DbSet<ItemPromo> itemsPromos { get; set; }
+        public DbSet<Usuario> Usuarios { get; set; }
 
-        //public DbSet<Pedido>  Pedidos { get; set; }
 
     }
 }

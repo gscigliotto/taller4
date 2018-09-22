@@ -1,3 +1,4 @@
+C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\WebApp\obj\Debug\WebApp.csprojResolveAssemblyReference.cache
 C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\WebApp\bin\ApplicationInsights.config
 C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\WebApp\bin\roslyn\csc.exe
 C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\WebApp\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
@@ -28,6 +29,7 @@ C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\WebApp\bin\Microsoft.AI.Wind
 C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\WebApp\bin\Microsoft.ApplicationInsights.dll
 C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\WebApp\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\WebApp\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\WebApp\bin\Negocio.dll
 C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\WebApp\bin\Newtonsoft.Json.dll
 C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\WebApp\bin\System.Web.Helpers.dll
 C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\WebApp\bin\System.Web.Mvc.dll
@@ -39,6 +41,7 @@ C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\WebApp\bin\System.Web.WebPag
 C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\WebApp\bin\WebGrease.dll
 C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\WebApp\bin\Datos.pdb
 C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\WebApp\bin\Entities.pdb
+C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\WebApp\bin\Negocio.pdb
 C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\WebApp\bin\EntityFramework.xml
 C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\WebApp\bin\EntityFramework.SqlServer.xml
 C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\WebApp\bin\Microsoft.AI.DependencyCollector.xml
@@ -63,6 +66,5 @@ C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\WebApp\bin\es\System.Web.Raz
 C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\WebApp\bin\es\System.Web.WebPages.resources.dll
 C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\WebApp\bin\es\System.Web.WebPages.Deployment.resources.dll
 C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\WebApp\bin\es\System.Web.WebPages.Razor.resources.dll
-C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\WebApp\obj\Debug\WebApp.csprojResolveAssemblyReference.cache
 C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\WebApp\obj\Debug\WebApp.dll
 C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\WebApp\obj\Debug\WebApp.pdb
