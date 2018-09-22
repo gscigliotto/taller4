@@ -24,6 +24,8 @@ namespace Datos
 
         public DbSet<Usuario> Usuarios { get; set; }
 
+        public DbSet<Rol> Rol { get; set; }
+
 
     }
 }

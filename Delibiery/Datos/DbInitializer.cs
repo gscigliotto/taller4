@@ -13,9 +13,13 @@ namespace Datos
         protected override void Seed(ContextDB context)
         {
 
+
+            var roles = new List<Rol> {
+                new Rol {  rol= (int) eRoles.administrador}
+            };
             var usuarios = new List<Usuario>
             {
-                new Usuario { apellido = "Admin", edad=18, fecha_alta=DateTime.Now, mail="gscigliotto@gmail.com",nombre="Admin" ,password="E10ADC3949BA59ABBE56E057F20F883E"}
+                new Usuario { apellido = "Admin", edad=18, fecha_alta=DateTime.Now, mail="admin@admin.com",nombre="Admin" ,password="E10ADC3949BA59ABBE56E057F20F883E", roles=roles}
             };
 
             usuarios.ForEach(u => context.Usuarios.Add(u));

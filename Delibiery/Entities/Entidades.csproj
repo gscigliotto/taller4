@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Articulo.cs" />
+    <Compile Include="eRoles.cs" />
     <Compile Include="ItemPromo.cs" />
     <Compile Include="ItemArticulo.cs" />
     <Compile Include="Menu.cs" />

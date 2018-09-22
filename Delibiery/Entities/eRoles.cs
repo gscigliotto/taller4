@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace Entities
 {
-    public class Rol
+    public enum  eRoles
     {
-        public int Id { get; set; }
-        public int rol { get; set; }
+        administrador = 1, cliente=2,operador=3
     }
 }
