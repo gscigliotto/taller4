@@ -1,4 +1,3 @@
-C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\Negocio\bin\Debug\Negocio.dll.config
 C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\Negocio\bin\Debug\Negocio.dll
 C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\Negocio\bin\Debug\Negocio.pdb
 C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\Negocio\bin\Debug\Datos.dll

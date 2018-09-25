@@ -138,3 +138,5 @@ C:\Users\Lroid\Desktop\ORT\Taller 4\Birras\Delibiery\WebApp\obj\Debug\WebApp.csp
 C:\Users\Lroid\Desktop\ORT\Taller 4\Birras\Delibiery\WebApp\obj\Debug\WebApp.dll
 C:\Users\Lroid\Desktop\ORT\Taller 4\Birras\Delibiery\WebApp\obj\Debug\WebApp.pdb
 C:\Users\Lroid\Desktop\ORT\Taller 4\Birras\Delibiery\WebApp\bin\Entities.dll.config
+C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\WebApp\bin\Negocio.dll
+C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\WebApp\bin\Negocio.pdb

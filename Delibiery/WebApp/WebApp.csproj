@@ -281,6 +281,10 @@
       <Project>{7a71e3c2-2f03-4a3e-8f61-1d5ff574e63d}</Project>
       <Name>Entidades</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Negocio\Negocio.csproj">
+      <Project>{a8ac3d07-f345-4569-b17f-4b6cd8b26856}</Project>
+      <Name>Negocio</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />

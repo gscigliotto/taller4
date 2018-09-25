@@ -43,6 +43,7 @@ namespace WebApp.Controllers
         {
             try
             {
+                UsuarioADM usuarios = new UsuarioADM();
                 Usuario usuario = usuarios.validarUsuario(auth.usuario, auth.pass);
                 
                 System.Web.HttpContext.Current.Session["sessionString"]  = new JavaScriptSerializer().Serialize(usuario); ;

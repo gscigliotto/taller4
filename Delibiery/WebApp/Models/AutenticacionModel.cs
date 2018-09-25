@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-
+using System.ComponentModel.DataAnnotations;
 namespace WebApp.Models
 {
-    public class AutenticacionModel : ValidationAttribute
+    public class AutenticacionModel 
     {
 
         public string usuario { get; set; }
