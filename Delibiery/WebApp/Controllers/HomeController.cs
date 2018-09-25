@@ -1,6 +1,4 @@
-﻿using Entities;
-using Negocio;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -17,40 +15,14 @@ namespace WebApp.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Delibiery.";
+            ViewBag.Message = "Your application description page.";
 
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Ponete en contacto!.";
-
-            return View();
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,nombre,apellido,mail,edad,usuario,password")] Usuario usuario)
-        {
-            if (ModelState.IsValid)
-            {
-                /*
-                db.Usuarios.Add(usuario);
-                db.SaveChanges();
-                */
-                UsuarioADM admUsuario = new UsuarioADM();
-            
-                admUsuario.registrarUsuario(usuario);
-                return RedirectToAction("Index");
-            }
-
-            return View(usuario);
-        }
-
-        public ActionResult Create()
-        {
-            ViewBag.Message = "Registrarte!";
+            ViewBag.Message = "Your contact page.";
 
             return View();
         }

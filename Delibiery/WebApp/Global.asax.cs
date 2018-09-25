@@ -1,7 +1,5 @@
-﻿using Datos;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -18,9 +16,6 @@ namespace WebApp
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            Database.SetInitializer<ContextDB>(new DropCreateDatabaseIfModelChanges<ContextDB>());
-            Database.SetInitializer<ContextDB>(new DbInitializer());
-
         }
     }
 }

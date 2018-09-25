@@ -41,7 +41,6 @@ namespace WebApp.Controllers
         [HttpPost]
         public ActionResult Create([Bind(Include = "usuario, pass")] AutenticacionModel auth)
         {
-            UsuarioADM usuarios = new UsuarioADM();
             try
             {
                 Usuario usuario = usuarios.validarUsuario(auth.usuario, auth.pass);
