@@ -1,9 +1,11 @@
-﻿using Negocio;
+﻿using Entities;
+using Negocio;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
 using WebApp.Models;
 
 namespace WebApp.Controllers
@@ -37,14 +39,14 @@ namespace WebApp.Controllers
 
         // POST: Login/Create
         [HttpPost]
-        public ActionResult Create([Bind(Include = "usuario, pass")] Autenticacion auth)
+        public ActionResult Create([Bind(Include = "usuario, pass")] AutenticacionModel auth)
         {
             UsuarioADM usuarios = new UsuarioADM();
             try
             {
-                usuarios.validarUsuario(auth.usuario, auth.pass);
+                Usuario usuario = usuarios.validarUsuario(auth.usuario, auth.pass);
                 
-                System.Web.HttpContext.Current.Session["sessionString"] = auth.usuario;
+                System.Web.HttpContext.Current.Session["sessionString"]  = new JavaScriptSerializer().Serialize(usuario); ;
                 return RedirectToAction("Index", "Home");
             }
             catch (Exception e)

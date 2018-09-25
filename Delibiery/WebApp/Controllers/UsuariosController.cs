@@ -74,6 +74,15 @@ namespace WebApp.Controllers
             {
                 return HttpNotFound();
             }
+            List<SelectListItem> ddlitemlist = new List<SelectListItem>();
+            ddlitemlist.Add(new SelectListItem() { Text = "Administrador", Value = "1" });
+            ddlitemlist.Add(new SelectListItem() { Text = "Cliente", Value = "2" });
+            ddlitemlist.Add(new SelectListItem() { Text = "Operador", Value = "3" });
+
+
+            ViewBag.ddlitemlist = ddlitemlist; //using ViewBag to bind DropDownList
+
+
             return View(usuario);
         }
 
@@ -86,14 +95,30 @@ namespace WebApp.Controllers
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,nombre,apellido,mail,edad,usuario,password")] Usuario usuario)
+        public ActionResult Edit([Bind(Include = "ID,nombre,apellido,mail,edad,usuario,password")] Usuario usuario,FormCollection form)
         {
+            string roles = (string)form["Roles"];
+            string[] ArrayRoles= roles.Split(',');
+            List<Rol> Roles = new List<Rol>();
+            foreach (string id in ArrayRoles) {
+                Roles.Add(new Rol { rol = int.Parse(id)});
+
+            }
+            usuario.fecha_alta = DateTime.Now;
+
             if (ModelState.IsValid)
             {
-                db.Entry(usuario).State = EntityState.Modified;
+
+                var result = db.Usuarios.SingleOrDefault(b => b.ID == usuario.ID);
+                result.roles = Roles;
                 db.SaveChanges();
+
+
                 return RedirectToAction("Index");
             }
+
+            //DDLGetInitData() method get the DropDownList Init data
+            //according to the selected value to set the default selected value.
             return View(usuario);
         }
 

@@ -6,7 +6,7 @@ using System.Web;
 
 namespace WebApp.Models
 {
-    public class Autenticacion : ValidationAttribute
+    public class AutenticacionModel : ValidationAttribute
     {
         [Required]
         [Display(Name = "Correo")]
@@ -57,5 +57,44 @@ namespace WebApp.Models
 
 
 
+    }
+
+    
+
+    public class AsignarRoles
+    {
+        [Required]
+        [Display(Name = "Nombre")]
+        public String nombreUsuario { get; set; }
+
+
+        [Required]
+        [Display(Name = "Apellido")]
+        public string apellido { get; set; }
+
+        [Required]
+        [Display(Name = "Correo")]
+        [DataType(DataType.EmailAddress)]
+        [EmailAddress(ErrorMessage = "Correo invalido")]
+        public string mail { get; set; }
+
+
+        [Required]
+        [Display(Name = "Edad")]
+        public int edad { get; set; }
+
+        [Required]
+        [Display(Name = "Roles")]
+        public List<int> roleId { get; set; }
+
+
+    }
+    public class MenuModel
+    {
+        public string descripcion { get; set; }
+
+        public string action { get; set; }
+        public string controller { get; set; }
+        public string roles { get; set; }
     }
 }

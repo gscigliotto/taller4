@@ -21,14 +21,17 @@
                     if ((string)System.Web.HttpContext.Current.Session["sessionString"] != null)
                     {
                         <li class="nav-item">
-                            @Html.ActionLink((string)System.Web.HttpContext.Current.Session["sessionString"], "Edit", "Usuarios", new { area = "" }, new { @class = "nav-link" })
-                           
+                            
+                            @{ var JSONObj = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<Dictionary<string, object>>((string)System.Web.HttpContext.Current.Session["sessionString"]);
+                                @System.Web.HttpContext.Current.Session["sessionString"];
+                                @Html.ActionLink((string)@JSONObj["nombre"], "Edit", "Usuarios", new { area = "" }, new { @class = "nav-link" })
 
-
+                            }
                                                        <!-- <a class="nav-link" href="#">Link</a>-->
                         </li>
 
                         <li class="nav-item">
+                            
                             @Html.ActionLink("Salir", "logout", "Login", new { area = "" }, new { @class = "nav-link" })
                             <!-- <a class="nav-link" href="#">Link</a>-->
                         </li>
@@ -37,16 +40,26 @@
                                 Menu
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">Mis Pedidos</a>
-                                <a class="dropdown-item" href="#">Another action</a>
-                                <div class="dropdown-divider"></div>
+
+                                @{
+
+                                    Dictionary<string,WebApp.Models.MenuModel> items = new Dictionary<string, WebApp.Models.MenuModel>();
+                                    items.Add("1",new WebApp.Models.MenuModel {  descripcion="Mis Pedidos", roles="1,2,3" });
+                                    items.Add("2",new WebApp.Models.MenuModel {  descripcion="Administrar Usuarios", roles = "1" });
+                                    items.Add("3",new WebApp.Models.MenuModel {  descripcion="Cambiar de estado pedido", roles = "1,2" });
+                                    items.Add("4", new WebApp.Models.MenuModel { descripcion = "Alta de Articulo", roles = "1,2" });
+
+
+                                 }
+
+
                                 <a class="dropdown-item" href="#">Something else here</a>
                             </div>
                         </li>
 
-                    }
-                    else
-                    {
+                                    }
+                                    else
+                                    {
 
                         <li class="nav-item">
                             @Html.ActionLink("Registrate", "Create", "Home", new { area = "" }, new { @class = "nav-link" })

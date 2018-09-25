@@ -22,7 +22,7 @@ namespace Negocio
         public Usuario validarUsuario(String usuario,String password) {
 
             password = SeguridadADM.EncodePassword(password);
-            Usuario usuarioCTX = db.Usuarios.SingleOrDefault(u => string.Equals(u.mail, usuario) && string.Equals(u.password, password));
+            Usuario usuarioCTX = db.Usuarios.Include("roles").SingleOrDefault(u => string.Equals(u.mail, usuario) && string.Equals(u.password, password));
             if (usuarioCTX == null)
                 throw new Exception("Usuario y/o Contraseña invalida");
             return usuarioCTX;

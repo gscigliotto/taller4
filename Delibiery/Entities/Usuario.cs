@@ -17,5 +17,7 @@ namespace Entities
         public string password { get; set; }
         public List<Rol> roles { get; set; }
         public DateTime fecha_alta { get; set; }
+
+        
     }
 }
