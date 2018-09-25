@@ -22,10 +22,10 @@
                     {
                         <li class="nav-item">
                             @Html.ActionLink((string)System.Web.HttpContext.Current.Session["sessionString"], "Edit", "Usuarios", new { area = "" }, new { @class = "nav-link" })
-                           
 
 
-                                                       <!-- <a class="nav-link" href="#">Link</a>-->
+
+                            <!-- <a class="nav-link" href="#">Link</a>-->
                         </li>
 
                         <li class="nav-item">
@@ -43,6 +43,10 @@
                         </li>
                         <li class="nav-item">
                             @Html.ActionLink("Log In", "Index", "Login", new { area = "" }, new { @class = "nav-link" })
+                            <!-- <a class="nav-link" href="#">Link</a>-->
+                        </li>
+                        <li class="nav-item">
+                            @Html.ActionLink("Birras", "Index", "Articulos", new { area = "" }, new { @class = "nav-link" })
                             <!-- <a class="nav-link" href="#">Link</a>-->
                         </li>
                         <li class="nav-item dropdown">
