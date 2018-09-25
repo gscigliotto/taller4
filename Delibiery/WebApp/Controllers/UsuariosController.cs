@@ -9,7 +9,6 @@ using System.Web.Mvc;
 using Datos;
 using Entities;
 using WebApp.Models;
-using Negocio;
 
 namespace WebApp.Controllers
 {
@@ -53,9 +52,8 @@ namespace WebApp.Controllers
         {
             if (ModelState.IsValid)
             {
-
-                UsuarioADM admUsuario = new UsuarioADM();
-                admUsuario.registrarUsuario(usuario);
+                db.Usuarios.Add(usuario);
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
 

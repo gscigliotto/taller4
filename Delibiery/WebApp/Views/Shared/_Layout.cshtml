@@ -32,6 +32,19 @@
                             @Html.ActionLink("Salir", "logout", "Login", new { area = "" }, new { @class = "nav-link" })
                             <!-- <a class="nav-link" href="#">Link</a>-->
                         </li>
+
+                    }
+                    else
+                    {
+
+                        <li class="nav-item">
+                            @Html.ActionLink("Registrate", "Create", "Usuarios", new { area = "" }, new { @class = "nav-link" })
+                            <!-- <a class="nav-link" href="#">Link</a>-->
+                        </li>
+                        <li class="nav-item">
+                            @Html.ActionLink("Log In", "Index", "Login", new { area = "" }, new { @class = "nav-link" })
+                            <!-- <a class="nav-link" href="#">Link</a>-->
+                        </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Menu
@@ -43,20 +56,6 @@
                                 <a class="dropdown-item" href="#">Something else here</a>
                             </div>
                         </li>
-
-                    }
-                    else
-                    {
-
-                        <li class="nav-item">
-                            @Html.ActionLink("Registrate", "Create", "Home", new { area = "" }, new { @class = "nav-link" })
-                            <!-- <a class="nav-link" href="#">Link</a>-->
-                        </li>
-                        <li class="nav-item">
-                            @Html.ActionLink("Log In", "Index", "Login", new { area = "" }, new { @class = "nav-link" })
-                            <!-- <a class="nav-link" href="#">Link</a>-->
-                        </li>
-
                     }
                 }
 

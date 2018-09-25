@@ -1,10 +1,8 @@
-﻿using Negocio;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using WebApp.Models;
 
 namespace WebApp.Controllers
 {
@@ -20,7 +18,7 @@ namespace WebApp.Controllers
         {
             System.Web.HttpContext.Current.Session["sessionString"] = null;
 
-            return RedirectToAction("Index", "Home");
+            return View();
         }
 
         // GET: Login/Details/5
@@ -37,20 +35,19 @@ namespace WebApp.Controllers
 
         // POST: Login/Create
         [HttpPost]
-        public ActionResult Create([Bind(Include = "usuario, pass")] Autenticacion auth)
+        public ActionResult Create(FormCollection collection)
         {
-            UsuarioADM usuarios = new UsuarioADM();
             try
             {
-                usuarios.validarUsuario(auth.usuario, auth.pass);
+                System.Web.HttpContext.Current.Session["sessionString"] = collection["usuario"];
                 
-                System.Web.HttpContext.Current.Session["sessionString"] = auth.usuario;
-                return RedirectToAction("Index", "Home");
+                // TODO: Add insert logic here
+
+                return RedirectToAction("Index");
             }
-            catch (Exception e)
+            catch
             {
-                ViewBag.noValido = e.Message;
-                return View("Index");
+                return View();
             }
         }
 

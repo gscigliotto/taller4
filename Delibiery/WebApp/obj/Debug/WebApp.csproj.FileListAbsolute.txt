@@ -1,4 +1,3 @@
-C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\WebApp\obj\Debug\WebApp.csprojResolveAssemblyReference.cache
 C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\WebApp\bin\ApplicationInsights.config
 C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\WebApp\bin\roslyn\csc.exe
 C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\WebApp\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
@@ -29,7 +28,6 @@ C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\WebApp\bin\Microsoft.AI.Wind
 C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\WebApp\bin\Microsoft.ApplicationInsights.dll
 C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\WebApp\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\WebApp\bin\Microsoft.Web.Infrastructure.dll
-C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\WebApp\bin\Negocio.dll
 C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\WebApp\bin\Newtonsoft.Json.dll
 C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\WebApp\bin\System.Web.Helpers.dll
 C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\WebApp\bin\System.Web.Mvc.dll
@@ -41,7 +39,6 @@ C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\WebApp\bin\System.Web.WebPag
 C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\WebApp\bin\WebGrease.dll
 C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\WebApp\bin\Datos.pdb
 C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\WebApp\bin\Entities.pdb
-C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\WebApp\bin\Negocio.pdb
 C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\WebApp\bin\EntityFramework.xml
 C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\WebApp\bin\EntityFramework.SqlServer.xml
 C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\WebApp\bin\Microsoft.AI.DependencyCollector.xml
@@ -66,5 +63,78 @@ C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\WebApp\bin\es\System.Web.Raz
 C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\WebApp\bin\es\System.Web.WebPages.resources.dll
 C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\WebApp\bin\es\System.Web.WebPages.Deployment.resources.dll
 C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\WebApp\bin\es\System.Web.WebPages.Razor.resources.dll
+C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\WebApp\obj\Debug\WebApp.csprojResolveAssemblyReference.cache
 C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\WebApp\obj\Debug\WebApp.dll
 C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\WebApp\obj\Debug\WebApp.pdb
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras\Delibiery\WebApp\bin\ApplicationInsights.config
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras\Delibiery\WebApp\bin\roslyn\csc.exe
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras\Delibiery\WebApp\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras\Delibiery\WebApp\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras\Delibiery\WebApp\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras\Delibiery\WebApp\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras\Delibiery\WebApp\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras\Delibiery\WebApp\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras\Delibiery\WebApp\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras\Delibiery\WebApp\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras\Delibiery\WebApp\bin\roslyn\vbc.exe
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras\Delibiery\WebApp\bin\roslyn\VBCSCompiler.exe
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras\Delibiery\WebApp\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras\Delibiery\WebApp\bin\WebApp.dll.config
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras\Delibiery\WebApp\bin\WebApp.dll
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras\Delibiery\WebApp\bin\WebApp.pdb
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras\Delibiery\WebApp\bin\Antlr3.Runtime.dll
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras\Delibiery\WebApp\bin\Datos.dll
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras\Delibiery\WebApp\bin\Entities.dll
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras\Delibiery\WebApp\bin\EntityFramework.dll
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras\Delibiery\WebApp\bin\EntityFramework.SqlServer.dll
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras\Delibiery\WebApp\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras\Delibiery\WebApp\bin\Microsoft.AI.DependencyCollector.dll
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras\Delibiery\WebApp\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras\Delibiery\WebApp\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras\Delibiery\WebApp\bin\Microsoft.AI.Web.dll
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras\Delibiery\WebApp\bin\Microsoft.AI.WindowsServer.dll
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras\Delibiery\WebApp\bin\Microsoft.ApplicationInsights.dll
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras\Delibiery\WebApp\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras\Delibiery\WebApp\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras\Delibiery\WebApp\bin\Newtonsoft.Json.dll
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras\Delibiery\WebApp\bin\System.Web.Helpers.dll
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras\Delibiery\WebApp\bin\System.Web.Mvc.dll
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras\Delibiery\WebApp\bin\System.Web.Optimization.dll
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras\Delibiery\WebApp\bin\System.Web.Razor.dll
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras\Delibiery\WebApp\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras\Delibiery\WebApp\bin\System.Web.WebPages.dll
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras\Delibiery\WebApp\bin\System.Web.WebPages.Razor.dll
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras\Delibiery\WebApp\bin\WebGrease.dll
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras\Delibiery\WebApp\bin\Datos.pdb
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras\Delibiery\WebApp\bin\Datos.dll.config
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras\Delibiery\WebApp\bin\Entities.pdb
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras\Delibiery\WebApp\bin\EntityFramework.xml
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras\Delibiery\WebApp\bin\EntityFramework.SqlServer.xml
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras\Delibiery\WebApp\bin\Microsoft.AI.DependencyCollector.xml
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras\Delibiery\WebApp\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras\Delibiery\WebApp\bin\Microsoft.AI.Web.xml
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras\Delibiery\WebApp\bin\Microsoft.AI.WindowsServer.xml
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras\Delibiery\WebApp\bin\Microsoft.ApplicationInsights.xml
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras\Delibiery\WebApp\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras\Delibiery\WebApp\bin\System.Web.Helpers.xml
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras\Delibiery\WebApp\bin\System.Web.Mvc.xml
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras\Delibiery\WebApp\bin\System.Web.Optimization.xml
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras\Delibiery\WebApp\bin\System.Web.Razor.xml
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras\Delibiery\WebApp\bin\System.Web.WebPages.xml
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras\Delibiery\WebApp\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras\Delibiery\WebApp\bin\System.Web.WebPages.Razor.xml
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras\Delibiery\WebApp\bin\Antlr3.Runtime.pdb
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras\Delibiery\WebApp\bin\Newtonsoft.Json.xml
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras\Delibiery\WebApp\bin\es\System.Web.Helpers.resources.dll
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras\Delibiery\WebApp\bin\es\System.Web.Mvc.resources.dll
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras\Delibiery\WebApp\bin\es\System.Web.Optimization.resources.dll
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras\Delibiery\WebApp\bin\es\System.Web.Razor.resources.dll
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras\Delibiery\WebApp\bin\es\System.Web.WebPages.resources.dll
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras\Delibiery\WebApp\bin\es\System.Web.WebPages.Deployment.resources.dll
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras\Delibiery\WebApp\bin\es\System.Web.WebPages.Razor.resources.dll
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras\Delibiery\WebApp\obj\Debug\WebApp.csprojAssemblyReference.cache
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras\Delibiery\WebApp\obj\Debug\WebApp.csproj.CoreCompileInputs.cache
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras\Delibiery\WebApp\obj\Debug\WebApp.csproj.CopyComplete
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras\Delibiery\WebApp\obj\Debug\WebApp.dll
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras\Delibiery\WebApp\obj\Debug\WebApp.pdb
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras\Delibiery\WebApp\bin\Entities.dll.config

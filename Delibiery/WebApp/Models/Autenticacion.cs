@@ -1,61 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
 namespace WebApp.Models
 {
-    public class Autenticacion : ValidationAttribute
+    public class Autenticacion
     {
-        [Required]
-        [Display(Name = "Correo")]
-        [DataType(DataType.EmailAddress)]
-        [EmailAddress(ErrorMessage = "Correo invalido")]
+
         public string usuario { get; set; }
-        [Required]
-        [StringLength(100, ErrorMessage = "La {0} debe tener al menos {2} characteres de largo.", MinimumLength = 6)]
-        [DataType(DataType.Password)]
-        [Display(Name = "Password")]
         public string pass { get; set; }
-    }
-
-
-    public class Registro {
-        [Required]
-        [Display(Name = "Nombre")]
-        public string nombre { get; set; }
-
-
-        [Required]
-        [Display(Name = "Apellido")]
-        public string apellido { get; set; }
-
-        [Required]
-        [Display(Name = "Correo")]
-        [DataType(DataType.EmailAddress)]
-        [EmailAddress(ErrorMessage = "Correo invalido")]
-        public string mail { get; set; }
-
-
-        [Required]
-        [Display(Name = "Edad")]
-        public int edad { get; set; }
-
-
-        [Required]
-        [StringLength(100, ErrorMessage = "La {0} debe tener al menos {2} characteres de largo.", MinimumLength = 6)]
-        [DataType(DataType.Password)]
-        [Display(Name = "Password")]
-        public string Password { get; set; }
-
-        [DataType(DataType.Password)]
-        [Display(Name = "Confirmar password")]
-        [Compare("Password", ErrorMessage = "No coincide.")]
-        public string ConfirmPassword { get; set; }
-
-
-
-
     }
 }

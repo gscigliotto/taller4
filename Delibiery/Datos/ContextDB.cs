@@ -1,18 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Entities;
-using System.Configuration;
+﻿using Entities;
 using System.Data.Entity;
 
 namespace Datos
 {
     public class ContextDB : DbContext
     {
-        public ContextDB() : base(ConfigurationManager.ConnectionStrings["ConnString"].ConnectionString)
+        public ContextDB() : base("BirrasDB")
         {
             this.Configuration.LazyLoadingEnabled = false;
 
@@ -23,9 +16,9 @@ namespace Datos
         public DbSet<ItemArticulo> itemsArticulos { get; set; }
 
         public DbSet<Usuario> Usuarios { get; set; }
+        //public DbSet<ItemPromo> itemsPromos { get; set; }
 
-        public DbSet<Rol> Rol { get; set; }
-
-
+        //public DbSet<Pedido>  Pedidos { get; set; }
+        public DbSet<Rol> rol { get; set; }
     }
 }
