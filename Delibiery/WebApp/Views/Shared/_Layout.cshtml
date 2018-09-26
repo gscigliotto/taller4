@@ -49,7 +49,7 @@
                                     items.Add(3, new WebApp.Models.MenuModel { descripcion = "Cambiar de estado pedido", roles = "1,2", actionName="Cambiar", controllerName="Pedidos" });
                                     items.Add(4, new WebApp.Models.MenuModel { descripcion = "Alta de Articulo", roles = "1,2", actionName="Index", controllerName="Articulos" });
                                     items.Add(5, new WebApp.Models.MenuModel { descripcion = "Birras", roles = "1,2", actionName = "Index", controllerName = "Articulos" });
-                                    for (int i = 1; i < items.Count; i++)
+                                    for (int i = 1; i <= items.Count; i++)
 
                                     {
                                         System.Collections.ArrayList roles = (System.Collections.ArrayList) JSONObj["roles"];
@@ -88,10 +88,11 @@
 
                             </div>
                         </li>
+                        <!-- 
                         <li class="nav-item">
                             @Html.ActionLink("Birras", "Index", "Articulos", new { area = "" }, new { @class = "nav-link" })
-                            <!-- <a class="nav-link" href="#">Link</a>-->
-                        </li>
+                            <a class="nav-link" href="#">Link</a>
+                        </li>-->
                                     }
                                     else
                                     {
