@@ -10,7 +10,7 @@ namespace Entities
     {
         public int Id { get; set; }
 
-        public string estilo { get; set; }
+        public string estilo  { get; set; }
 
         public string marca { get; set; }
         
