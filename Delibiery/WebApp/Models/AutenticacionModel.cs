@@ -1,14 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
-using System.ComponentModel.DataAnnotations;
+
 namespace WebApp.Models
 {
-    public class AutenticacionModel 
+    public class AutenticacionModel : ValidationAttribute
     {
-
+        [Required]
+        [Display(Name = "Correo")]
+        [DataType(DataType.EmailAddress)]
+        [EmailAddress(ErrorMessage = "Correo invalido")]
         public string usuario { get; set; }
+        [Required]
+        [StringLength(100, ErrorMessage = "La {0} debe tener al menos {2} characteres de largo.", MinimumLength = 6)]
+        [DataType(DataType.Password)]
+        [Display(Name = "Password")]
         public string pass { get; set; }
     }
 
