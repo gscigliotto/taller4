@@ -24,7 +24,7 @@
                             
                             @{ var JSONObj = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<Dictionary<string, object>>((string)System.Web.HttpContext.Current.Session["sessionString"]);
                                 //@System.Web.HttpContext.Current.Session["sessionString"];
-                                @Html.ActionLink((string)@JSONObj["nombre"], "Edit", "Usuarios", new { area = "" }, new { @class = "nav-link" })
+                                @Html.ActionLink((string)@JSONObj["nombre"], "Edit", "Usuarios", new { area = "" ,ID= JSONObj["ID"] }, new { @class = "nav-link" })
 
                             }
                                                        <!-- <a class="nav-link" href="#">Link</a>-->
@@ -56,9 +56,12 @@
 
                                         string[] strRol = items[i].roles.Split(',');
                                         int count = 0;
-                                        int rolcount = 0;
+
                                         bool encontre = false;
                                         while (count<strRol.Length&&!encontre) {
+                                            int rolcount = 0;
+                                            //count = 0;
+
                                             while (rolcount < roles.Count && !encontre)
                                             {
                                                 Dictionary<string,object> rol =(Dictionary<string, object>) roles[rolcount];
@@ -83,7 +86,6 @@
                                     }
 
 
-                                <a class="dropdown-item" href="#">Something else here</a>
                             </div>
                         </li>
                         <li class="nav-item">

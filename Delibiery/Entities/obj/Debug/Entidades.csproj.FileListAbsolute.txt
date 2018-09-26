@@ -1,10 +1,10 @@
+C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\Entities\bin\Debug\Entities.dll.config
 C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\Entities\bin\Debug\Entities.dll
 C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\Entities\bin\Debug\Entities.pdb
-C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\Entities\obj\Debug\Entities.dll
-C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\Entities\obj\Debug\Entities.pdb
-C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\Entities\bin\Debug\Entities.dll.config
 C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\Entities\bin\Debug\EntityFramework.dll
 C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\Entities\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\Entities\bin\Debug\EntityFramework.xml
 C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\Entities\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\Entities\obj\Debug\Entidades.csprojResolveAssemblyReference.cache
+C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\Entities\obj\Debug\Entities.dll
+C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\Entities\obj\Debug\Entities.pdb
