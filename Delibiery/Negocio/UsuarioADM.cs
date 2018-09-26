@@ -2,7 +2,7 @@
 using Datos;
 using Entities;
 using System;
-
+using System.Collections.Generic;
 using System.Linq;
 
 
@@ -32,10 +32,19 @@ namespace Negocio
         public void registrarUsuario(Usuario usuario)
         {
             usuario.fecha_alta = DateTime.Now;
+            string tempPass = usuario.password;
             usuario.password=SeguridadADM.EncodePassword(usuario.password);
             db.Usuarios.Add(usuario);
             db.SaveChanges();
+
+            List<string> destinatarios = new List<string>();
+            destinatarios.Add(usuario.mail);
+            String body = String.Format("Bienvenido {0}, se genero su usuario {1}, recuerde que su password es: {2}, Salua Atte. Equipo delibiery MSMM", usuario.nombre,usuario.mail, tempPass);
+            SeguridadADM.SendMailSinConfig(destinatarios,"Creación de usuario",body);
+
+
         }
+  
 
 
 

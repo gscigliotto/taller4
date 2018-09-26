@@ -1,13 +1,16 @@
+using Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Negocio
 {
-    class SeguridadADM
+    public class SeguridadADM
     {
         public static String EncodePassword(String txt)
         {
@@ -26,5 +29,56 @@ namespace Negocio
             }
             return builder.ToString();
         }
+
+
+        
+
+
+        public static void SendMailSinConfig(List<string> destinatario, String subject, String body)
+        {
+
+            
+
+            //
+            // se crea el mensaje
+            //
+
+
+
+            MailMessage mail = new MailMessage()
+            {
+                From = new MailAddress("delibiery.msmm@gmail.com"),
+                Body = body,
+                Subject = "Mail Test",
+                IsBodyHtml = false
+            };
+
+
+            //
+            // se asignan los destinatarios
+            //
+            foreach (string item in destinatario)
+            {
+                mail.To.Add(new MailAddress(item));
+            }
+
+
+            //
+            // se define el smtp
+            //
+            SmtpClient smtp = new SmtpClient()
+            {
+                Host = "smtp.gmail.com",
+                Port = 587,
+                UseDefaultCredentials = false,
+                Credentials = new NetworkCredential("delibiery.msmm@gmail.com", "ort22b2018"),
+                EnableSsl = true
+            };
+
+
+            smtp.Send(mail);
+
+        }
+
     }
 }
