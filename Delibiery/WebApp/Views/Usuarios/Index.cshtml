@@ -1,31 +1,31 @@
 ﻿@model IEnumerable<Entities.Usuario>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Administración de Usuarios";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Usuarios</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Crear Usuario", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.nombre)
+           Nombre
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.apellido)
+            Apellido
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.mail)
+            Email
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.edad)
+            Edad
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.password)
+            Acciones
         </th>
         <th></th>
     </tr>
@@ -46,10 +46,8 @@
         </td>
 
         <td>
-            @Html.DisplayFor(modelItem => item.password)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) | @Html.ActionLink("Recuperar Pass", "Edit", new { id = item.ID }) |
+
             @Html.ActionLink("Details", "Details", new { id=item.ID }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.ID })
         </td>

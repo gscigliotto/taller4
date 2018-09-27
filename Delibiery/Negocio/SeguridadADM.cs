@@ -49,7 +49,7 @@ namespace Negocio
             {
                 From = new MailAddress("delibiery.msmm@gmail.com"),
                 Body = body,
-                Subject = "Mail Test",
+                Subject = subject,
                 IsBodyHtml = false
             };
 

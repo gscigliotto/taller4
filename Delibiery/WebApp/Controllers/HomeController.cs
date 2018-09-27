@@ -36,14 +36,14 @@ namespace WebApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                /*
-                db.Usuarios.Add(usuario);
-                db.SaveChanges();
-                */
+                List<Rol> rolesAsignados = new List<Rol>();
+
                 UsuarioADM admUsuario = new UsuarioADM();
-            
+                rolesAsignados.Add(new Rol {rol= (int) eRoles.administrador });
+                usuario.roles = rolesAsignados;
                 admUsuario.registrarUsuario(usuario);
                 System.Web.HttpContext.Current.Session["sessionString"] = new JavaScriptSerializer().Serialize(usuario);
+
                 return RedirectToAction("Index");
             }
 
