@@ -5,11 +5,16 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+
+
+<script src="~/Scripts/CommonsJS.js"></script>
 <h2>Usuarios</h2>
 
 <p>
     @Html.ActionLink("Crear Usuario", "Create")
 </p>
+
+
 <table class="table">
     <tr>
         <th>
@@ -46,8 +51,8 @@
         </td>
 
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) | @Html.ActionLink("Recuperar Pass", "Edit", new { id = item.ID }) |
-
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) | 
+            <a href="#" onclick="return RecuperaPass('@item.ID');">Restablecer Pass</a> | 
             @Html.ActionLink("Details", "Details", new { id=item.ID }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.ID })
         </td>

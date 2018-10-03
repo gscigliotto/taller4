@@ -8,6 +8,6 @@ namespace Entities
 {
     public enum  eRoles
     {
-        administrador = 1, cliente=3,operador=2
+        administrador = 1,operador=2, cliente = 3
     }
 }

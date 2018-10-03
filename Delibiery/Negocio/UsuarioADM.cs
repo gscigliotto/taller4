@@ -18,6 +18,14 @@ namespace Negocio
         {
             this.db = db;
         }
+        public Usuario buscarUsuario(int Id)
+        {
+            Usuario usuarioCTX = db.Usuarios.Include("roles").SingleOrDefault(u => u.ID == Id);
+            if (usuarioCTX == null)
+                throw new Exception("Usuario no existe");
+            return usuarioCTX;
+
+        }
 
         public Usuario validarUsuario(String usuario,String password) {
 
@@ -44,9 +52,46 @@ namespace Negocio
 
 
         }
-  
+
+        public List<Usuario> obtenerUsuarios()
+        {
+            return db.Usuarios.ToList();
+
+
+        }
+        public void actualizarRolUsuario(Usuario usuario, List<Rol> roles) {
+
+
+            var result = db.Usuarios.SingleOrDefault(b => b.ID == usuario.ID);
+            result.roles = roles;
+            db.SaveChanges();
+
+        }
+
+
+        public void recueperarPass(int id)
+        {
+            Usuario usuario = this.buscarUsuario(id);
+            List<String> destinatarios = new List<string>();
+            destinatarios.Add(usuario.mail);
+            string cuerpo = String.Format("Estimado, se tramito una nueva password de acceso su nueva password  es:{0}", SeguridadADM.CrearPassword(6));
+            SeguridadADM.SendMailSinConfig(destinatarios, "Recupero de Contraseña", cuerpo);
+
+        }
 
 
 
+        public void recueperarPass(string mail)
+        {
+            Usuario usuario = db.Usuarios.SingleOrDefault(u => string.Equals(u.mail, mail));
+            recueperarPass(usuario.ID);
+        }
+
+        public void borrarUsuario(int id)
+        {
+            Usuario usuario = db.Usuarios.Find(id);
+            db.Usuarios.Remove(usuario);
+            db.SaveChanges();
+        }
     }
 }

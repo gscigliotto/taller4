@@ -39,7 +39,7 @@ namespace WebApp.Controllers
                 List<Rol> rolesAsignados = new List<Rol>();
 
                 UsuarioADM admUsuario = new UsuarioADM();
-                rolesAsignados.Add(new Rol {rol= (int) eRoles.administrador });
+                rolesAsignados.Add(new Rol {rol= (int) eRoles.cliente });
                 usuario.roles = rolesAsignados;
                 admUsuario.registrarUsuario(usuario);
                 System.Web.HttpContext.Current.Session["sessionString"] = new JavaScriptSerializer().Serialize(usuario);

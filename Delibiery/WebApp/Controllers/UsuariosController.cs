@@ -15,22 +15,22 @@ namespace WebApp.Controllers
 {
     public class UsuariosController : Controller
     {
-        private ContextDB db = new ContextDB();
+        //private ContextDB db = new ContextDB();
 
         // GET: Usuarios
         public ActionResult Index()
         {
-            return View(db.Usuarios.ToList());
+            return View(new UsuarioADM().obtenerUsuarios());
         }
 
         // GET: Usuarios/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details(int id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Usuario usuario = db.Usuarios.Find(id);
+            Usuario usuario = new UsuarioADM().buscarUsuario(id);
             if (usuario == null)
             {
                 return HttpNotFound();
@@ -43,6 +43,8 @@ namespace WebApp.Controllers
         {
             return View();
         }
+
+
 
         // POST: Usuarios/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
@@ -65,19 +67,46 @@ namespace WebApp.Controllers
         // GET: Usuarios/Edit/5
         public ActionResult Edit(int? id)
         {
+            int idUsuario;
             if (id == null)
             {
+
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Usuario usuario = db.Usuarios.Find(id);
+
+            Usuario usuario = new UsuarioADM().buscarUsuario((int)id);
             if (usuario == null)
             {
                 return HttpNotFound();
             }
+            List<SelectListItem> Roles = new List<SelectListItem>();
             List<SelectListItem> ddlitemlist = new List<SelectListItem>();
-            ddlitemlist.Add(new SelectListItem() { Text = "Administrador", Value = "1" });
-            ddlitemlist.Add(new SelectListItem() { Text = "Cliente", Value = "2" });
-            ddlitemlist.Add(new SelectListItem() { Text = "Operador", Value = "3" });
+            SelectListItem RolesAdmin = new SelectListItem() { Text ="Administrador", Value = "1" };
+            SelectListItem RolesOperador = new SelectListItem() { Text = "Operador", Value = "2" };
+            SelectListItem RolesCliente = new SelectListItem() { Text = "Cliente", Value = "3" };
+            Roles.Add(RolesAdmin);
+            Roles.Add(RolesCliente);
+            Roles.Add(RolesOperador);
+            
+            foreach (SelectListItem item in Roles) {
+                int contador = 0;
+                bool Encontre = false;
+                while (usuario.roles.Count>contador && !Encontre) {
+                    Rol rol = usuario.roles[contador];
+                    if (item.Value == rol.rol.ToString())
+                    {
+                        item.Selected = true;
+                        Encontre = true;
+
+                    }
+
+                    contador++;
+
+                }
+
+                ddlitemlist.Add(item);
+
+            }
 
 
             ViewBag.ddlitemlist = ddlitemlist; //using ViewBag to bind DropDownList
@@ -109,11 +138,7 @@ namespace WebApp.Controllers
             if (ModelState.IsValid)
             {
 
-                var result = db.Usuarios.SingleOrDefault(b => b.ID == usuario.ID);
-                result.roles = Roles;
-                db.SaveChanges();
-
-
+                new UsuarioADM().actualizarRolUsuario(usuario, Roles);
                 return RedirectToAction("Index");
             }
 
@@ -123,13 +148,13 @@ namespace WebApp.Controllers
         }
 
         // GET: Usuarios/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(int id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Usuario usuario = db.Usuarios.Find(id);
+            Usuario usuario = new UsuarioADM().buscarUsuario(id);
             if (usuario == null)
             {
                 return HttpNotFound();
@@ -142,17 +167,70 @@ namespace WebApp.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Usuario usuario = db.Usuarios.Find(id);
-            db.Usuarios.Remove(usuario);
-            db.SaveChanges();
+            new UsuarioADM().borrarUsuario(id);
+
             return RedirectToAction("Index");
         }
+
+
+
+
+        [HttpPost, ActionName("RecuperarPass")]
+          
+        public JsonResult RecuperarPass(int id)
+        {
+            JsonResult rta = new JsonResult();
+            UsuarioADM usuarioNeg = new UsuarioADM();
+            try
+            {
+                usuarioNeg.recueperarPass(id);
+                rta.Data = "ok";
+            }
+            catch (Exception e) {
+                rta.Data = "Err"+ e.Message; 
+
+            }
+            return rta;
+        }
+
+
+
+
+
+        [HttpPost, ActionName("RecuperarPass")]
+
+        public JsonResult RecuperarPass(string mail)
+        {
+            JsonResult rta = new JsonResult();
+            UsuarioADM usuarioNeg = new UsuarioADM();
+            try
+            {
+                usuarioNeg.recueperarPass(mail);
+                rta.Data = "ok";
+            }
+            catch (Exception e)
+            {
+                rta.Data = "Err" + e.Message;
+
+            }
+            return rta;
+        }
+
+
+
+
+        // GET: Usuarios/Create
+        public ActionResult Recuperar()
+        {
+            return View();
+        }
+
 
         protected override void Dispose(bool disposing)
         {
             if (disposing)
             {
-                db.Dispose();
+                //db.Dispose();
             }
             base.Dispose(disposing);
         }
