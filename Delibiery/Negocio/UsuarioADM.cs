@@ -10,7 +10,7 @@ namespace Negocio
 {
     public class UsuarioADM
     {
-        ContextDB db;  // TODO commentario
+        ContextDB db;
         public UsuarioADM() {
            db = new ContextDB();
         }

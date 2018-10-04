@@ -49,6 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\PedidoArt.cs" />
+    <Compile Include="Model\PedidoPromoArt.cs" />
+    <Compile Include="Model\PromoDescuento.cs" />
+    <Compile Include="Model\PromoXy.cs" />
+    <Compile Include="PedidoADM.cs" />
+    <Compile Include="PromocionADM.cs" />
     <Compile Include="SeguridadADM.cs" />
     <Compile Include="UsuarioADM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

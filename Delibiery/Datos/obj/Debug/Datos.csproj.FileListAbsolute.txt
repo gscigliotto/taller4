@@ -37,3 +37,15 @@ C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\Datos\bin\Debug\EntityFramew
 C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\Datos\obj\Debug\Datos.csprojResolveAssemblyReference.cache
 C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\Datos\obj\Debug\Datos.dll
 C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\Datos\obj\Debug\Datos.pdb
+Z:\tc4\workspace\taller4\Delibiery\Datos\bin\Debug\Datos.dll.config
+Z:\tc4\workspace\taller4\Delibiery\Datos\bin\Debug\Datos.dll
+Z:\tc4\workspace\taller4\Delibiery\Datos\bin\Debug\Datos.pdb
+Z:\tc4\workspace\taller4\Delibiery\Datos\bin\Debug\Entities.dll
+Z:\tc4\workspace\taller4\Delibiery\Datos\bin\Debug\EntityFramework.dll
+Z:\tc4\workspace\taller4\Delibiery\Datos\bin\Debug\EntityFramework.SqlServer.dll
+Z:\tc4\workspace\taller4\Delibiery\Datos\bin\Debug\Entities.pdb
+Z:\tc4\workspace\taller4\Delibiery\Datos\bin\Debug\EntityFramework.xml
+Z:\tc4\workspace\taller4\Delibiery\Datos\bin\Debug\EntityFramework.SqlServer.xml
+Z:\tc4\workspace\taller4\Delibiery\Datos\obj\Debug\Datos.csprojResolveAssemblyReference.cache
+Z:\tc4\workspace\taller4\Delibiery\Datos\obj\Debug\Datos.dll
+Z:\tc4\workspace\taller4\Delibiery\Datos\obj\Debug\Datos.pdb

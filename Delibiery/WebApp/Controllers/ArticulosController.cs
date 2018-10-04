@@ -18,7 +18,7 @@ namespace WebApp.Controllers
         // GET: Articuloes
         public ActionResult Index()
         {
-            return View(db.articulos.ToList());
+            return View(db.Articulos.ToList());
         }
 
         // GET: Articuloes/Details/5
@@ -28,7 +28,7 @@ namespace WebApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Articulo articulo = db.articulos.Find(id);
+            Articulo articulo = db.Articulos.Find(id);
             if (articulo == null)
             {
                 return HttpNotFound();
@@ -51,7 +51,7 @@ namespace WebApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.articulos.Add(articulo);
+                db.Articulos.Add(articulo);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -66,7 +66,7 @@ namespace WebApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Articulo articulo = db.articulos.Find(id);
+            Articulo articulo = db.Articulos.Find(id);
             if (articulo == null)
             {
                 return HttpNotFound();
@@ -97,7 +97,7 @@ namespace WebApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Articulo articulo = db.articulos.Find(id);
+            Articulo articulo = db.Articulos.Find(id);
             if (articulo == null)
             {
                 return HttpNotFound();
@@ -110,8 +110,8 @@ namespace WebApp.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Articulo articulo = db.articulos.Find(id);
-            db.articulos.Remove(articulo);
+            Articulo articulo = db.Articulos.Find(id);
+            db.Articulos.Remove(articulo);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

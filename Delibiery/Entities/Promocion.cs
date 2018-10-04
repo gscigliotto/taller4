@@ -4,23 +4,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace MyFirstWebApp.Models
+namespace Entities
 {
     public class Promocion
     {
 
-        public int id { get; set; }
-        public string tipo { get; set; }
-        public string descripcion { get; set; }
-        public Articulo articulo { get; set; }
+        public int Id { get; set; }
+        public string Tipo { get; set; }
+        public string Descripcion { get; set; }
+        //public Articulo articulo { get; set; }  TODO chk si queda el art aca o lo sacamos
 
         // Promocion XY
-        public int cantLleva { get; set; }
-        public int cantPaga { get; set; }
+        public int CantLleva { get; set; }
+        public int CantPaga { get; set; }
 
         // Promocion Descuento
-        public int descuento { get; set; }
-        public int cantidadLlevar { get; set; }
+        public int Descuento { get; set; }
+        public int CantidadLlevar { get; set; }
 
 
                        /*                                           W
@@ -38,28 +38,7 @@ namespace MyFirstWebApp.Models
         */
 
 
-        public PromoAlgoritmo getPromocion(string tipo)
-        {
-            PromoAlgoritmo algoritmo;
 
-            switch (this.tipo.ToUpper())
-            {
-                case "XY":
-                    algoritmo = new PromoXy(this.cantLleva, this.cantPaga, this.articulo);
-                    break;
-
-                case "DESCUENTO":
-                    algoritmo = new PromoDescuento(this.descuento, this.cantidadLlevar, this.articulo);
-                    break;
-                
-                default:
-                    algoritmo = null;
-                    break;
-            }
-
-            return algoritmo;
-
-        }
 
 
 

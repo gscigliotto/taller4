@@ -4,28 +4,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace MyFirstWebApp.Models
+namespace Negocio.Model
 {
     public class PromoXy : PromoAlgoritmo
     {
-        public int cantLleva { get; set; }
-        public int cantPaga { get; set; }
-        public Articulo articulo { get; set; }
 
 
-        public PromoXy(int cantLleva, int cantPaga, Articulo articulo)
+        public PromoXy(int cantLleva, int cantPaga)
         {
             this.cantLleva = cantLleva;  // Cantidad a llevar
-            this.cantPaga = cantPaga;  // Cantidad a pagar
-            this.articulo = articulo;
+            this.cantPaga  = cantPaga;  // Cantidad a pagar
         }
 
 
         public override double promoPrecio()
         {
-            //throw new NotImplementedException();
+            throw new NotImplementedException();
 
-            return cantPaga * articulo.precio;
+            //return cantPaga * articulo.precio;
 
         }
 

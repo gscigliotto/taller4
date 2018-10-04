@@ -9,8 +9,13 @@ namespace Entities
     public class ItemPromo
     {
         public int Id { get; set; }
-      //  public PromoAlgoritmo promo { get; set; }
-        public int cant { get; set; }
-        public double precio { get; set; }
+        public PromoAlgoritmo Promo { get; set; }
+        public int Cant { get; set; }
+        public double Precio { get; set; }
+
+
+        public ItemPromo() { }
+
+        public ItemPromo(PromoAlgoritmo promo, int cant, double Precio) { }
     }
 }

@@ -9,9 +9,15 @@ namespace Entities
     public class Pedido
     {
         public int Id { get; set; }
-        public DateTime fecha { get; set; }
-        public List<ItemArticulo> items { get; set; }
-        public List<ItemPromo> promos { get; set; }
-        public double total { get; set; }
+        public DateTime Fecha { get; set; }
+        public List<ItemArticulo> Items { get; set; }
+        public List<ItemPromo> Promos { get; set; }
+        public double Total { get; set; }
+
+
+        public Pedido() {
+            this.Fecha = DateTime.Now;
+        }
+
     }
 }

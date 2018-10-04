@@ -4,20 +4,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace MyFirstWebApp.Models
+namespace Negocio.Model
 {
     public class PromoDescuento : PromoAlgoritmo
     {
-        public int descuento { get; set; }
-        public int cantidadLlevar { get; set; }
-        public Articulo articulo { get; set; }
 
-
-        public PromoDescuento(int descuento, int cantidadLlevar, Articulo articulo)
+        public PromoDescuento(int descuento, int cantidadLlevar)
         {
-            this.descuento = descuento;
+            this.descuento      = descuento;
             this.cantidadLlevar = cantidadLlevar;
-            this.articulo       = articulo; 
         }
 
 

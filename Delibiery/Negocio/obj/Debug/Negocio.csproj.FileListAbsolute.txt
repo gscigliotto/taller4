@@ -11,3 +11,16 @@ C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\Negocio\bin\Debug\EntityFram
 C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\Negocio\obj\Debug\Negocio.csprojResolveAssemblyReference.cache
 C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\Negocio\obj\Debug\Negocio.dll
 C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\Negocio\obj\Debug\Negocio.pdb
+Z:\tc4\workspace\taller4\Delibiery\Negocio\obj\Debug\Negocio.csprojResolveAssemblyReference.cache
+Z:\tc4\workspace\taller4\Delibiery\Negocio\obj\Debug\Negocio.dll
+Z:\tc4\workspace\taller4\Delibiery\Negocio\obj\Debug\Negocio.pdb
+Z:\tc4\workspace\taller4\Delibiery\Negocio\bin\Debug\Negocio.dll
+Z:\tc4\workspace\taller4\Delibiery\Negocio\bin\Debug\Negocio.pdb
+Z:\tc4\workspace\taller4\Delibiery\Negocio\bin\Debug\Datos.dll
+Z:\tc4\workspace\taller4\Delibiery\Negocio\bin\Debug\Entities.dll
+Z:\tc4\workspace\taller4\Delibiery\Negocio\bin\Debug\EntityFramework.dll
+Z:\tc4\workspace\taller4\Delibiery\Negocio\bin\Debug\EntityFramework.SqlServer.dll
+Z:\tc4\workspace\taller4\Delibiery\Negocio\bin\Debug\Datos.pdb
+Z:\tc4\workspace\taller4\Delibiery\Negocio\bin\Debug\Entities.pdb
+Z:\tc4\workspace\taller4\Delibiery\Negocio\bin\Debug\EntityFramework.xml
+Z:\tc4\workspace\taller4\Delibiery\Negocio\bin\Debug\EntityFramework.SqlServer.xml
