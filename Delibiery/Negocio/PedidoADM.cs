@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Negocio
 {
-    class PedidoADM
+    public class PedidoADM
     {
 
         ContextDB db;
@@ -26,7 +26,9 @@ namespace Negocio
 
             PromocionADM promoADM = new PromocionADM();
 
-            Pedido pedido = new Pedido();
+            Pedido pedido;
+
+            double total = 0;
 
             ItemArticulo item;
             ItemPromo promo;
@@ -41,7 +43,10 @@ namespace Negocio
                 if (articulo == null)
                     throw new Exception("Error al armar el pedido - No existe el articulos");
 
-                double precio = articulo.precio * pedArt.Cant;
+                if (articulo.Stock < pedArt.Cant)
+                    throw new Exception("Error al armar el pedido - No hay stock suficiente para el articulo cod: " + articulo.Id);
+
+                double precio = articulo.Precio * pedArt.Cant;
 
                 item = new ItemArticulo(articulo, pedArt.Cant, precio);
 
@@ -51,24 +56,72 @@ namespace Negocio
 
             foreach (PedidoPromoArt pedPromoArt in promoArts) {
 
+                Articulo articulo = db.Articulos.SingleOrDefault(a => a.Id == pedPromoArt.ArtId);
+                if (articulo == null)
+                    throw new Exception("Error al armar el pedido - No existe el articulo");
+
                 Promocion promocion = db.Promociones.SingleOrDefault(p => p.Id == pedPromoArt.PromoId);
                 if (promocion == null)
                     throw new Exception("Error al armar el pedido - No existe la promocion");
 
                 PromoAlgoritmo promoAlgoritmo = promoADM.getAlgoritmoFromPromo(promocion);
 
-                
+                if (articulo.Stock < (promoAlgoritmo.promoStock() * pedPromoArt.Cant))
+                    throw new Exception("Error al armar el pedido - No hay stock suficiente para la promocion cod: " + promocion.Id + " con el articulo cod: " + articulo.Id);
 
+                promo = new ItemPromo(promoAlgoritmo, articulo, pedPromoArt.Cant);
+
+                promos.Add(promo);
             }
 
 
+            total = calcularTotalPedido(items, promos);
+
+            pedido = new Pedido(DateTime.Now, items, promos, total);
 
             return pedido;
 
         }
 
+        private double calcularTotalPedido(List<ItemArticulo> items, List<ItemPromo> promos)
+        {
+            double total = 0;
+
+            foreach (ItemArticulo item in items)
+            {
+                total += item.Precio;
+            }
+
+            foreach (ItemPromo promo in promos)
+            {
+                total += promo.Precio;
+            }
+
+            return total;
+        }
 
 
+
+        public void concretarPedido(Pedido pedido)
+        {
+
+            foreach (ItemArticulo item in pedido.Items)
+            {
+                Articulo articulo = db.Articulos.SingleOrDefault(a => a.Id == item.Articulo.Id);
+                articulo.Stock -= item.Cant;
+                db.SaveChanges();
+            }
+
+            foreach (ItemPromo itemPromo in pedido.Promos)
+            {
+                Articulo articulo = db.Articulos.SingleOrDefault(a => a.Id == itemPromo.Articulo.Id);
+                articulo.Stock -= itemPromo.Promo.promoStock() * itemPromo.Cant;
+                db.SaveChanges();
+            }
+
+
+
+        }
 
     }
 }

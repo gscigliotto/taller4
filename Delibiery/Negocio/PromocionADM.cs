@@ -35,7 +35,7 @@ namespace Negocio
                     break;
 
                 case "DESCUENTO":
-                    algoritmo = new PromoDescuento(promo.Descuento, promo.CantidadLlevar);
+                    algoritmo = new PromoDescuento(promo.Descuento);
                     break;
 
                 default:

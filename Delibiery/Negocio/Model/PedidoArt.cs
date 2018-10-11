@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Negocio.Model
 {
-    class PedidoArt
+    public class PedidoArt
     {
         public int ArtID { get; set; }
         public int Cant { get; set; }

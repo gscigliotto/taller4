@@ -9,27 +9,21 @@ namespace Negocio.Model
     public class PromoDescuento : PromoAlgoritmo
     {
 
-        public PromoDescuento(int descuento, int cantidadLlevar)
+        public PromoDescuento(int descuento)
         {
-            this.descuento      = descuento;
-            this.cantidadLlevar = cantidadLlevar;
+            Descuento = descuento;
         }
 
 
-        public override double promoPrecio()
+        public override double promoPrecio(Articulo articulo)
         {
-            //throw new NotImplementedException();
-
-            return (this.cantidadLlevar * this.descuento / 100);
+            return (articulo.Precio * (1 - (Descuento / 100)));
 
         }
 
         public override int promoStock()
         {
-            //throw new NotImplementedException();
-
-            return (this.cantidadLlevar);
-
+            return 1;
         }
     }
 }

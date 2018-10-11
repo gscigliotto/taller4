@@ -9,28 +9,21 @@ namespace Negocio.Model
     public class PromoXy : PromoAlgoritmo
     {
 
-
         public PromoXy(int cantLleva, int cantPaga)
         {
-            this.cantLleva = cantLleva;  // Cantidad a llevar
-            this.cantPaga  = cantPaga;  // Cantidad a pagar
+            CantLleva = cantLleva;  // Cantidad a llevar
+            CantPaga  = cantPaga;  // Cantidad a pagar
         }
 
 
-        public override double promoPrecio()
+        public override double promoPrecio(Articulo articulo)
         {
-            throw new NotImplementedException();
-
-            //return cantPaga * articulo.precio;
-
+            return (CantPaga * articulo.Precio);
         }
 
         public override int promoStock()
         {
-            //throw new NotImplementedException();
-
-            return cantLleva;
-
+            return CantLleva;
         }
     }
 }

@@ -15,8 +15,12 @@ namespace Entities
         public double Total { get; set; }
 
 
-        public Pedido() {
-            this.Fecha = DateTime.Now;
+        public Pedido(DateTime fecha, List<ItemArticulo> items, List<ItemPromo> promos, double total)
+        {
+            this.Fecha  = fecha;
+            this.Items  = items;
+            this.Promos = promos;
+            this.Total  = total;
         }
 
     }

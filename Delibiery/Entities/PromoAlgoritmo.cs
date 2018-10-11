@@ -7,13 +7,16 @@ namespace Entities
 {
     public abstract class PromoAlgoritmo
     {
-        public abstract double promoPrecio();
+        public virtual int Descuento { get; set; }
+        //public virtual int CantidadLlevar { get; set; }
+
+        public virtual int CantLleva { get; set; }
+        public virtual int CantPaga { get; set; }
+
+
+        public abstract double promoPrecio(Articulo articulo);
         public abstract int promoStock();
 
-        public virtual int descuento { get; set; }
-        public virtual int cantidadLlevar { get; set; }
 
-        public virtual int cantLleva { get; set; }
-        public virtual int cantPaga { get; set; }
     }
 }
