@@ -1,58 +1,85 @@
-﻿@model IEnumerable<Entities.Articulo>
+﻿<html>
+@model IEnumerable<Entities.Articulo>
 
 @{
     ViewBag.Title = "Nuestras Cervezas";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Nuestras Cervezas</h2>
+<head>
+    <title>Nuestras Birras</title>
+    @*<link rel="stylesheet" href="~/Content/ListadoBirras.css" />*@
+</head>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.estilo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.marca)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.descripcion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.stock)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.precio)
-        </th>
-        <th></th>
-    </tr>
+<body>
+    <h2>Nuestras Cervezas</h2>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.estilo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.marca)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.descripcion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.stock)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.precio)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
+    <p>
+        @Html.ActionLink("Alta", "Create")
+    </p>
 
-</table>
+    <div class="table-responsive-sm">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col" width="100" align="left">Imagen</th>
+                    <th scope="col" align="left">Estilo</th>
+                    <th scope="col" align="left">Marca</th>
+                    <th scope="col" align="left">Descripcion</th>
+                    <th scope="col" align="left">Stock</th>
+                    <th scope="col" align="left">Precio</th>
+                    <th scope="col" align="left">Opciones</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td align="left">
+                            @*<img src="@Url.Action("MostrarFoto", "Images", new { id = 1 })" />*@
+                            @{
+                                var imgSrc = "";
+                                if (item.imagen == null)
+                                {
+
+                                }
+                                else
+                                {
+                                    var base64 = Convert.ToBase64String(item.imagen);
+                                    imgSrc = String.Format("data:image/gif;base64, {0}", base64);
+                                }
+
+                            }
+                            <img src="@imgSrc" width="100" height="100" />
+                        </td>
+
+                        <td align="left">
+                            @Html.DisplayFor(modelItem => item.estilo)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.marca)
+                        </td>
+                        <td align="left">
+                            @Html.DisplayFor(modelItem => item.descripcion)
+                        </td>
+                        <td align="left">
+                            @Html.DisplayFor(modelItem => item.stock)
+                        </td>
+                        <td align="left">
+                            @Html.DisplayFor(modelItem => item.precio)
+                        </td>
+                        <td align="left">
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Id }) |
+                            @Html.ActionLink("Subir Foto", "SubirFoto", new { id = item.Id })
+                    </tr>
+
+                }
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>
