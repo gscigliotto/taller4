@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Datos;
 using Entities;
+using WebApp.Models;
 
 namespace WebApp.Controllers
 {
@@ -124,5 +126,43 @@ namespace WebApp.Controllers
             }
             base.Dispose(disposing);
         }
+
+        // GET: Articuloes/SubirFoto
+        //public ActionResult SubirFoto()
+        //{
+        //    return View();
+        //}
+        public ActionResult SubirFoto(int id)
+        {
+            SubirFotoModel foto = new SubirFotoModel();
+            foto.id = id;
+            return View(foto);
+        }
+        [HttpPost]
+        public ActionResult Subirfoto(HttpPostedFileBase file, int id)
+        {
+            var length = file.InputStream.Length;
+            byte[] fileData = null;
+            using (var binaryReader = new BinaryReader(file.InputStream))
+            {
+                fileData = binaryReader.ReadBytes(file.ContentLength);
+            }
+
+
+            Articulo articulo = db.articulos.Find(id);
+            if (articulo == null)
+            {
+                return HttpNotFound();
+            }
+
+            articulo.imagen = fileData;
+            db.Entry(articulo).State = EntityState.Modified;
+            db.SaveChanges();
+
+            return RedirectToAction("Index");
+
+        }
+        //return View();
+
     }
 }

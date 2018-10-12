@@ -11,3 +11,20 @@ C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\Negocio\bin\Debug\EntityFram
 C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\Negocio\obj\Debug\Negocio.csprojResolveAssemblyReference.cache
 C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\Negocio\obj\Debug\Negocio.dll
 C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\Negocio\obj\Debug\Negocio.pdb
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras\Delibiery\Negocio\bin\Debug\Negocio.dll
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras\Delibiery\Negocio\bin\Debug\Negocio.pdb
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras\Delibiery\Negocio\bin\Debug\Datos.dll
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras\Delibiery\Negocio\bin\Debug\Entities.dll
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras\Delibiery\Negocio\bin\Debug\EntityFramework.dll
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras\Delibiery\Negocio\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras\Delibiery\Negocio\bin\Debug\Datos.pdb
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras\Delibiery\Negocio\bin\Debug\Datos.dll.config
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras\Delibiery\Negocio\bin\Debug\Entities.pdb
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras\Delibiery\Negocio\bin\Debug\Entities.dll.config
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras\Delibiery\Negocio\bin\Debug\EntityFramework.xml
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras\Delibiery\Negocio\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras\Delibiery\Negocio\obj\Debug\Negocio.csprojAssemblyReference.cache
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras\Delibiery\Negocio\obj\Debug\Negocio.csproj.CoreCompileInputs.cache
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras\Delibiery\Negocio\obj\Debug\Negocio.csproj.CopyComplete
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras\Delibiery\Negocio\obj\Debug\Negocio.dll
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras\Delibiery\Negocio\obj\Debug\Negocio.pdb

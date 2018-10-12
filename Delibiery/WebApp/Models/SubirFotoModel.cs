@@ -5,8 +5,11 @@ using System.Web;
 using Entities;
 namespace WebApp.Models
 {
-    public class ArticulosModel:Articulo
+    public class SubirFotoModel:Articulo
     {
+        public int id { get; set; }
+        public HttpPostedFileBase file { get; set; }
+
 
     }
 
