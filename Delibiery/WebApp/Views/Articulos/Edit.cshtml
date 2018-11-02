@@ -11,59 +11,47 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h4>Articulo</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.Id)
+
+    <div class="form-row">
+        <label class="control-label col-md-2" for="estilo">Estilo</label>
+        <input class="form-control text-box single-line valid" id="estilo" name="estilo" type="text" value=@Model.estilo>
+    </div>
+
+    <div class="form-row">
+        <label class="control-label col-md-2" for="marca">Marca</label>
+        <input class="form-control text-box single-line valid" id="marca" name="marca" type="text" value=@Model.marca>
+    </div>
+
+    <div class="form-row">
+        <label class="control-label col-md-2" for="descripcion">Descripcion</label>
+        <input class="form-control text-box single-line valid" id="descripcion" name="descripcion" type="text" value=@Model.descripcion>
+    </div>
+
+    <div class="form-row">
+        <label class="control-label col-md-2" for="stock">Stock</label>
+        <input class="form-control text-box single-line valid" id="stock" name="stock" type="text" value=@Model.stock>
+    </div>
+
+    <div class="form-row">
+        <label class="control-label col-md-2" for="precio">Precio</label>
+        <input class="form-control text-box single-line valid" id="precio" name="precio" type="text" value=@Model.precio>
+    </div>
+
+    @*Prueba
+    <input id="imagen" name="imagen" value=@Model.imagen>*@
     
-    <div class="form-horizontal">
-        <h4>Articulo</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.Id)
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.estilo, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.estilo, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.estilo, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.marca, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.marca, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.marca, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.descripcion, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.descripcion, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.descripcion, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.stock, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.stock, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.stock, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.precio, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.precio, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.precio, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
+    <div class="form-row">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-default" />
         </div>
     </div>
+</div>
 }
 
 <div>

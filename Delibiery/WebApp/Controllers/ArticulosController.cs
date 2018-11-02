@@ -81,15 +81,29 @@ namespace WebApp.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,estilo,marca,descripcion,stock,precio")] Articulo articulo)
+        public ActionResult Edit([Bind(Include = "Id,estilo,marca,descripcion,stock,precio")] Articulo aux)
         {
             if (ModelState.IsValid)
             {
+
+                Articulo articulo = db.articulos.Find(aux.Id);
+                if (articulo == null)
+                {
+                    return HttpNotFound();
+                }
+
+                articulo.estilo = aux.estilo;
+                articulo.marca = aux.marca;
+                articulo.descripcion = aux.descripcion;
+                articulo.stock = aux.stock;
+                articulo.precio = aux.precio;
+                                                                      
                 db.Entry(articulo).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(articulo);
+
+            return View(aux);
         }
 
         // GET: Articuloes/Delete/5
