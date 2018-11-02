@@ -55,6 +55,12 @@ namespace Negocio
 
         public List<Usuario> obtenerUsuarios()
         {
+            return db.Usuarios.Skip(0).Take(10).ToList();
+
+
+        }
+        public List<Usuario> obtenerUsuarios(int pagina,int cantidad)
+        {
             return db.Usuarios.ToList();
 
 

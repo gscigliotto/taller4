@@ -15,48 +15,35 @@
 </p>
 
 
-<table class="table">
-    <tr>
-        <th>
-           Nombre
-        </th>
-        <th>
-            Apellido
-        </th>
-        <th>
-            Email
-        </th>
-        <th>
-            Edad
-        </th>
-        <th>
-            Acciones
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.apellido)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.mail)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.edad)
-        </td>
+<div id="UsuariosGrid">
 
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) | 
-            <a href="#" onclick="return RecuperaPass('@item.ID');">Restablecer Pass</a> | 
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-    </tr>
+</div>
+@using (Ajax.BeginForm(new AjaxOptions { HttpMethod = "POST", InsertionMode = InsertionMode.Replace, UpdateTargetId = "UsuariosGrid" }))
+{
+    <input type="hidden" id="CurrentPage" value="@ViewBag.CurrentPage" />
+    <input type="hidden" id="LastPage" value="@ViewBag.LastPage" />
 }
+<nav aria-label="Page navigation example">
+    <ul class="pagination">
+        <li class="page-item"><a class="page-link" href="#" id="previa">Previo</a></li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item"><a class="page-link" href="#" id="sig">Siguiente</a></li>
+    </ul>
+</nav>
 
-</table>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#previa").click(function () {
+            $("form").submit();
+
+        });
+
+
+
+    });
+
+
+</script>

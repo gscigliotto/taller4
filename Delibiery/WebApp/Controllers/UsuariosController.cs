@@ -16,12 +16,27 @@ namespace WebApp.Controllers
     public class UsuariosController : Controller
     {
         //private ContextDB db = new ContextDB();
-
+        private int resultados=5;
         // GET: Usuarios
         public ActionResult Index()
         {
-            return View(new UsuarioADM().obtenerUsuarios());
+
+            ViewBag.CurrentPage = 1;
+            ViewBag.LastPage = Math.Ceiling(Convert.ToDouble(new UsuarioADM().obtenerUsuarios().Count / resultados));
+            return View(new UsuarioADM().obtenerUsuarios().Take(resultados));
         }
+
+
+        [HttpPost]
+        public ActionResult Index(int CurrentPage,int LastPage)
+        {
+
+            ViewBag.CurrentPage = 1;
+            ViewBag.LastPage = Math.Ceiling(Convert.ToDouble(new UsuarioADM().obtenerUsuarios().Count / resultados));
+            //return View(new UsuarioADM().obtenerUsuarios().Take(resultados));
+            return PartialView("_GridUsuarios", new UsuarioADM().obtenerUsuarios().Take(resultados));
+        }
+
 
         // GET: Usuarios/Details/5
         public ActionResult Details(int id)
@@ -195,26 +210,6 @@ namespace WebApp.Controllers
 
 
 
-
-
-        [HttpPost, ActionName("RecuperarPass")]
-
-        public JsonResult RecuperarPass(string mail)
-        {
-            JsonResult rta = new JsonResult();
-            UsuarioADM usuarioNeg = new UsuarioADM();
-            try
-            {
-                usuarioNeg.recueperarPass(mail);
-                rta.Data = "ok";
-            }
-            catch (Exception e)
-            {
-                rta.Data = "Err" + e.Message;
-
-            }
-            return rta;
-        }
 
 
 

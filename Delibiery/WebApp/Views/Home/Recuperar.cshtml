@@ -1,7 +1,8 @@
 ﻿@model WebApp.Models.AutenticacionModel
 
-@using (Html.BeginForm()) 
-{
+<script src="~/Scripts/CommonsJS.js"></script>
+@using (Html.BeginForm("RecuperarPassMail", "Usuarios", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+{   
     @Html.AntiForgeryToken()
     
 
@@ -22,11 +23,9 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input value="Create" class="btn btn-default" onclick="return RecuperaPass(this.usuario);" />
+                <input value="Create" type="button" onclick="return recuperarPass(this);" class="btn btn-default"  />
             </div>
         </div>
     </div>
 }
 
-
-<script src="~/Scripts/CommonsJS.js"></script>

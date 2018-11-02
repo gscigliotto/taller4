@@ -27,3 +27,16 @@
 
     return false;
 }
+
+
+function recuperarPass(form) {
+
+    alert(document.getElementsByName("usuario").valueOf());
+    return false;
+
+}
+
+
+
+
+

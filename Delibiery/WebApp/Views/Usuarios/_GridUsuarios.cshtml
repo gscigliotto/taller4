@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Entities.Usuario> Usuarios
+<table class="table">
+    <tr>
+        <th>
+            Nombre
+        </th>
+        <th>
+            Apellido
+        </th>
+        <th>
+            Email
+        </th>
+        <th>
+            Edad
+        </th>
+        <th>
+            Acciones
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var usuario in Model.Usuarios)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => usuario.nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => usuario.apellido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => usuario.mail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => usuario.edad)
+            </td>
+
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = usuario.ID }) |
+                <a href="#" onclick="return RecuperaPass('@usuario.ID');">Restablecer Pass</a> |
+                @Html.ActionLink("Details", "Details", new { id = usuario.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = usuario.ID })
+            </td>
+        </tr>
+    }
+
+</table>
+

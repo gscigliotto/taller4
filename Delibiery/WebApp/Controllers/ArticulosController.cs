@@ -21,6 +21,9 @@ namespace WebApp.Controllers
             return View(db.articulos.ToList());
         }
 
+
+
+
         // GET: Articuloes/Details/5
         public ActionResult Details(int? id)
         {

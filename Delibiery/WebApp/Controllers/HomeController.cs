@@ -56,6 +56,37 @@ namespace WebApp.Controllers
 
             return View();
         }
+
+
+
+        [HttpPost]
+        public JsonResult RecuperarPassMail(string mail)
+        {
+            JsonResult rta = new JsonResult();
+            UsuarioADM usuarioNeg = new UsuarioADM();
+            try
+            {
+                usuarioNeg.recueperarPass(mail);
+                rta.Data = "ok";
+            }
+            catch (Exception e)
+            {
+                rta.Data = "Err" + e.Message;
+
+            }
+            return rta;
+        }
+        public ActionResult Recuperar() {
+
+            return View();
+        }
+
+
+
+
+
+
+
     }
 
 }
