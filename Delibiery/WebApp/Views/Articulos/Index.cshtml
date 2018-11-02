@@ -70,11 +70,31 @@
                             @Html.DisplayFor(modelItem => item.precio)
                         </td>
                         <td align="left">
-                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                            @*@Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
                             @Html.ActionLink("Details", "Details", new { id = item.Id }) |
                             @Html.ActionLink("Delete", "Delete", new { id = item.Id }) |
-                            @Html.ActionLink("Subir Foto", "SubirFoto", new { id = item.Id })
-                    </tr>
+                            @Html.ActionLink("Subir Foto", "SubirFoto", new { id = item.Id })*@
+                            @{
+                                Entities.Usuario u = (Entities.Usuario)System.Web.HttpContext.Current.Session["usuario"];
+                            }
+                            @{
+                                if (u.roles[0].rol == 1)
+                                {
+                                    @*<a href="/Articulos/Edit/" id="item.Id">Edit</a>
+                                        <a href="/Articulos/Details/">Details</a>
+                                        <a href="/Articulos/Delete/">Delete</a>
+                                        <a href="/Articulos/SubirFoto/">Subir Foto</a>*@
+                                @Html.ActionLink("Edit | ", "Edit", new { id = item.Id });
+                                @Html.ActionLink("Details | ", "Details", new { id = item.Id });
+                                @Html.ActionLink("Delete | ", "Delete", new { id = item.Id });
+                                @Html.ActionLink("Subir Foto", "SubirFoto", new { id = item.Id });
+                            }
+                            else
+                            {
+                            <input type="submit" value="Pedir" class="btn btn-primary" />
+                            }
+                            }
+</tr>
 
                 }
             </tbody>
