@@ -142,3 +142,12 @@ C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\WebApp\obj\Debug\WebApp.dll
 C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\WebApp\obj\Debug\WebApp.pdb
 C:\Users\Lroid\Desktop\ORT\Taller 4\Birras\Delibiery\WebApp\bin\Negocio.dll
 C:\Users\Lroid\Desktop\ORT\Taller 4\Birras\Delibiery\WebApp\bin\Negocio.pdb
+C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\WebApp\bin\PagedList.dll
+C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\WebApp\bin\PagedList.Mvc.dll
+C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\WebApp\bin\PagedList.xml
+C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\WebApp\bin\PagedList.Mvc.xml
+C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\WebApp\bin\AutoMapper.dll
+C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\WebApp\bin\System.ValueTuple.dll
+C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\WebApp\bin\AutoMapper.pdb
+C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\WebApp\bin\AutoMapper.xml
+C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\WebApp\bin\System.ValueTuple.xml

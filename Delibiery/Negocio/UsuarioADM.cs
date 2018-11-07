@@ -5,7 +5,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-
 namespace Negocio
 {
     public class UsuarioADM
@@ -55,13 +54,14 @@ namespace Negocio
 
         public List<Usuario> obtenerUsuarios()
         {
-            return db.Usuarios.Skip(0).Take(10).ToList();
+            return db.Usuarios.ToList();
 
 
         }
-        public List<Usuario> obtenerUsuarios(int pagina,int cantidad)
+
+        public List<Usuario> obtenerUsuarios(int cantidad, int pagina)
         {
-            return db.Usuarios.ToList();
+            return db.Usuarios.ToList().Skip(pagina-1*cantidad).Take(pagina).ToList();
 
 
         }

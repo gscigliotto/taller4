@@ -1,0 +1,71 @@
+﻿@model PagedList.IPagedList <WebApp.Models.PromoModel>
+@using PagedList.Mvc;
+
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Tipo
+        </th>
+        <th>
+            Descripción
+        </th>
+        <th>
+            Cantidad que Lleva
+        </th>
+        <th>
+            Cantidad que paga
+        </th>
+        <th>
+            Descuento
+        </th>
+        <th>
+           Cantidad a Llevar
+        </th>
+        <th>
+            Acciones
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.tipo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.descripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cantLleva)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cantPaga)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.descuento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cantidadLlevar)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>
+Pagina @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page }), new PagedListRenderOptions { LiElementClasses = new[] { "page-link", "page-item" } })

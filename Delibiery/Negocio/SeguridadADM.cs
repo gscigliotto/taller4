@@ -17,9 +17,8 @@ namespace Negocio
             HashAlgorithm hashProvider = new MD5CryptoServiceProvider();
             byte[] bytes = Encoding.ASCII.GetBytes(txt);
             return ArrayToString(hashProvider.ComputeHash(bytes));
-
-            
         }
+
         private static string ArrayToString(byte[] byteArray)
         {
             StringBuilder builder = new StringBuilder(byteArray.Length);
@@ -46,8 +45,6 @@ namespace Negocio
 
         public static void SendMailSinConfig(List<string> destinatario, String subject, String body)
         {
-
-            
 
             //
             // se crea el mensaje

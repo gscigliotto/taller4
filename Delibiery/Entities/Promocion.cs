@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace MyFirstWebApp.Models
+namespace Entities
 {
     public class Promocion
     {
@@ -22,11 +22,15 @@ namespace MyFirstWebApp.Models
         public int descuento { get; set; }
         public int cantidadLlevar { get; set; }
 
-
-                       /*                                           W
-        public Promocion(int id, string tipo, string descripcion, Articulo articulo, int cantLleva, int cantPaga, int descuento, int cantidadLlevar)
+        public Promocion()
         {
-            this.id = id;
+
+        }
+
+
+        public Promocion(int? id, string tipo, string descripcion, Articulo articulo, int cantLleva, int cantPaga, int descuento, int cantidadLlevar)
+        {
+            
             this.tipo = tipo;
             this.descripcion = descripcion;
             this.articulo = articulo;
@@ -35,8 +39,7 @@ namespace MyFirstWebApp.Models
             this.descuento = descuento;
             this.cantidadLlevar = cantidadLlevar;
         }
-        */
-
+       
 
         public PromoAlgoritmo getPromocion(string tipo)
         {

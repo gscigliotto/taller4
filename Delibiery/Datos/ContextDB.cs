@@ -12,7 +12,7 @@ namespace Datos
         }
 
         public DbSet<Articulo> articulos { get; set; }
-        //public DbSet<PromoAlgoritmo> promos { get; set; }
+        public DbSet<Promocion> promos { get; set; }
         public DbSet<ItemArticulo> itemsArticulos { get; set; }
 
         public DbSet<Usuario> Usuarios { get; set; }
@@ -20,5 +20,6 @@ namespace Datos
 
         //public DbSet<Pedido>  Pedidos { get; set; }
         public DbSet<Rol> rol { get; set; }
+
     }
 }

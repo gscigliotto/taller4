@@ -10,6 +10,8 @@ using Datos;
 using Entities;
 using WebApp.Models;
 using Negocio;
+using PagedList;
+
 
 namespace WebApp.Controllers
 {
@@ -18,23 +20,10 @@ namespace WebApp.Controllers
         //private ContextDB db = new ContextDB();
         private int resultados=5;
         // GET: Usuarios
-        public ActionResult Index()
+        public ActionResult Index(int ? page)
         {
-
-            ViewBag.CurrentPage = 1;
-            ViewBag.LastPage = Math.Ceiling(Convert.ToDouble(new UsuarioADM().obtenerUsuarios().Count / resultados));
-            return View(new UsuarioADM().obtenerUsuarios().Take(resultados));
-        }
-
-
-        [HttpPost]
-        public ActionResult Index(int CurrentPage,int LastPage)
-        {
-
-            ViewBag.CurrentPage = 1;
-            ViewBag.LastPage = Math.Ceiling(Convert.ToDouble(new UsuarioADM().obtenerUsuarios().Count / resultados));
-            //return View(new UsuarioADM().obtenerUsuarios().Take(resultados));
-            return PartialView("_GridUsuarios", new UsuarioADM().obtenerUsuarios().Take(resultados));
+            int pageNumber = (page ?? 1);
+            return View(new UsuarioADM().obtenerUsuarios().ToPagedList(pageNumber, 3));
         }
 
 

@@ -24,6 +24,15 @@ namespace Datos
 
             usuarios.ForEach(u => context.Usuarios.Add(u));
 
+
+            var promos = new List<Promocion>
+            {
+                new Promocion (0, "1","Descripcion de articulo",new Articulo { Id=1 },3,2 , 0,0 )
+            };
+
+
+
+
             context.SaveChanges();
         }
     }
