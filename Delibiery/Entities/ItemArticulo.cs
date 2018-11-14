@@ -9,8 +9,26 @@ namespace Entities
     public class ItemArticulo
     {
         public int Id { get; set; }
-        public Articulo articulo { get; set; }
-        public int cant { get; set; }
-        public double precio { get; set; }
+        public Articulo Articulo { get; set; }
+        public int Cant { get; set; }
+        public double Precio { get; set; }
+
+
+        public ItemArticulo() {
+        }
+
+        public ItemArticulo(Articulo articulo, int cant, double precio) {
+            this.Articulo = articulo;
+            this.Cant     = cant;
+            this.Precio   = precio;
+        }
+   
+        public ItemArticulo(int id, Articulo articulo, int cant, double precio)
+        {
+            this.Id       = id;
+            this.Articulo = articulo;
+            this.Cant     = cant;
+            this.Precio   = precio;
+        }
     }
 }

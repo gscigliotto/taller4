@@ -11,14 +11,12 @@ namespace Datos
 
         }
 
-        public DbSet<Articulo> articulos { get; set; }
-        public DbSet<Promocion> promos { get; set; }
+        public DbSet<Articulo> Articulos { get; set; }
         public DbSet<ItemArticulo> itemsArticulos { get; set; }
-
+        public DbSet<Promocion> Promociones { get; set; }
+        public DbSet<ItemPromo> ItemsPromos { get; set; }
+        public DbSet<Pedido> Pedidos { get; set; }
         public DbSet<Usuario> Usuarios { get; set; }
-        //public DbSet<ItemPromo> itemsPromos { get; set; }
-
-        //public DbSet<Pedido>  Pedidos { get; set; }
         public DbSet<Rol> rol { get; set; }
 
     }

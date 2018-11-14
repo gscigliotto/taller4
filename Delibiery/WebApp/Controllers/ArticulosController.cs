@@ -20,7 +20,7 @@ namespace WebApp.Controllers
         // GET: Articuloes
         public ActionResult Index()
         {
-            return View(db.articulos.ToList());
+            return View(db.Articulos.ToList());
         }
 
 
@@ -33,7 +33,7 @@ namespace WebApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Articulo articulo = db.articulos.Find(id);
+            Articulo articulo = db.Articulos.Find(id);
             if (articulo == null)
             {
                 return HttpNotFound();
@@ -56,7 +56,7 @@ namespace WebApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.articulos.Add(articulo);
+                db.Articulos.Add(articulo);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -71,7 +71,7 @@ namespace WebApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Articulo articulo = db.articulos.Find(id);
+            Articulo articulo = db.Articulos.Find(id);
             if (articulo == null)
             {
                 return HttpNotFound();
@@ -89,17 +89,17 @@ namespace WebApp.Controllers
             if (ModelState.IsValid)
             {
 
-                Articulo articulo = db.articulos.Find(aux.Id);
+                Articulo articulo = db.Articulos.Find(aux.Id);
                 if (articulo == null)
                 {
                     return HttpNotFound();
                 }
 
-                articulo.estilo = aux.estilo;
-                articulo.marca = aux.marca;
-                articulo.descripcion = aux.descripcion;
-                articulo.stock = aux.stock;
-                articulo.precio = aux.precio;
+                articulo.Estilo = aux.Estilo;
+                articulo.Marca = aux.Marca;
+                articulo.Descripcion = aux.Descripcion;
+                articulo.Stock = aux.Stock;
+                articulo.Precio = aux.Precio;
                                                                       
                 db.Entry(articulo).State = EntityState.Modified;
                 db.SaveChanges();
@@ -116,7 +116,7 @@ namespace WebApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Articulo articulo = db.articulos.Find(id);
+            Articulo articulo = db.Articulos.Find(id);
             if (articulo == null)
             {
                 return HttpNotFound();
@@ -129,8 +129,8 @@ namespace WebApp.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Articulo articulo = db.articulos.Find(id);
-            db.articulos.Remove(articulo);
+            Articulo articulo = db.Articulos.Find(id);
+            db.Articulos.Remove(articulo);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -166,13 +166,13 @@ namespace WebApp.Controllers
             }
 
 
-            Articulo articulo = db.articulos.Find(id);
+            Articulo articulo = db.Articulos.Find(id);
             if (articulo == null)
             {
                 return HttpNotFound();
             }
 
-            articulo.imagen = fileData;
+            articulo.Imagen = fileData;
             db.Entry(articulo).State = EntityState.Modified;
             db.SaveChanges();
 

@@ -8,29 +8,45 @@ namespace Entities
 {
     public class Promocion
     {
+        private object p;
+        private string v1;
+        private string v2;
+        private int v3;
+        private int v4;
+        private int v5;
+        private int v6;
 
-        public int id { get; set; }
-        public string tipo { get; set; }
-        public string descripcion { get; set; }
-        public Articulo articulo { get; set; }
+        public Promocion() { }
 
-        // Promocion XY
-        public int cantLleva { get; set; }
-        public int cantPaga { get; set; }
-
-        // Promocion Descuento
-        public int descuento { get; set; }
-        public int cantidadLlevar { get; set; }
-
-        public Promocion()
+        public Promocion(object p, string v1, string v2, int v3, int v4, int v5, int v6)
         {
-
+            this.p = p;
+            this.v1 = v1;
+            this.v2 = v2;
+            this.v3 = v3;
+            this.v4 = v4;
+            this.v5 = v5;
+            this.v6 = v6;
         }
 
+        public int Id { get; set; }
+        public string Tipo { get; set; }
+        public string Descripcion { get; set; }
+        //public Articulo articulo { get; set; }  TODO chk si queda el art aca o lo sacamos
 
-        public Promocion(int? id, string tipo, string descripcion, Articulo articulo, int cantLleva, int cantPaga, int descuento, int cantidadLlevar)
+        // Promocion XY
+        public int CantLleva { get; set; }
+        public int CantPaga { get; set; }
+
+        // Promocion Descuento
+        public int Descuento { get; set; }
+        public int CantidadLlevar { get; set; }
+
+
+                       /*                                           W
+        public Promocion(int id, string tipo, string descripcion, Articulo articulo, int cantLleva, int cantPaga, int descuento, int cantidadLlevar)
         {
-            
+            this.id = id;
             this.tipo = tipo;
             this.descripcion = descripcion;
             this.articulo = articulo;
@@ -39,30 +55,10 @@ namespace Entities
             this.descuento = descuento;
             this.cantidadLlevar = cantidadLlevar;
         }
-       
+        */
 
-        public PromoAlgoritmo getPromocion(string tipo)
-        {
-            PromoAlgoritmo algoritmo;
 
-            switch (this.tipo.ToUpper())
-            {
-                case "XY":
-                    algoritmo = new PromoXy(this.cantLleva, this.cantPaga, this.articulo);
-                    break;
 
-                case "DESCUENTO":
-                    algoritmo = new PromoDescuento(this.descuento, this.cantidadLlevar, this.articulo);
-                    break;
-                
-                default:
-                    algoritmo = null;
-                    break;
-            }
-
-            return algoritmo;
-
-        }
 
 
 

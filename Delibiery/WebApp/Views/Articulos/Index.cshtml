@@ -40,13 +40,13 @@
                             @*<img src="@Url.Action("MostrarFoto", "Images", new { id = 1 })" />*@
                             @{
                                 var imgSrc = "";
-                                if (item.imagen == null)
+                                if (item.Imagen == null)
                                 {
 
                                 }
                                 else
                                 {
-                                    var base64 = Convert.ToBase64String(item.imagen);
+                                    var base64 = Convert.ToBase64String(item.Imagen);
                                     imgSrc = String.Format("data:image/gif;base64, {0}", base64);
                                 }
 
@@ -55,19 +55,19 @@
                         </td>
 
                         <td align="left">
-                            @Html.DisplayFor(modelItem => item.estilo)
+                            @Html.DisplayFor(modelItem => item.Estilo)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.marca)
+                            @Html.DisplayFor(modelItem => item.Marca)
                         </td>
                         <td align="left">
-                            @Html.DisplayFor(modelItem => item.descripcion)
+                            @Html.DisplayFor(modelItem => item.Descripcion)
                         </td>
                         <td align="left">
-                            @Html.DisplayFor(modelItem => item.stock)
+                            @Html.DisplayFor(modelItem => item.Stock)
                         </td>
                         <td align="left">
-                            @Html.DisplayFor(modelItem => item.precio)
+                            @Html.DisplayFor(modelItem => item.Precio)
                         </td>
                         <td align="left">
                             @*@Html.ActionLink("Edit", "Edit", new { id = item.Id }) |

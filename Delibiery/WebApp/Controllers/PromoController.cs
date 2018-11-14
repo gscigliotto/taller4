@@ -16,19 +16,19 @@ namespace WebApp.Controllers
         // GET: Promo
         public ActionResult Index()
         {
-            PromoADM promos = new PromoADM();
+            PromocionADM promos = new PromocionADM();
             List<Promocion> promociones = promos.obtenerPromos();
             List<PromoModel> listPromo = new List<PromoModel>();
             foreach (Promocion prom in promociones) {
                 PromoModel promoModel = new PromoModel();
-                promoModel.id = prom.id;
-                promoModel.articulo = prom.articulo;
-                promoModel.cantidadLlevar = prom.cantidadLlevar;
-                promoModel.cantLleva = prom.cantLleva;
-                promoModel.cantPaga = prom.cantPaga;
-                promoModel.descuento = prom.descuento;
-                promoModel.descripcion = prom.descripcion;
-                promoModel.tipo = prom.tipo;
+                promoModel.id = prom.Id;
+                // promoModel.articulo = prom.Articulo;    //TODO chk if it stays
+                promoModel.cantidadLlevar = prom.CantidadLlevar;
+                promoModel.cantLleva = prom.CantLleva;
+                promoModel.cantPaga = prom.CantPaga;
+                promoModel.descuento = prom.Descuento;
+                promoModel.descripcion = prom.Descripcion;
+                promoModel.tipo = prom.Tipo;
                 listPromo.Add(promoModel);
 
             }
@@ -55,8 +55,8 @@ namespace WebApp.Controllers
             Promocion promo = new Promocion();
             try
             {
-                Promocion promocion = new Promocion(null,collection["tipo"], collection["descripcion"],null,Convert.ToInt32(collection["cantLleva"]), Convert.ToInt32(collection["cantPaga"]), Convert.ToInt32(collection["descuento"]), Convert.ToInt32(collection["cantidadLlevar"]));
-                PromoADM promoAdm = new PromoADM();
+                Promocion promocion = new Promocion(null, collection["tipo"], collection["descripcion"], Convert.ToInt32(collection["cantLleva"]), Convert.ToInt32(collection["cantPaga"]), Convert.ToInt32(collection["descuento"]), Convert.ToInt32(collection["cantidadLlevar"]));
+                PromocionADM promoAdm = new PromocionADM();
                 promoAdm.crearPromo(promocion);
                 // TODO: Add insert logic here
 
@@ -71,7 +71,7 @@ namespace WebApp.Controllers
         // GET: Promo/Edit/5
         public ActionResult Edit(int id)
         {
-            PromoADM promoMng = new PromoADM();
+            PromocionADM promoMng = new PromocionADM();
             
             return View(promoMng.buscarPromo(id));
         }
@@ -96,7 +96,7 @@ namespace WebApp.Controllers
         public ActionResult Delete(int id)
         {
 
-            PromoADM promoMng = new PromoADM();
+            PromocionADM promoMng = new PromocionADM();
 
             return View(promoMng.buscarPromo(id));
             

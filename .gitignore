@@ -218,3 +218,11 @@ project.lock.json
 #####
 # End of core ignore list, below put you custom 'per project' settings (patterns or path)
 #####
+/Delibiery/Datos/bin
+/Delibiery/Datos/obj
+/Delibiery/Entities/bin
+/Delibiery/Entities/obj
+/Delibiery/Negocio/bin
+/Delibiery/Negocio/obj
+/Delibiery/WebApp/bin
+/Delibiery/WebApp/obj
