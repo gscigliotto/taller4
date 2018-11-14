@@ -32,7 +32,7 @@ namespace WebApp.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,nombre,apellido,mail,edad,usuario,password")] Usuario usuario)
+        public ActionResult Create([Bind(Include = "Id,Nombre,Apellido,Mail,Edad,usuario,Password")] Usuario usuario)
         {
             if (ModelState.IsValid)
             {
@@ -40,7 +40,7 @@ namespace WebApp.Controllers
 
                 UsuarioADM admUsuario = new UsuarioADM();
                 rolesAsignados.Add(new Rol {rol= (int) eRoles.cliente });
-                usuario.roles = rolesAsignados;
+                usuario.Roles = rolesAsignados;
                 admUsuario.registrarUsuario(usuario);
                 System.Web.HttpContext.Current.Session["sessionString"] = new JavaScriptSerializer().Serialize(usuario);
 

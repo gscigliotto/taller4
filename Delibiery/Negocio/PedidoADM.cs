@@ -77,7 +77,7 @@ namespace Negocio
 
             total = calcularTotalPedido(items, promos);
 
-            pedido = new Pedido(DateTime.Now, items, promos, total);
+            pedido = new Pedido(DateTime.Now, items, promos, total);        //TODO agregar el cliente
 
             return pedido;
 
@@ -122,6 +122,9 @@ namespace Negocio
 
 
         }
+
+
+        
 
     }
 }

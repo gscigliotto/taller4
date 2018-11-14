@@ -8,16 +8,15 @@ namespace Entities
 {
     public class Usuario
     {
-        public int ID { get; set; }
-        public String nombre   { get; set; }
-        public string apellido { get; set; }
-        public string mail { get; set; }
-        public int edad { get; set; }
+        public int Id { get; set; }
+        public string Nombre   { get; set; }
+        public string Apellido { get; set; }
+        public string Mail { get; set; }
+        public int Edad { get; set; }
    
-        public string password { get; set; }
-        public List<Rol> roles { get; set; }
-        public DateTime fecha_alta { get; set; }
+        public string Password { get; set; }
+        public List<Rol> Roles { get; set; }
+        public DateTime FechaAlta { get; set; }
 
-        
     }
 }

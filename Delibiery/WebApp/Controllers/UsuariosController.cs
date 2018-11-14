@@ -55,7 +55,7 @@ namespace WebApp.Controllers
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,nombre,apellido,mail,edad,usuario,password")] Usuario usuario)
+        public ActionResult Create([Bind(Include = "Id,Nombre,Apellido,Mail,Edad,usuario,Password")] Usuario usuario)
         {
             if (ModelState.IsValid)
             {
@@ -95,8 +95,8 @@ namespace WebApp.Controllers
             foreach (SelectListItem item in Roles) {
                 int contador = 0;
                 bool Encontre = false;
-                while (usuario.roles.Count>contador && !Encontre) {
-                    Rol rol = usuario.roles[contador];
+                while (usuario.Roles.Count>contador && !Encontre) {
+                    Rol rol = usuario.Roles[contador];
                     if (item.Value == rol.rol.ToString())
                     {
                         item.Selected = true;
@@ -128,7 +128,7 @@ namespace WebApp.Controllers
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,nombre,apellido,mail,edad,usuario,password")] Usuario usuario,FormCollection form)
+        public ActionResult Edit([Bind(Include = "Id,Nombre,Apellido,Mail,Edad,usuario,Password")] Usuario usuario,FormCollection form)
         {
             string roles = (string)form["Roles"];
             string[] ArrayRoles= roles.Split(',');
@@ -137,7 +137,7 @@ namespace WebApp.Controllers
                 Roles.Add(new Rol { rol = int.Parse(id)});
 
             }
-            usuario.fecha_alta = DateTime.Now;
+            usuario.FechaAlta = DateTime.Now;
 
             if (ModelState.IsValid)
             {

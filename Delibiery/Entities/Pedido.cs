@@ -13,14 +13,16 @@ namespace Entities
         public List<ItemArticulo> Items { get; set; }
         public List<ItemPromo> Promos { get; set; }
         public double Total { get; set; }
+        public Usuario Cliente { get; set; }
 
 
-        public Pedido(DateTime fecha, List<ItemArticulo> items, List<ItemPromo> promos, double total)
+        public Pedido(DateTime fecha, List<ItemArticulo> items, List<ItemPromo> promos, double total)       //TODO agregar el cliente gato
         {
             this.Fecha  = fecha;
             this.Items  = items;
             this.Promos = promos;
             this.Total  = total;
+            //this.Cliente = cliente;         //TODO sacar el comentaro
         }
 
     }
