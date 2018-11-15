@@ -5,10 +5,27 @@
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<script>
+    $(document).ready(function () {
+        $('#DESC').hide();
+        $('#XY').hide();
+    });
+
+    function Mostrar(campo) {
+        if (campo.value == "DESC") {
+            $('#DESC').show();
+            $('#XY').hide();
+        } else {
+            $('#DESC').hide();
+            $('#XY').show();
+        }
+        //alert(campo.value);
+    }
+</script>
 
 <h2>Create</h2>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm( )) 
 {
     @Html.AntiForgeryToken()
     
@@ -19,13 +36,14 @@
         <div class="form-group">
             @Html.LabelFor(model => model.tipo, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
+                @*                
                 @Html.EditorFor(model => model.tipo, new { htmlAttributes = new { @class = "form-control" } })
-                <br />
+               *@
                 @Html.DropDownList("tipo",
                     new SelectList(Enum.GetValues(typeof(TipoPromo))),
                     "Seleccione tipo de promocion",
-                    new { @class = "form-control" })
-                <br />
+                    new { @class = "form-control" ,@onchange="Mostrar(this);"})
+               
                 @Html.ValidationMessageFor(model => model.tipo, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -39,43 +57,55 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.cantLleva, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.img, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.cantLleva, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.cantLleva, "", new { @class = "text-danger" })
+                <input name="Image" type="file" />
+                @Html.ValidationMessageFor(model => model.img)
+            </div>
+        </div>
+        <div id="XY">
+            <div class="form-group">
+                @Html.LabelFor(model => model.cantLleva, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.cantLleva, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.cantLleva, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.cantPaga, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.cantPaga, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.cantPaga, "", new { @class = "text-danger" })
+                </div>
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.cantPaga, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.cantPaga, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.cantPaga, "", new { @class = "text-danger" })
-            </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.descuento, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.descuento, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.descuento, "", new { @class = "text-danger" })
+        <div id="DESC">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.cantidadLlevar, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.cantidadLlevar, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.cantidadLlevar, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.descuento, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.descuento, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.descuento, "", new { @class = "text-danger" })
+                    </div>
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.cantidadLlevar, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.cantidadLlevar, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.cantidadLlevar, "", new { @class = "text-danger" })
-            </div>
-        </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
             </div>
         </div>
-    </div>
 }
 
 <div>

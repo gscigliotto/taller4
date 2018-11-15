@@ -49,8 +49,9 @@ namespace WebApp.Controllers
         }
 
         // POST: Promo/Create
+
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(FormCollection collection, HttpPostedFileBase image)
         {
             Promocion promo = new Promocion();
             try
@@ -67,7 +68,14 @@ namespace WebApp.Controllers
                 return View();
             }
         }
-
+        /*
+        [HttpPost]
+        public ActionResult Create(PromoModel promocion)
+        {
+            Promocion promo = new Promocion();
+            return RedirectToAction("Index");
+        }
+        */
         // GET: Promo/Edit/5
         public ActionResult Edit(int id)
         {
