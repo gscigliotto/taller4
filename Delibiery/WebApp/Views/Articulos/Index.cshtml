@@ -5,7 +5,9 @@
     ViewBag.Title = "Nuestras Cervezas";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+@{
+    Entities.Usuario u = (Entities.Usuario)System.Web.HttpContext.Current.Session["usuario"];
+}
 <head>
     <title>Nuestras Birras</title>
     @*<link rel="stylesheet" href="~/Content/ListadoBirras.css" />*@
@@ -15,7 +17,17 @@
     <h2>Nuestras Cervezas</h2>
 
     <p>
-        @Html.ActionLink("Alta", "Create")
+        @{
+            if (u.roles[0].rol == 1)
+            {
+
+                @Html.ActionLink("Alta de articulo", "Create")
+
+            }
+
+        }
+    
+
     </p>
 
     <div class="table-responsive-sm">
@@ -87,9 +99,7 @@
                             </td>
                             <td align="left">
 
-                                @{
-                                    Entities.Usuario u = (Entities.Usuario)System.Web.HttpContext.Current.Session["usuario"];
-                                }
+
                                 @{
                                     if (u.roles[0].rol == 1)
                                     {
