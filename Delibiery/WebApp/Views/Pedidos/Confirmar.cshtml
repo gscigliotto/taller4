@@ -1,0 +1,71 @@
+﻿<html>
+@model WebApp.Models.PedidosSelecModel
+
+@{
+    ViewBag.Title = "Articulos Seleccionados";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+    <title>Indique la cantidad de cada articulo</title>
+    @*<link rel="stylesheet" href="~/Content/ListadoBirras.css" />*@
+</head>
+
+<body>
+    <h2>Articulo Seleccionados</h2>
+
+    <div class="table-responsive-sm">
+        @using (Html.BeginForm())
+        {
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col" align="left">Articulo</th>
+                        <th scope="col" align="left">Descripcion</th>
+                        <th scope="col" align="left">Cantidad</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @for (var i = 0; i < Model.Pedidos.Count; i++)
+                    {
+                        <tr>
+                            <td align="left">
+                                @Html.DisplayFor(modelItem => Model.Pedidos[i].idArt)
+                                @Html.HiddenFor(modelItem => Model.Pedidos[i].idArt)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => Model.Pedidos[i].estilo)
+                                @Html.HiddenFor(modelItem => Model.Pedidos[i].estilo)
+                            </td>
+                            <td align="left">
+                                @Html.EditorFor(modelItem => Model.Pedidos[i].cant)
+                                @Html.HiddenFor(modelItem => Model.Pedidos[i].cant)
+                            </td>
+                            
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <input type="submit" onclick="return validateCantidad()" value="Confirmar" class="btn btn-primary" />
+        }
+    </div>
+</body>
+</html>
+
+<script>
+    function validateCantidad() {
+        debugger;
+        $('input[type=number]').each(function (){
+            if ($(this).val() == 0) {
+                $(this).css('background-color', 'red');
+                alert('Debe indicar la cantidad');
+                event.preventDefault();
+                return false;
+            }
+        });
+        return true;
+    }
+    
+</script>
