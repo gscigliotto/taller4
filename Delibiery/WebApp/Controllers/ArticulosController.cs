@@ -20,7 +20,8 @@ namespace WebApp.Controllers
         // GET: Articuloes
         public ActionResult Index()
         {
-            return View(db.articulos.ToList());
+            ArticuloModel a = new ArticuloModel() { articulos = db.articulos.ToList() };
+            return View(a);
         }
 
 
@@ -180,6 +181,32 @@ namespace WebApp.Controllers
 
         }
         //return View();
+
+        // POST: Usuarios/Edit/5
+        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
+        // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        //[ValidateAntiForgeryToken]
+        public ActionResult Index(List<Articulo> articulos)
+        {
+            var guid = Guid.NewGuid();
+            Session[guid.ToString()] = new List<Articulo>();
+            List <int> artSeleccionados = new List<int>();
+            int j = 0;
+            foreach (var i in articulos)
+            {
+                if (i.agregado == true)
+                {
+
+                    //artSeleccionados.Add(i.Id);
+                    ((List<Articulo>)Session[guid.ToString()]).Add(i);
+
+                }
+                
+            }
+            return RedirectToAction("Confirmar", "Pedidos", new { id = guid.ToString() });
+        }
+
 
     }
 }

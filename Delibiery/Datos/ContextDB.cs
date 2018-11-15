@@ -21,5 +21,6 @@ namespace Datos
         //public DbSet<Pedido>  Pedidos { get; set; }
         public DbSet<Rol> rol { get; set; }
 
+        public System.Data.Entity.DbSet<Entities.Pedido> Pedidoes { get; set; }
     }
 }

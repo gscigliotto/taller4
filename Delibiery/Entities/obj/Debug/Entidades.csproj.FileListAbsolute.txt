@@ -8,3 +8,15 @@ C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\Entities\bin\Debug\EntityFra
 C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\Entities\obj\Debug\Entities.dll
 C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\Entities\obj\Debug\Entities.pdb
 C:\Users\gscigliotto\Source\Repos\taller4\Delibiery\Entities\obj\Debug\Entidades.csprojResolveAssemblyReference.cache
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras3\Delibiery\Entities\bin\Debug\Entities.dll.config
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras3\Delibiery\Entities\bin\Debug\Entities.dll
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras3\Delibiery\Entities\bin\Debug\Entities.pdb
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras3\Delibiery\Entities\bin\Debug\EntityFramework.dll
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras3\Delibiery\Entities\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras3\Delibiery\Entities\bin\Debug\EntityFramework.xml
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras3\Delibiery\Entities\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras3\Delibiery\Entities\obj\Debug\Entidades.csprojAssemblyReference.cache
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras3\Delibiery\Entities\obj\Debug\Entidades.csproj.CoreCompileInputs.cache
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras3\Delibiery\Entities\obj\Debug\Entidades.csproj.CopyComplete
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras3\Delibiery\Entities\obj\Debug\Entities.dll
+C:\Users\Lroid\Desktop\ORT\Taller 4\Birras3\Delibiery\Entities\obj\Debug\Entities.pdb

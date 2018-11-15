@@ -21,6 +21,7 @@ namespace Entities
         public double precio { get; set; }
 
         public byte[] imagen { get; set; }
+        public Boolean agregado { get; set; }
 
 
     }

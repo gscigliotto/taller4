@@ -1,5 +1,5 @@
 ﻿<html>
-@model IEnumerable<Entities.Articulo>
+@model WebApp.Models.ArticuloModel
 
 @{
     ViewBag.Title = "Nuestras Cervezas";
@@ -19,87 +19,94 @@
     </p>
 
     <div class="table-responsive-sm">
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th scope="col" width="100" align="left">Imagen</th>
-                    <th scope="col" align="left">Estilo</th>
-                    <th scope="col" align="left">Marca</th>
-                    <th scope="col" align="left">Descripcion</th>
-                    <th scope="col" align="left">Stock</th>
-                    <th scope="col" align="left">Precio</th>
-                    <th scope="col" align="left">Opciones</th>
-                </tr>
-            </thead>
-            <tbody>
-
-                @foreach (var item in Model)
-                {
+        @using (Html.BeginForm())
+        {
+            <table class="table table-hover">
+                <thead>
                     <tr>
-                        <td align="left">
-                            @*<img src="@Url.Action("MostrarFoto", "Images", new { id = 1 })" />*@
-                            @{
-                                var imgSrc = "";
-                                if (item.imagen == null)
-                                {
+                        <th scope="col" align="left">id</th>
+                        <th scope="col" width="100" align="left">Imagen</th>
+                        <th scope="col" align="left">Estilo</th>
+                        <th scope="col" align="left">Marca</th>
+                        <th scope="col" align="left">Descripcion</th>
+                        <th scope="col" align="left">Stock</th>
+                        <th scope="col" align="left">Precio</th>
+                        <th scope="col" align="left">Agregar</th>
+                        <th scope="col" align="left">Opciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @for (var i = 0; i < Model.articulos.Count; i++)
+                    {
+                        <tr>
+                            <td align="left">
+                                @Html.DisplayFor(modelItem => Model.articulos[i].Id)
+                                @Html.HiddenFor(modelItem => Model.articulos[i].Id)
+                            </td>
+                            <td align="left">
+                                @{
+                                    var imgSrc = "";
+                                    if (Model.articulos[i].imagen == null)
+                                    {
+
+                                    }
+                                    else
+                                    {
+                                        var base64 = Convert.ToBase64String(Model.articulos[i].imagen);
+                                        imgSrc = String.Format("data:image/gif;base64, {0}", base64);
+                                    }
 
                                 }
-                                else
-                                {
-                                    var base64 = Convert.ToBase64String(item.imagen);
-                                    imgSrc = String.Format("data:image/gif;base64, {0}", base64);
+                                <img src="@imgSrc" width="100" height="100" />
+                            </td>
+
+                            <td align="left">
+                                @Html.DisplayFor(modelItem => Model.articulos[i].estilo)
+                                @Html.HiddenFor(modelItem => Model.articulos[i].estilo)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => Model.articulos[i].marca)
+                                @Html.HiddenFor(modelItem => Model.articulos[i].marca)
+                            </td>
+                            <td align="left">
+                                @Html.DisplayFor(modelItem => Model.articulos[i].descripcion)
+                                @Html.HiddenFor(modelItem => Model.articulos[i].descripcion)
+                            </td>
+                            <td align="left">
+                                @Html.DisplayFor(modelItem => Model.articulos[i].stock)
+                                @Html.HiddenFor(modelItem => Model.articulos[i].stock)
+                            </td>
+                            <td align="left">
+                                @Html.DisplayFor(modelItem => Model.articulos[i].precio)
+                                @Html.HiddenFor(modelItem => Model.articulos[i].precio)
+
+                            </td>
+                            <td align="left">
+                                @Html.CheckBoxFor(modelItem => Model.articulos[i].agregado)
+                            </td>
+                            <td align="left">
+
+                                @{
+                                    Entities.Usuario u = (Entities.Usuario)System.Web.HttpContext.Current.Session["usuario"];
                                 }
+                                @{
+                                    if (u.roles[0].rol == 1)
+                                    {
 
-                            }
-                            <img src="@imgSrc" width="100" height="100" />
-                        </td>
+                                        @Html.ActionLink("Edit | ", "Edit", new { id = Model.articulos[i].Id });
+                                        @Html.ActionLink("Details | ", "Details", new { id = Model.articulos[i].Id });
+                                        @Html.ActionLink("Delete | ", "Delete", new { id = Model.articulos[i].Id });
+                                        @Html.ActionLink("Subir Foto", "SubirFoto", new { id = Model.articulos[i].Id });
 
-                        <td align="left">
-                            @Html.DisplayFor(modelItem => item.estilo)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.marca)
-                        </td>
-                        <td align="left">
-                            @Html.DisplayFor(modelItem => item.descripcion)
-                        </td>
-                        <td align="left">
-                            @Html.DisplayFor(modelItem => item.stock)
-                        </td>
-                        <td align="left">
-                            @Html.DisplayFor(modelItem => item.precio)
-                        </td>
-                        <td align="left">
-                            @*@Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                            @Html.ActionLink("Delete", "Delete", new { id = item.Id }) |
-                            @Html.ActionLink("Subir Foto", "SubirFoto", new { id = item.Id })*@
-                            @{
-                                Entities.Usuario u = (Entities.Usuario)System.Web.HttpContext.Current.Session["usuario"];
-                            }
-                            @{
-                                if (u.roles[0].rol == 1)
-                                {
-                                    @*<a href="/Articulos/Edit/" id="item.Id">Edit</a>
-                                        <a href="/Articulos/Details/">Details</a>
-                                        <a href="/Articulos/Delete/">Delete</a>
-                                        <a href="/Articulos/SubirFoto/">Subir Foto</a>*@
-                                @Html.ActionLink("Edit | ", "Edit", new { id = item.Id });
-                                @Html.ActionLink("Details | ", "Details", new { id = item.Id });
-                                @Html.ActionLink("Delete | ", "Delete", new { id = item.Id });
-                                @Html.ActionLink("Subir Foto", "SubirFoto", new { id = item.Id });
-                            }
-                            else
-                            {
-                            <input type="submit" value="Pedir" class="btn btn-primary" />
-                            }
-                            }
-</tr>
-
-                }
-            </tbody>
-        </table>
+                                    }
+                                }
+                        </tr>
+                    }
+                </tbody>
+            </table>
+    <input type="submit" value="Hacer Pedido" class="btn btn-primary" />
+        }
     </div>
-
 </body>
 </html>
