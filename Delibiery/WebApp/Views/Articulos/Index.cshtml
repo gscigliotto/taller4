@@ -47,13 +47,13 @@
                             <td align="left">
                                 @{
                                     var imgSrc = "";
-                                    if (Model.articulos[i].imagen == null)
+                                    if (Model.articulos[i].Imagen == null)
                                     {
 
                                     }
                                     else
                                     {
-                                        var base64 = Convert.ToBase64String(Model.articulos[i].imagen);
+                                        var base64 = Convert.ToBase64String(Model.articulos[i].Imagen);
                                         imgSrc = String.Format("data:image/gif;base64, {0}", base64);
                                     }
 
@@ -62,28 +62,28 @@
                             </td>
 
                             <td align="left">
-                                @Html.DisplayFor(modelItem => Model.articulos[i].estilo)
-                                @Html.HiddenFor(modelItem => Model.articulos[i].estilo)
+                                @Html.DisplayFor(modelItem => Model.articulos[i].Estilo)
+                                @Html.HiddenFor(modelItem => Model.articulos[i].Estilo)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => Model.articulos[i].marca)
-                                @Html.HiddenFor(modelItem => Model.articulos[i].marca)
+                                @Html.DisplayFor(modelItem => Model.articulos[i].Marca)
+                                @Html.HiddenFor(modelItem => Model.articulos[i].Marca)
                             </td>
                             <td align="left">
-                                @Html.DisplayFor(modelItem => Model.articulos[i].descripcion)
-                                @Html.HiddenFor(modelItem => Model.articulos[i].descripcion)
+                                @Html.DisplayFor(modelItem => Model.articulos[i].Descripcion)
+                                @Html.HiddenFor(modelItem => Model.articulos[i].Descripcion)
                             </td>
                             <td align="left">
-                                @Html.DisplayFor(modelItem => Model.articulos[i].stock)
-                                @Html.HiddenFor(modelItem => Model.articulos[i].stock)
+                                @Html.DisplayFor(modelItem => Model.articulos[i].Stock)
+                                @Html.HiddenFor(modelItem => Model.articulos[i].Stock)
                             </td>
                             <td align="left">
-                                @Html.DisplayFor(modelItem => Model.articulos[i].precio)
-                                @Html.HiddenFor(modelItem => Model.articulos[i].precio)
+                                @Html.DisplayFor(modelItem => Model.articulos[i].Precio)
+                                @Html.HiddenFor(modelItem => Model.articulos[i].Precio)
 
                             </td>
                             <td align="left">
-                                @Html.CheckBoxFor(modelItem => Model.articulos[i].agregado)
+                                @Html.CheckBoxFor(modelItem => Model.articulos[i].Agregado)
                             </td>
                             <td align="left">
 

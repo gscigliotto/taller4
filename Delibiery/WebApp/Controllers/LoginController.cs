@@ -20,8 +20,7 @@ namespace WebApp.Controllers
 
         public ActionResult logout()
         {
-            System.Web.HttpContext.Current.Session["sessionString"] = null;
-
+            System.Web.HttpContext.Current.Session["Usuario"] = null;
             return RedirectToAction("Index", "Home");
         }
 
@@ -45,8 +44,6 @@ namespace WebApp.Controllers
             {
                 UsuarioADM usuarios = new UsuarioADM();
                 Usuario usuario = usuarios.validarUsuario(auth.usuario, auth.pass);
-                
-                System.Web.HttpContext.Current.Session["sessionString"]  = new JavaScriptSerializer().Serialize(usuario);
                 System.Web.HttpContext.Current.Session["Usuario"] = usuario;
                 return RedirectToAction("Index", "Home");
             }

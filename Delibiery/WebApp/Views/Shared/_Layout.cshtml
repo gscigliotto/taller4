@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@using WebApp.Models;
+@using WebApp.Controllers;
+
+
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -21,15 +25,10 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 @{
-                    if ((string)System.Web.HttpContext.Current.Session["sessionString"] != null)
+                    if (System.Web.HttpContext.Current.Session["Usuario"] != null)
                     {
                         <li class="nav-item">
-                            
-                            @{ var JSONObj = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<Dictionary<string, object>>((string)System.Web.HttpContext.Current.Session["sessionString"]);
-                                //@System.Web.HttpContext.Current.Session["sessionString"];
-                                @Html.ActionLink((string)@JSONObj["nombre"], "Edit", "Usuarios", new { area = "" ,ID= JSONObj["ID"] }, new { @class = "nav-link" })
 
-                            }
                                                        <!-- <a class="nav-link" href="#">Link</a>-->
                         </li>
 
@@ -45,35 +44,25 @@
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 
                                 @{
-                                    /*Esto debe ser dinamico */
-                                    Dictionary<int, WebApp.Models.MenuModel> items = new Dictionary<int, WebApp.Models.MenuModel>();
-                                    items.Add(1, new WebApp.Models.MenuModel { descripcion = "Mis Pedidos", roles = "1,2,3", actionName="Index", controllerName="Pedidos" });
-                                    items.Add(2, new WebApp.Models.MenuModel { descripcion = "Administrar Usuarios", roles = "1", actionName="Index", controllerName="Usuarios" });
-                                    items.Add(3, new WebApp.Models.MenuModel { descripcion = "Cambiar de estado pedido", roles = "1,2", actionName="Cambiar", controllerName="Pedidos" });
-                                    items.Add(4, new WebApp.Models.MenuModel { descripcion = "Alta de Articulo", roles = "1,2", actionName="Index", controllerName="Articulos" });
-                                    items.Add(5, new WebApp.Models.MenuModel { descripcion = "Birras", roles = "1,2", actionName = "Index", controllerName = "Articulos" });
-                                    for (int i = 1; i <= items.Count; i++)
+                                    Dictionary<int, MenuModel> items = HomeController.obtenerMenu();
+                                    Entities.Usuario usuario = (Entities.Usuario)System.Web.HttpContext.Current.Session["Usuario"];
 
+                                    foreach (KeyValuePair<int, MenuModel> item in items)
                                     {
-                                        System.Collections.ArrayList roles = (System.Collections.ArrayList) JSONObj["roles"];
-
-                                        string[] strRol = items[i].roles.Split(',');
+                                        string[] strRol = item.Value.roles.Split(',');
                                         int count = 0;
-
                                         bool encontre = false;
-                                        while (count<strRol.Length&&!encontre) {
+                                        while (count < strRol.Length && !encontre)
+                                        {
                                             int rolcount = 0;
-                                            //count = 0;
-
-                                            while (rolcount < roles.Count && !encontre)
+                                            while (rolcount < usuario.roles.Count && !encontre)
                                             {
-                                                Dictionary<string,object> rol =(Dictionary<string, object>) roles[rolcount];
-                                                string role =Convert.ToString(rol["rol"]);
 
-                                                if (strRol[count] == role)
+
+                                                if (strRol[count] == usuario.roles.ToArray()[rolcount].rol.ToString())
                                                 {
                                                     encontre = true;
-                                                    @Html.ActionLink(items[i].descripcion, items[i].actionName, items[i].controllerName, new { area = "" }, new { @class = "dropdown-item" })
+                                                    @Html.ActionLink(item.Value.descripcion, item.Value.actionName, item.Value.controllerName, new { area = "" }, new { @class = "dropdown-item" })
 
 
                                                 }
@@ -83,7 +72,10 @@
 
                                         }
 
+
+
                                     }
+
 
 
                                     }
@@ -122,8 +114,25 @@
     </nav>
    <div id="msgbag" class="alert alert-danger" role="alert" style="display:none"></div>
    <div class="container body-content">
-        @RenderBody()
-        <hr />
+       @{
+           if (HomeController.esPaginaSegura(@HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString()))
+           {
+               if (System.Web.HttpContext.Current.Session["Usuario"] != null)
+               {
+                @RenderBody()
+               }
+               else {
+                   
+               }
+
+
+           }
+           else
+           {
+            @RenderBody()
+           }
+    }
+       <hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - Delibiery - MSDMM</p>
         </footer>

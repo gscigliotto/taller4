@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
+using WebApp.Models;
 
 namespace WebApp.Controllers
 {
@@ -82,7 +83,40 @@ namespace WebApp.Controllers
         }
 
 
+        public static Dictionary<int, MenuModel> obtenerMenu() {
+            //administrador = 1,operador=2, cliente = 3
+            Dictionary<int, MenuModel> items = new Dictionary<int, MenuModel>();
+            items.Add(1, new MenuModel { descripcion = "Mis Pedidos", roles = "1,2,3", actionName = "Index", controllerName = "Pedidos" });
+            items.Add(2, new MenuModel { descripcion = "Administrar Usuarios", roles = "1", actionName = "Index", controllerName = "Usuarios" });
+            items.Add(3, new MenuModel { descripcion = "Cambiar de estado pedido", roles = "1,2", actionName = "Cambiar", controllerName = "Pedidos" });
+            items.Add(4, new MenuModel { descripcion = "Articulos", roles = "1,2,3", actionName = "Index", controllerName = "Articulos" });
+            items.Add(5, new MenuModel { descripcion = "Promociones", roles = "1,2", actionName = "Index", controllerName = "Promo" });
 
+            return items;
+        }
+
+        public static bool esPaginaSegura(string controllerName)
+        {
+            bool esSegura = false;
+            switch (controllerName) {
+
+                case "Pedidos":
+                    esSegura = true;
+                    break;
+                case "Usuarios":
+                    esSegura = true;
+                    break;
+                case "Articulos":
+                    esSegura = true;
+                    break;
+                case "Promo":
+                    esSegura = true;
+                    break;
+
+            }
+
+            return esSegura;
+        }
 
 
 

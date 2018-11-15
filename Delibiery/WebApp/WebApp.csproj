@@ -186,11 +186,13 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
     <Compile Include="Models\ArticuloModel.cs" />
+    <Compile Include="Models\MenuModel.cs" />
     <Compile Include="Models\PedidosSelecModel.cs" />
     <Compile Include="Models\PedidoModel.cs" />
     <Compile Include="Models\PromoModel.cs" />
     <Compile Include="Models\SubirFotoModel.cs" />
     <Compile Include="Models\AutenticacionModel.cs" />
+    <Compile Include="Models\TipoPromo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -301,6 +303,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\Uploads\Originals\" />
+    <Folder Include="Content\Uploads\Thumbnails\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">

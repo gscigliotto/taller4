@@ -20,7 +20,7 @@ namespace WebApp.Controllers
         // GET: Articuloes
         public ActionResult Index()
         {
-            ArticuloModel a = new ArticuloModel() { articulos = db.articulos.ToList() };
+            ArticuloModel a = new ArticuloModel() { articulos = db.Articulos.ToList() };
             return View(a);
         }
 
@@ -195,7 +195,7 @@ namespace WebApp.Controllers
             int j = 0;
             foreach (var i in articulos)
             {
-                if (i.agregado == true)
+                if (i.Agregado == true)
                 {
 
                     //artSeleccionados.Add(i.Id);

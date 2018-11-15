@@ -22,7 +22,7 @@ namespace WebApp.Controllers
             {
                 PedidoModel pedido = new PedidoModel();
                 pedido.idArt = articulo.Id;
-                pedido.estilo = articulo.estilo;
+                pedido.estilo = articulo.Estilo;
                 pedido.cant = 0;
 
                 pedidos.Add(pedido);

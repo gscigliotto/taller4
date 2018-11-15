@@ -8,6 +8,8 @@ using System.Web;
 using System.Web.Mvc;
 using WebApp.Models;
 using PagedList;
+using System.IO;
+
 namespace WebApp.Controllers
 {
     public class PromoController : Controller
@@ -56,7 +58,19 @@ namespace WebApp.Controllers
             Promocion promo = new Promocion();
             try
             {
-                Promocion promocion = new Promocion(null, collection["tipo"], collection["descripcion"], Convert.ToInt32(collection["cantLleva"]), Convert.ToInt32(collection["cantPaga"]), Convert.ToInt32(collection["descuento"]), Convert.ToInt32(collection["cantidadLlevar"]));
+
+
+
+                var filename = image.FileName;
+                var filePathOriginal = Server.MapPath("/Content/Uploads/Originals");
+               // var filePathThumbnail = Server.MapPath("/Content/Uploads/Thumbnails");
+                string savedFileName = Path.Combine(filePathOriginal, filename);
+                image.SaveAs(savedFileName);
+
+                Promocion promocion = new Promocion( collection["tipo"], collection["descripcion"], Convert.ToInt32(collection["cantLleva"]), Convert.ToInt32(collection["cantPaga"]), Convert.ToInt32(collection["descuento"]), Convert.ToInt32(collection["cantidadLlevar"]), savedFileName);
+
+
+
                 PromocionADM promoAdm = new PromocionADM();
                 promoAdm.crearPromo(promocion);
                 // TODO: Add insert logic here

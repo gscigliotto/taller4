@@ -23,7 +23,9 @@
     <div class="carousel-inner ">
     @{
         Negocio.PromocionADM promoAdmin = new Negocio.PromocionADM();
-        List<Entities.Promocion> promociones = promoAdmin.obtenerPromos();
+        //List<Entities.Promocion> promociones = promoAdmin.obtenerPromos();
+        //la linea de abajo no va
+        List<Entities.Promocion> promociones = new  List<Entities.Promocion>();
         int numElemento = 0;
         if (promociones.Count > 0)
         {
