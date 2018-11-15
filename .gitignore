@@ -226,3 +226,5 @@ project.lock.json
 /Delibiery/Negocio/obj
 /Delibiery/WebApp/bin
 /Delibiery/WebApp/obj
+/Delibiery/WebApp/Content/Uploads/Originals
+/Delibiery/.vs

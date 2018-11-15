@@ -41,7 +41,19 @@ namespace WebApp.Controllers
         // GET: Promo/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            PromocionADM promoMng = new PromocionADM();
+            Promocion promo = promoMng.buscarPromo(id);
+            PromoModel promoMdel = new PromoModel();
+            promoMdel.cantidadLlevar = promo.CantidadLlevar;
+            promoMdel.cantLleva = promo.CantLleva;
+            promoMdel.cantPaga = promo.CantPaga;
+            promoMdel.descripcion = promo.Descripcion;
+            promoMdel.descuento = promo.Descuento;
+            promoMdel.id = promo.Id;
+            promoMdel.tipo = promo.Tipo;
+            promoMdel.url = promo.Url;
+            return View(promoMdel);
+            
         }
 
         // GET: Promo/Create
@@ -58,44 +70,52 @@ namespace WebApp.Controllers
             Promocion promo = new Promocion();
             try
             {
-
-
-
                 var filename = image.FileName;
                 var filePathOriginal = Server.MapPath("/Content/Uploads/Originals");
-               // var filePathThumbnail = Server.MapPath("/Content/Uploads/Thumbnails");
+                // var filePathThumbnail = Server.MapPath("/Content/Uploads/Thumbnails");
                 string savedFileName = Path.Combine(filePathOriginal, filename);
                 image.SaveAs(savedFileName);
+                Promocion promocion = new Promocion();
+                promocion.Tipo = collection["tipo"];
+                promocion.Descripcion = collection["descripcion"];
+                if(collection["cantLleva"]!="")
+                    promocion.CantLleva =Convert.ToInt32(collection["cantLleva"]);
+                if (collection["cantPaga"] != "")
+                    promocion.CantPaga = Convert.ToInt32(collection["cantPaga"]);
+                if (collection["descuento"] != "")
+                    promocion.CantPaga = Convert.ToInt32(collection["descuento"]);
+                if (collection["cantidadLlevar"] != "")
+                    promocion.CantPaga = Convert.ToInt32(collection["cantidadLlevar"]);
 
-                Promocion promocion = new Promocion( collection["tipo"], collection["descripcion"], Convert.ToInt32(collection["cantLleva"]), Convert.ToInt32(collection["cantPaga"]), Convert.ToInt32(collection["descuento"]), Convert.ToInt32(collection["cantidadLlevar"]), savedFileName);
-
-
-
+         
+                promocion.Url = savedFileName;
                 PromocionADM promoAdm = new PromocionADM();
                 promoAdm.crearPromo(promocion);
                 // TODO: Add insert logic here
 
                 return RedirectToAction("Index");
             }
-            catch
+            catch (Exception e)
             {
-                return View();
+                throw e;
             }
         }
-        /*
-        [HttpPost]
-        public ActionResult Create(PromoModel promocion)
-        {
-            Promocion promo = new Promocion();
-            return RedirectToAction("Index");
-        }
-        */
+
         // GET: Promo/Edit/5
         public ActionResult Edit(int id)
         {
             PromocionADM promoMng = new PromocionADM();
-            
-            return View(promoMng.buscarPromo(id));
+            Promocion promo = promoMng.buscarPromo(id);
+            PromoModel promoMdel = new PromoModel();
+            promoMdel.cantidadLlevar = promo.CantidadLlevar;
+            promoMdel.cantLleva = promo.CantLleva;
+            promoMdel.cantPaga = promo.CantPaga;
+            promoMdel.descripcion = promo.Descripcion;
+            promoMdel.descuento = promo.Descuento;
+            promoMdel.id = promo.Id;
+            promoMdel.tipo = promo.Tipo;
+            promoMdel.url = promo.Url;
+            return View(promoMdel);
         }
 
         // POST: Promo/Edit/5
@@ -119,8 +139,17 @@ namespace WebApp.Controllers
         {
 
             PromocionADM promoMng = new PromocionADM();
+            Promocion promo = promoMng.buscarPromo(id);
+            PromoModel promoMdel = new PromoModel();
+            promoMdel.cantidadLlevar = promo.CantidadLlevar;
+            promoMdel.cantLleva = promo.CantLleva;
+            promoMdel.cantPaga = promo.CantPaga;
+            promoMdel.descripcion = promo.Descripcion;
+            promoMdel.descuento = promo.Descuento;
+            promoMdel.id = promo.Id;
+            promoMdel.url = promo.Url;
 
-            return View(promoMng.buscarPromo(id));
+            return View(promoMdel);
             
         }
 

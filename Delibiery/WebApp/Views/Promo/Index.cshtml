@@ -20,6 +20,7 @@
         <th>
             Descripción
         </th>
+        <!--
         <th>
             Cantidad que Lleva
         </th>
@@ -32,6 +33,7 @@
         <th>
            Cantidad a Llevar
         </th>
+            -->
         <th>
             Acciones
         </th>
@@ -45,6 +47,7 @@
         <td>
             @Html.DisplayFor(modelItem => item.descripcion)
         </td>
+        <!--
         <td>
             @Html.DisplayFor(modelItem => item.cantLleva)
         </td>
@@ -57,10 +60,11 @@
         <td>
             @Html.DisplayFor(modelItem => item.cantidadLlevar)
         </td>
+            -->
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+            @Html.ActionLink("Details", "Details", new { id=item.id }) 
+           @* Html.ActionLink("Delete", "Delete", new { id=item.id })*@
         </td>
     </tr>
 }

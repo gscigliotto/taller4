@@ -10,7 +10,73 @@
         $('#DESC').hide();
         $('#XY').hide();
     });
+    function validateForm(form) {
+        var pasa=true;
+        if ($('#tipo').val() == "") {
+            $('span[data-valmsg-for="tipo"]').text('Debe seleccionar un tipo');
+            pasa=false;
+           
+        } else {
+            $('span[data-valmsg-for="tipo"]').text('');
 
+            if ($('#descripcion').val() == "" ) {
+                $('span[data-valmsg-for="descripcion"]').text('Debe describir con un nombre apropiado la promoción');
+                pasa = false;
+            } else {
+                $('span[data-valmsg-for="descripcion"]').text('');
+
+            }
+
+            if ($('#img').val() == "" ) {
+                $('span[data-valmsg-for="img"]').text('Debe seleccionar una imagen para la promoción');
+                pasa = false;
+            } else {
+                $('span[data-valmsg-for="img"]').text('');
+
+            }
+
+
+            
+            if($('#tipo').val()=="XY"){
+                if ($('#cantLleva').val() == "" || $('#cantLleva').val() < 1) {
+                    $('span[data-valmsg-for="cantLleva"]').text('Debe ser mayor a 0');
+                    pasa = false;
+                } else {
+                    $('span[data-valmsg-for="cantLleva"]').text('');
+                }
+
+                if ($('#cantPaga').val() == "" || $('#cantPaga').val() < 1) {
+                    $('span[data-valmsg-for="cantPaga"]').text('Debe ser mayor a 0');
+                    pasa = false;
+                } else {
+                    $('span[data-valmsg-for="cantPaga"]').text('');
+
+                }
+            } else {
+                if ($('#cantidadLlevar').val() == "" || $('#cantidadLlevar').val() < 1) {
+                    $('span[data-valmsg-for="cantidadLlevar"]').text('Debe ser mayor a 0');
+                    pasa = false;
+                } else {
+                    $('span[data-valmsg-for="cantidadLlevar"]').text('');
+                }
+                if ($('#descuento').val() == "" || $('#descuento').val() < 1) {
+                    $('span[data-valmsg-for="descuento"]').text('Debe ser mayor a 0');
+                    pasa = false;
+                } else {
+                    $('span[data-valmsg-for="descuento"]').text('');
+                }
+            }
+
+
+    
+        }
+        return pasa;
+             
+        
+    }
+        
+
+ 
     function Mostrar(campo) {
         if (campo.value == "DESC") {
             $('#DESC').show();
@@ -25,7 +91,7 @@
 
 <h2>Create</h2>
 
-@using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data", onsubmit="return validateForm(this);" }))
 {
     @Html.AntiForgeryToken()
     
@@ -59,7 +125,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.img, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <input name="Image" type="file" />
+                <input name="Image" type="file"  id="img"/>
                 @Html.ValidationMessageFor(model => model.img)
             </div>
         </div>
