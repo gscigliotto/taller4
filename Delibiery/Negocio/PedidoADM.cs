@@ -123,21 +123,29 @@ namespace Negocio
 
         }
 
-
+        
 
         public List<Pedido> listarPedidos(int idCliente)
         {
 
-            var lst = from pedido in db.Pedidos
+            var list = from pedido in db.Pedidos
                       where pedido.Cliente.Id == idCliente
                       select pedido;
 
-            List<Pedido> result_list = lst.ToList();
+            List<Pedido> resultList = list.ToList();
 
-            return result_list;
+            return resultList;
         }
 
         
+        public List<Pedido> listarPedidos()
+        {
+            var list = from pedido in db.Pedidos
+                      select pedido;
 
+            List<Pedido> resultList = list.ToList();
+
+            return resultList;
+        }
     }
 }
