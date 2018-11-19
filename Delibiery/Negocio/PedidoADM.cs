@@ -21,6 +21,10 @@ namespace Negocio
             this.db = db;
         }
 
+        public List<Pedido> obtenerPedidos()
+        {
+            return db.Pedidos.ToList();
+        }
 
         public Pedido crarPedido(List<PedidoArt> articulosIds, List<PedidoPromoArt> promoArts) {
 
@@ -41,7 +45,7 @@ namespace Negocio
 
                 Articulo articulo = db.Articulos.SingleOrDefault(a => a.Id == pedArt.ArtID);
                 if (articulo == null)
-                    throw new Exception("Error al armar el pedido - No existe el articulos");
+                    throw new Exception("Error al armar el pedido - No existe el articulo "+ articulo.Descripcion);
 
                 if (articulo.Stock < pedArt.Cant)
                     throw new Exception("Error al armar el pedido - No hay stock suficiente para el articulo cod: " + articulo.Id);
@@ -53,33 +57,48 @@ namespace Negocio
                 items.Add(item);
             }
 
+            if (promoArts != null)
+            {
+                foreach (PedidoPromoArt pedPromoArt in promoArts)
+                {
 
-            foreach (PedidoPromoArt pedPromoArt in promoArts) {
+                    Articulo articulo = db.Articulos.SingleOrDefault(a => a.Id == pedPromoArt.ArtId);
+                    if (articulo == null)
+                        throw new Exception("Error al armar el pedido - No existe el articulo");
 
-                Articulo articulo = db.Articulos.SingleOrDefault(a => a.Id == pedPromoArt.ArtId);
-                if (articulo == null)
-                    throw new Exception("Error al armar el pedido - No existe el articulo");
+                    Promocion promocion = db.Promociones.SingleOrDefault(p => p.Id == pedPromoArt.PromoId);
+                    if (promocion == null)
+                        throw new Exception("Error al armar el pedido - No existe la promocion");
 
-                Promocion promocion = db.Promociones.SingleOrDefault(p => p.Id == pedPromoArt.PromoId);
-                if (promocion == null)
-                    throw new Exception("Error al armar el pedido - No existe la promocion");
+                    PromoAlgoritmo promoAlgoritmo = promoADM.getAlgoritmoFromPromo(promocion);
 
-                PromoAlgoritmo promoAlgoritmo = promoADM.getAlgoritmoFromPromo(promocion);
+                    if (articulo.Stock < (promoAlgoritmo.promoStock() * pedPromoArt.Cant))
+                        throw new Exception("Error al armar el pedido - No hay stock suficiente para la promocion cod: " + promocion.Id + " con el articulo cod: " + articulo.Id);
 
-                if (articulo.Stock < (promoAlgoritmo.promoStock() * pedPromoArt.Cant))
-                    throw new Exception("Error al armar el pedido - No hay stock suficiente para la promocion cod: " + promocion.Id + " con el articulo cod: " + articulo.Id);
+                    promo = new ItemPromo(promoAlgoritmo, articulo, pedPromoArt.Cant);
 
-                promo = new ItemPromo(promoAlgoritmo, articulo, pedPromoArt.Cant);
-
-                promos.Add(promo);
+                    promos.Add(promo);
+                }
             }
-
 
             total = calcularTotalPedido(items, promos);
 
             pedido = new Pedido(DateTime.Now, items, promos, total);
 
             return pedido;
+
+        }
+
+        public Pedido buscarPedido(int id)
+        {
+            return  db.Pedidos.Include("Items").SingleOrDefault(p => p.Id == id);
+        }
+
+        public void confirmarPedido(Pedido pedido)
+        {
+            Pedido pedidoRepo = db.Pedidos.SingleOrDefault(p => p.Id == pedido.Id);
+            pedidoRepo.estado = Pedido.ePedido.PROCESO;
+            db.SaveChanges();
 
         }
 
@@ -109,17 +128,19 @@ namespace Negocio
             {
                 Articulo articulo = db.Articulos.SingleOrDefault(a => a.Id == item.Articulo.Id);
                 articulo.Stock -= item.Cant;
-                db.SaveChanges();
+               
             }
-
-            foreach (ItemPromo itemPromo in pedido.Promos)
+            if (pedido.Promos != null)
             {
-                Articulo articulo = db.Articulos.SingleOrDefault(a => a.Id == itemPromo.Articulo.Id);
-                //articulo.Stock -= itemPromo.Promo.promoStock() * itemPromo.Cant;
-                db.SaveChanges();
+                foreach (ItemPromo itemPromo in pedido.Promos)
+                {
+                    Articulo articulo = db.Articulos.SingleOrDefault(a => a.Id == itemPromo.Articulo.Id);
+                    //articulo.Stock -= itemPromo.Promo.promoStock() * itemPromo.Cant;
+                    
+                }
             }
-
-
+            db.Pedidos.Add(pedido);
+            db.SaveChanges();
 
         }
 

@@ -64,8 +64,13 @@ namespace Negocio
             db.Promociones.Add(promocion);
             db.SaveChanges();
         }
+        public void borrarPromo(int Id)
+        {
 
-
+            Promocion prom = db.Promociones.SingleOrDefault(p => p.Id == Id);
+            db.Promociones.Remove(prom);
+            db.SaveChanges();
+        }
 
     }
 }

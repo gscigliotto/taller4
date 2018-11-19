@@ -7,11 +7,17 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<h3>Promociones</h3>
+<ul class="nav justify-content-start">
+    <li class="nav-item">
+        @Html.ActionLink("Alta de Promoción", "Create", null, new { @class = "btn btn-outline-success nav-link active" })
 
 
-<p>
-    @Html.ActionLink("Nueva Promoción", "Create")
-</p>
+    </li>
+</ul>
+<br />
+ 
+
 <table class="table">
     <tr>
         <th>
@@ -63,7 +69,8 @@
             -->
         <td>
            @* @Html.ActionLink("Edit", "Edit", new { id=item.id }) *@
-     @Html.ActionLink("Details", "Details", new { id=item.id })
+     @Html.ActionLink("Details", "Details", new { id=item.id }) |
+    @Html.ActionLink("Eliminar", "Delete", new { id = item.id }) 
     @* Html.ActionLink("Delete", "Delete", new { id=item.id })*@
         </td>
     </tr>

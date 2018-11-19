@@ -22,27 +22,34 @@
     </ol>
     <div class="carousel-inner ">
     @{
-        Negocio.PromocionADM promoAdmin = new Negocio.PromocionADM();
+
         //List<Entities.Promocion> promociones = promoAdmin.obtenerPromos();
         //la linea de abajo no va
-        List<Entities.Promocion> promociones = new  List<Entities.Promocion>();
+        List<Entities.Promocion> promociones = ViewBag.promos;
         int numElemento = 0;
         if (promociones.Count > 0)
         {
             foreach (Entities.Promocion p in promociones)
             {
+
+                string img = "/Content/Uploads/Originals/";
+                img += Path.GetFileName(p.Url);
+
+
                 numElemento++;
                 if (numElemento == 1)
                 {
                 <div class="carousel-item active">
-                    <img class="d-block w-100 " src="~/Content/Images/promo1.jpg" alt="First slide">
+
+                   
+                    <img class="d-block w-100 " src="@img" alt="First slide">
                 </div>
                 }
                 else
                 {
 
                 <div class="carousel-item">
-                    <img class="d-block w-100" src="~/Content/Images/promo2.jpg" alt="Second slide">
+                    <img class="d-block w-100 " src="@img" alt="First slide">
                 </div>
                 }
 
@@ -82,33 +89,21 @@
     </div>
     <br />
 <div class="row">
-    <div class="col-md-4">
-        <div class="card" style="width: 18rem;">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+    @{
+        foreach (Entities.Articulo art in ViewBag.articulos)
+        {
+            <div class="col-md-4">
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">@art.Descripcion</h5>
+                        <!--<p class="card-text"></p>-->
+                        @Html.ActionLink("Ver Promo","Details","Articulos",  new { id = art.Id }, new { @class = "btn btn-primary" })
+                        
+                        
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-    <!--
-    <div class="col-md-4">
-        <div class="card" style="width: 18rem;">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-4">
-        <div class="card" style="width: 18rem;">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div>
-    </div>
-        -->
+            }
+        }
+
 </div>

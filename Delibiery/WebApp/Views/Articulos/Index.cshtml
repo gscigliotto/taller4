@@ -1,6 +1,6 @@
 ﻿<html>
 @model WebApp.Models.ArticuloModel
-
+@using PagedList.Mvc;
 @{
     ViewBag.Title = "Nuestras Cervezas";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -14,22 +14,23 @@
 </head>
 
 <body>
-    <h2>Nuestras Cervezas</h2>
 
-    <p>
-        @{
-            if (u.roles[0].rol == 1)
-            {
+    <h3>Nuestros Articulos</h3>
 
-                @Html.ActionLink("Alta de articulo", "Create")
 
-            }
+    @{
+        if (u.roles[0].rol == 1)
+        {
+            <ul class="nav justify-content-start">
+                <li class="nav-item">
+                    @Html.ActionLink("Alta de articulo", "Create", null, new { @class = "btn btn-outline-success nav-link active" })
 
+
+                </li>
+            </ul>
+            <br />
         }
-    
-
-    </p>
-
+    }
     <div class="table-responsive-sm">
         @using (Html.BeginForm())
         {
@@ -112,11 +113,17 @@
                                     }
                                 }
                         </tr>
-                    }
+                                    }
                 </tbody>
             </table>
-    <input type="submit" value="Hacer Pedido" class="btn btn-primary" />
-        }
+            <input type="submit" value="Hacer Pedido" class="btn btn-primary" />
+                                    }
     </div>
+
+    Pagina @(Model.articulosPaginado.PageCount < Model.articulosPaginado.PageNumber ? 0 : Model.articulosPaginado.PageNumber) de @Model.articulosPaginado.PageCount
+
+    @Html.PagedListPager(Model.articulosPaginado, page => Url.Action("Index", new { page }), new PagedListRenderOptions { LiElementClasses = new[] { "page-link", "page-item" } })
+
+
 </body>
 </html>

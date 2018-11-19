@@ -10,12 +10,17 @@
 
 
 <script src="~/Scripts/CommonsJS.js"></script>
-<h2>Usuarios</h2>
+<h3>Usuarios</h3>
 
-<p>
-    @Html.ActionLink("Crear Usuario", "Create")
-</p>
 
+<ul class="nav justify-content-start">
+    <li class="nav-item">
+        @Html.ActionLink("Alta de Usuario", "Create", null, new { @class = "btn btn-outline-success nav-link active" })
+
+
+    </li>
+</ul>
+<br />
 
 <!--
 <div id="UsuariosGrid">

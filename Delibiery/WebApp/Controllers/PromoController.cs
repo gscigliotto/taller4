@@ -159,7 +159,7 @@ namespace WebApp.Controllers
         {
             try
             {
-                // TODO: Add delete logic here
+                new PromocionADM().borrarPromo(id);
 
                 return RedirectToAction("Index");
             }

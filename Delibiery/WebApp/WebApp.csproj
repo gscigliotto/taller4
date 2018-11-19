@@ -202,6 +202,7 @@
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\celebration-1428622.jpg" />
     <Content Include="Content\Images\promo1.jpg" />
     <Content Include="Content\Images\promo2.jpg" />
     <Content Include="Content\Images\promo3.jpg" />
@@ -301,6 +302,9 @@
     <Content Include="Views\Promo\Delete.cshtml" />
     <Content Include="Views\Pedidos\Confirmar.cshtml" />
     <Content Include="Views\Promo\Details.cshtml" />
+    <Content Include="Views\Pedidos\Cambiar.cshtml" />
+    <Content Include="Views\Pedidos\Index.cshtml" />
+    <Content Include="Views\Pedidos\FinPedido.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

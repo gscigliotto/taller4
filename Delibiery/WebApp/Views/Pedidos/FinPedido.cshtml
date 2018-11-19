@@ -1,0 +1,26 @@
+﻿@model Entities.Pedido
+
+@{
+    ViewBag.Title = "FinPedido";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+
+<div class="card text-center">
+    <div class="card-header">
+        Pedido
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">FELICITACIONES TU PEDIDO YA ESTA EN PROCESO</h5>
+        <p class="card-text">En breve recibiras mas inforación acerca de tu pedido</p>
+       
+    </div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">Total: @Model.Total </li>
+        <li class="list-group-item">Cantidad de Articulos: @Model.Items.Count </li>
+        <li class="list-group-item">Fecha @Model.Fecha.ToString() </li>
+    </ul>
+    @Html.ActionLink("INICIO", "Index", "HOME", null,new { @class = "btn btn-primary" })
+
+</div>
+

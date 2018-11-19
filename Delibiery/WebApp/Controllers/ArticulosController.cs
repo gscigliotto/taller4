@@ -10,7 +10,7 @@ using System.Web.Mvc;
 using Datos;
 using Entities;
 using WebApp.Models;
-
+using PagedList;
 namespace WebApp.Controllers
 {
     public class ArticulosController : Controller
@@ -18,10 +18,15 @@ namespace WebApp.Controllers
         private ContextDB db = new ContextDB();
 
         // GET: Articuloes
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
-            ArticuloModel a = new ArticuloModel() { articulos = db.Articulos.ToList() };
-            return View(a);
+            int pageNumber = (page ?? 1);
+            ArticuloModel articuloModel = new ArticuloModel();
+            articuloModel.articulos = db.Articulos.ToList().ToPagedList(pageNumber, 3).ToList();
+            articuloModel.articulosPaginado = db.Articulos.ToList().ToPagedList(pageNumber, 3);
+
+
+            return View(articuloModel);
         }
 
 

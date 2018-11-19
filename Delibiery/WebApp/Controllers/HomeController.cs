@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
 using WebApp.Models;
+using Negocio;
 
 namespace WebApp.Controllers
 {
@@ -14,6 +15,10 @@ namespace WebApp.Controllers
     {
         public ActionResult Index()
         {
+            PromocionADM promo = new PromocionADM();
+            
+            ViewBag.promos=promo.obtenerPromos();
+            ViewBag.articulos = new ArticulosADM().obtenerArticulosPortada();
             return View();
         }
 
