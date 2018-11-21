@@ -29,7 +29,7 @@ namespace Negocio
         {
 
             var list = from pedido in db.Pedidos
-                       where pedido.Cliente.Id == idCliente
+                       where pedido.IdSolicitante == idCliente
                        select pedido;
 
             List<Pedido> resultList = list.ToList();
