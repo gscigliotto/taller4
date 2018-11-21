@@ -203,6 +203,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Images\celebration-1428622.jpg" />
+    <Content Include="Content\Images\producto-sin-imagen.png" />
     <Content Include="Content\Images\promo1.jpg" />
     <Content Include="Content\Images\promo2.jpg" />
     <Content Include="Content\Images\promo3.jpg" />
@@ -305,6 +306,7 @@
     <Content Include="Views\Pedidos\Cambiar.cshtml" />
     <Content Include="Views\Pedidos\Index.cshtml" />
     <Content Include="Views\Pedidos\FinPedido.cshtml" />
+    <Content Include="Views\Home\Err.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

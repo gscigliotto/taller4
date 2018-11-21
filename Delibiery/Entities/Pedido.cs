@@ -9,6 +9,7 @@ namespace Entities
     public class Pedido
     {
         public int Id { get; set; }
+        public int IdSolicitante { get; set; }
 
         public ePedido estado { get; set; }
         public DateTime Fecha { get; set; }

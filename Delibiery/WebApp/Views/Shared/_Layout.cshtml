@@ -116,21 +116,40 @@
    <div id="msgbag" class="alert alert-danger" role="alert" style="display:none"></div>
    <div class="container body-content">
        @{
-           if (HomeController.esPaginaSegura(@HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString()))
+
+
+           var routeValues = HttpContext.Current.Request.RequestContext.RouteData.Values;
+           var actionName = "";
+           var controllerName = "";
+           if (routeValues != null)
+           {
+               if (routeValues.ContainsKey("action"))
+               {
+                   actionName = routeValues["action"].ToString();
+               }
+
+               if (routeValues.ContainsKey("controller"))
+               {
+                   controllerName = routeValues["controller"].ToString();
+               }
+
+           }
+
+           if (HomeController.esPaginaSegura(controllerName,actionName))
            {
                if (System.Web.HttpContext.Current.Session["Usuario"] != null)
                {
-                @RenderBody()
+                   @RenderBody();
                }
                else {
-                   
+                   Response.Redirect("~/Home/Err");
                }
 
 
            }
            else
            {
-            @RenderBody()
+               @RenderBody()
            }
     }
        <hr />

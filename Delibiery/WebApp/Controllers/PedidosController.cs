@@ -18,7 +18,15 @@ namespace WebApp.Controllers
         public ActionResult Index(int? page)
         {
             int pageNumber = (page ?? 1);
-            return View(new PedidoADM().obtenerPedidos().ToPagedList(pageNumber, 3));
+            return View(new PedidoADM().obtenerPedidos().ToPagedList(pageNumber, 10));
+        }
+
+
+        public ActionResult MisPedidos(int? page)
+        {
+            int pageNumber = (page ?? 1);
+            Entities.Usuario u = (Entities.Usuario)System.Web.HttpContext.Current.Session["usuario"];
+            return View("Index", new PedidoADM().obtenerPedidosUsuario(u.ID).ToPagedList(pageNumber, 10));
         }
 
 
@@ -57,14 +65,26 @@ namespace WebApp.Controllers
             foreach (PedidoModel pedidoModel in ItemsConfirmados.Pedidos) {
                 articulos.Add(new PedidoArt() {  ArtID=pedidoModel.idArt, Cant= pedidoModel.cant});
             }
-
-
             Pedido pedido = pedidosManager.crarPedido(articulos, null);
+
+            Entities.Usuario u = (Entities.Usuario)System.Web.HttpContext.Current.Session["usuario"];
+            pedido.IdSolicitante = u.ID;
+            
+            
+            
             pedidosManager.concretarPedido(pedido);
             
             return Json(pedido, JsonRequestBehavior.AllowGet);
         }
+        public JsonResult CambiarEstadoDespachado(int id)
+        {
+            bool cambio = true;
+            PedidoADM pedidoMnger = new PedidoADM();
+            pedidoMnger.DespacharPedido(id);
 
+
+            return Json(cambio, JsonRequestBehavior.AllowGet);
+        }
 
 
         public JsonResult ConfirmarPedido(Pedido pedido)

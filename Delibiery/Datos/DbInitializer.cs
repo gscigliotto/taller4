@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Datos
 {
-    public class DbInitializer : DropCreateDatabaseIfModelChanges<ContextDB>
+    public class DbInitializer : DropCreateDatabaseAlways<ContextDB>
     {
         protected override void Seed(ContextDB context)
         {

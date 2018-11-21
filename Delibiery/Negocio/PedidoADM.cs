@@ -25,6 +25,13 @@ namespace Negocio
         {
             return db.Pedidos.ToList();
         }
+        public List<Pedido> obtenerPedidosUsuario(int idusuario)
+        {
+            return db.Pedidos.Where(p=>p.IdSolicitante==idusuario).ToList(); 
+
+        }
+
+
 
         public Pedido crarPedido(List<PedidoArt> articulosIds, List<PedidoPromoArt> promoArts) {
 
@@ -89,6 +96,13 @@ namespace Negocio
 
         }
 
+        public void DespacharPedido(int id)
+        {
+            Pedido pedido = db.Pedidos.FirstOrDefault(p => p.Id == id);
+            pedido.estado = Pedido.ePedido.ENTREGADO;
+            db.SaveChanges();
+        }
+
         public Pedido buscarPedido(int id)
         {
             return  db.Pedidos.Include("Items").SingleOrDefault(p => p.Id == id);
@@ -140,6 +154,7 @@ namespace Negocio
                 }
             }
             db.Pedidos.Add(pedido);
+           
             db.SaveChanges();
 
         }

@@ -4,8 +4,7 @@
 @{
     ViewBag.Title = "Nuestras Cervezas";
     Layout = "~/Views/Shared/_Layout.cshtml";
-}
-@{
+
     Entities.Usuario u = (Entities.Usuario)System.Web.HttpContext.Current.Session["usuario"];
 }
 <head>
@@ -19,7 +18,7 @@
 
 
     @{
-        if (u.roles[0].rol == 1)
+        if (u!=null && u.roles[0].rol == 1)
         {
             <ul class="nav justify-content-start">
                 <li class="nav-item">
@@ -63,15 +62,17 @@
                                     if (Model.articulos[i].Imagen == null)
                                     {
 
+                                        imgSrc = "../Content/Images/producto-sin-imagen.png";
                                     }
                                     else
                                     {
                                         var base64 = Convert.ToBase64String(Model.articulos[i].Imagen);
                                         imgSrc = String.Format("data:image/gif;base64, {0}", base64);
-                                    }
 
+                                    }
+                                    <img src="@imgSrc" width="100" height="100" />
                                 }
-                                <img src="@imgSrc" width="100" height="100" />
+                                
                             </td>
 
                             <td align="left">
@@ -102,7 +103,7 @@
 
 
                                 @{
-                                    if (u.roles[0].rol == 1)
+                                    if (u!=null && u.roles[0].rol == 1)
                                     {
 
                                         @Html.ActionLink("Edit | ", "Edit", new { id = Model.articulos[i].Id });

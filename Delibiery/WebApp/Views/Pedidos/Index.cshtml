@@ -1,15 +1,51 @@
 ﻿@model PagedList.IPagedList<Entities.Pedido>
 @using PagedList.Mvc;
+@using Entities;
 
 
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    Usuario usuario =(Usuario) System.Web.HttpContext.Current.Session["Usuario"];
+
 }
 
 <h3>Mis Pedidos</h3>
+<script>
+    function cambiarEstado(id) {
+        
+        $.ajax({
+            type: "POST",
+            traditional: true,
+            async: false,
+            cache: false,
+            url: '@Url.Action("CambiarEstadoDespachado")'+'/'+id,
+            context: document.body,
+            data: id,
+            success: function (result) {
 
+                //alert(result);
+                //pedido = result;
+                //$("#resultado").html('');
+                //var total = pedido.Total;
+                //$('.table-responsive-sm').find('input, textarea, button, select').attr('disabled', 'disabled');
+
+                //$("#alert").show();
+                //document.getElementById('monto').innerText = "Monto Total: " + total;
+
+
+            },
+            error: function (xhr) {
+                //debugger;
+                //console.log(xhr.responseText);
+                //alert("Error has occurred.." + xhr.responseText);
+            }
+        });
+        return false;
+
+    }
+</script>
 <!--
 <ul class="nav justify-content-start">
     <li class="nav-item">
@@ -41,7 +77,8 @@
         <th>Acciones</th>
     </tr>
 
-@foreach (var item in Model) {
+@foreach (var item in Model)
+{
     <tr>
         
         <td>
@@ -57,13 +94,21 @@
             @Html.DisplayFor(modelItem => item.Total)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @{
+                if (usuario.roles.ToArray()[0].rol==1 || usuario.roles.ToArray()[0].rol==2 )
+                {
+                    @Html.ActionLink("Despachar", "Edit", new { id = item.Id }, new { onclick = "return cambiarEstado('" + item.Id + "');" });
+
+                    @*Html.ActionLink("Ver", "Details", new { id = item.Id });*@
+                    
+                }
+             }
+            
+            
+            @*Html.ActionLink("Delete", "Delete", new { id=item.Id })*@
         </td>
     </tr>
 }
-
 </table>
 Pagina @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount
 

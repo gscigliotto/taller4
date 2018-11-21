@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "View";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Error de navegacion</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Ha suscedido un error critico en la aplicacion por favor vuelva a intentar, Corrobore estar logueado en la alicacion y tener los permisos suficientes para ejecutar la accion que esta intentando.</p>
+            </div>
+            <div class="modal-footer">
+                   <button type="button" id="btn_vovler" class="btn btn-primary">Volver.</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(".modal").show();
+    $("#btn_vovler").click(function () {
+        window.location.href = "/Home/Index";
+        //alert("Handler for .click() called.");
+    });
+</script>
