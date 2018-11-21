@@ -17,9 +17,9 @@ namespace Negocio
         {
             this.db = db;
         }
-        public Usuario buscarUsuario(int Id)
+        public Usuario buscarUsuario(int id)
         {
-            Usuario usuarioCTX = db.Usuarios.Include("roles").SingleOrDefault(u => u.ID == Id);
+            Usuario usuarioCTX = db.Usuarios.Include("Roles").SingleOrDefault(u => u.Id == id);
             if (usuarioCTX == null)
                 throw new Exception("Usuario no existe");
             return usuarioCTX;
@@ -29,7 +29,7 @@ namespace Negocio
         public Usuario validarUsuario(String usuario,String password) {
 
             password = SeguridadADM.EncodePassword(password);
-            Usuario usuarioCTX = db.Usuarios.Include("roles").SingleOrDefault(u => string.Equals(u.mail, usuario) && string.Equals(u.password, password));
+            Usuario usuarioCTX = db.Usuarios.Include("Roles").SingleOrDefault(u => string.Equals(u.Mail, usuario) && string.Equals(u.Password, password));
             if (usuarioCTX == null)
                 throw new Exception("Usuario y/o Contraseña invalida");
             return usuarioCTX;
@@ -38,15 +38,15 @@ namespace Negocio
 
         public void registrarUsuario(Usuario usuario)
         {
-            usuario.fecha_alta = DateTime.Now;
-            string tempPass = usuario.password;
-            usuario.password=SeguridadADM.EncodePassword(usuario.password);
+            usuario.FechaAlta = DateTime.Now;
+            string tempPass = usuario.Password;
+            usuario.Password=SeguridadADM.EncodePassword(usuario.Password);
             db.Usuarios.Add(usuario);
             db.SaveChanges();
 
             List<string> destinatarios = new List<string>();
-            destinatarios.Add(usuario.mail);
-            String body = String.Format("Bienvenido {0}, se genero su usuario {1}, recuerde que su password es: {2}, Salua Atte. Equipo delibiery MSMM", usuario.nombre,usuario.mail, tempPass);
+            destinatarios.Add(usuario.Mail);
+            String body = String.Format("Bienvenido {0}, se genero su usuario {1}, recuerde que su password es: {2}, Salua Atte. Equipo delibiery MSMM", usuario.Nombre,usuario.Mail, tempPass);
             SeguridadADM.SendMailSinConfig(destinatarios,"Creación de usuario",body);
 
 
@@ -68,8 +68,8 @@ namespace Negocio
         public void actualizarRolUsuario(Usuario usuario, List<Rol> roles) {
 
 
-            var result = db.Usuarios.SingleOrDefault(b => b.ID == usuario.ID);
-            result.roles = roles;
+            var result = db.Usuarios.SingleOrDefault(b => b.Id == usuario.Id);
+            result.Roles = roles;
             db.SaveChanges();
 
         }
@@ -79,7 +79,7 @@ namespace Negocio
         {
             Usuario usuario = this.buscarUsuario(id);
             List<String> destinatarios = new List<string>();
-            destinatarios.Add(usuario.mail);
+            destinatarios.Add(usuario.Mail);
             string cuerpo = String.Format("Estimado, se tramito una nueva password de acceso su nueva password  es:{0}", SeguridadADM.CrearPassword(6));
             SeguridadADM.SendMailSinConfig(destinatarios, "Recupero de Contraseña", cuerpo);
 
@@ -89,8 +89,8 @@ namespace Negocio
 
         public void recueperarPass(string mail)
         {
-            Usuario usuario = db.Usuarios.SingleOrDefault(u => string.Equals(u.mail, mail));
-            recueperarPass(usuario.ID);
+            Usuario usuario = db.Usuarios.SingleOrDefault(u => string.Equals(u.Mail, mail));
+            recueperarPass(usuario.Id);
         }
 
         public void borrarUsuario(int id)
