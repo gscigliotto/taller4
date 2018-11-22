@@ -55,6 +55,7 @@
     <Compile Include="Model\PromoDescuento.cs" />
     <Compile Include="Model\PromoXy.cs" />
     <Compile Include="Model\TopArticuloCantidad.cs" />
+    <Compile Include="StockADM.cs" />
     <Compile Include="PedidoADM.cs" />
     <Compile Include="PromocionADM.cs" />
     <Compile Include="ReporteADM.cs" />
