@@ -54,16 +54,20 @@ namespace Negocio
             return db.Promociones.ToList();
         }
 
+
         public Promocion buscarPromo(int id)
         {
             return db.Promociones.SingleOrDefault(p => p.Id == id);
         }
+
 
         public void crearPromo(Promocion promocion)
         {
             db.Promociones.Add(promocion);
             db.SaveChanges();
         }
+
+
         public void borrarPromo(int Id)
         {
 

@@ -47,6 +47,10 @@ namespace Negocio
         public void cargarStock(int idArt, Int32 idPedido, Double costo, Int32 cantidad) {
             Stock stock = new Stock(idArt, idPedido, costo, cantidad, DateTime.Now);
             db.Stock.Add(stock);
+
+            Articulo articulo = db.Articulos.SingleOrDefault(a => a.Id == idArt);
+            articulo.Stock += idArt;
+
             db.SaveChanges();
         }
 

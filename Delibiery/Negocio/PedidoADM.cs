@@ -17,20 +17,21 @@ namespace Negocio
         public PedidoADM(){
             db = new ContextDB();
         }
+
+
         public PedidoADM(ContextDB db){
             this.db = db;
         }
 
-        public List<Pedido> obtenerPedidos()
-        {
+
+        public List<Pedido> obtenerPedidos() {
             return db.Pedidos.ToList();
         }
-        public List<Pedido> obtenerPedidosUsuario(int idusuario)
-        {
-            return db.Pedidos.Where(p=>p.IdSolicitante==idusuario).ToList(); 
 
+
+        public List<Pedido> obtenerPedidosUsuario(int idusuario) {
+            return db.Pedidos.Where(p=>p.IdSolicitante==idusuario).ToList();
         }
-
 
 
         public Pedido crarPedido(List<PedidoArt> articulosIds, List<PedidoPromoArt> promoArts) {
@@ -138,11 +139,13 @@ namespace Negocio
         public void concretarPedido(Pedido pedido)
         {
 
+            StockADM stockADM = new StockADM(db);
+
             foreach (ItemArticulo item in pedido.Items)
             {
-                Articulo articulo = db.Articulos.SingleOrDefault(a => a.Id == item.Articulo.Id);
-                articulo.Stock -= item.Cant;
-               
+                //Articulo articulo = db.Articulos.SingleOrDefault(a => a.Id == item.Articulo.Id);
+                //articulo.Stock -= item.Cant;
+                stockADM.cargarStock(item.Articulo.Id, pedido.Id, 0, (item.Cant * (-1)));
             }
             if (pedido.Promos != null)
             {
@@ -150,16 +153,36 @@ namespace Negocio
                 {
                     Articulo articulo = db.Articulos.SingleOrDefault(a => a.Id == itemPromo.Articulo.Id);
                     //articulo.Stock -= itemPromo.Promo.promoStock() * itemPromo.Cant;
-                    
+                    stockADM.cargarStock(itemPromo.Articulo.Id, pedido.Id, 0, (itemPromo.Promo.promoStock() * itemPromo.Cant * (-1)));
                 }
             }
+
             db.Pedidos.Add(pedido);
            
             db.SaveChanges();
 
         }
 
-        
+
+
+        public void cancelarPedido(int idPedido) {
+
+            StockADM stockADM = new StockADM(db);
+
+            var list = from stock in db.Stock
+                       where (stock.IdPedido == idPedido)
+                       select stock;
+
+            List<Stock> stockList = list.ToList();
+
+            foreach (Stock stock in stockList) {
+                stockADM.cargarStock(stock.IdArt, stock.IdPedido, 0, (stock.Cantidad * (-1)));
+            }
+
+            db.SaveChanges();
+        }
+
+
 
     }
 }
