@@ -1,0 +1,63 @@
+﻿@model WebApp.Models.DetallePedidoModel
+
+@{
+    ViewBag.Title = "Detalle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Detalles de Pedido</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayFor(model => model.Id)
+        </th>
+        <th>
+            @Html.DisplayFor(model => model.Usuario)
+        </th>
+        <th>
+            @Html.DisplayFor(model => model.FechaPedido)
+        </th>
+        <th>
+            @Html.DisplayFor(model => model.Estado)
+        </th>
+        <th>
+            @Html.DisplayFor(model => model.Monto)
+        </th>
+        <th></th>
+    </tr>
+    </table>
+
+<table class="table">
+
+    <tr>
+        <td>
+            Item
+        </td>
+        <td>
+            Descripción
+        </td>
+        <td>
+            Cantidad
+        </td>
+
+
+    </tr>
+
+@foreach (var item in Model.Articulos)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Renglon)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Descripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cantidadPedida)
+        </td>
+     </tr>
+}
+
+</table>

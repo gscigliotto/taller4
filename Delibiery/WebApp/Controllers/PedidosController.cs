@@ -21,12 +21,12 @@ namespace WebApp.Controllers
             return View(new PedidoADM().obtenerPedidos().ToPagedList(pageNumber, 10));
         }
 
-
+ 
         public ActionResult MisPedidos(int? page)
         {
             int pageNumber = (page ?? 1);
             Entities.Usuario u = (Entities.Usuario)System.Web.HttpContext.Current.Session["usuario"];
-            return View("Index", new PedidoADM().obtenerPedidosUsuario(u.Id).ToPagedList(pageNumber, 10));
+            return View( new PedidoADM().obtenerPedidosUsuario(u.Id).ToPagedList(pageNumber, 10));
         }
 
 
@@ -86,10 +86,12 @@ namespace WebApp.Controllers
             return Json(cambio, JsonRequestBehavior.AllowGet);
         }
 
-        public ViewResult VerDetallePedido(int id)
+        public ViewResult Detalles(int id)
         {
            
             PedidoADM pedidoMnger = new PedidoADM();
+            UsuarioADM usuarioMnger = new UsuarioADM();
+            ArticulosADM articuloMnger = new ArticulosADM();
             Pedido pedido = pedidoMnger.buscarPedido(id);
             DetallePedidoModel detallePedido = new DetallePedidoModel();
 
@@ -99,12 +101,13 @@ namespace WebApp.Controllers
             detallePedido.Monto = pedido.Total;
             detallePedido.Usuario = "cambiar";
             detallePedido.Articulos = new List<ItemPedido>();
+
             foreach (ItemArticulo art in pedido.Items) {
 
-                detallePedido.Articulos.Add(new ItemPedido() { cantidadPedida = art.Cant });
+                detallePedido.Articulos.Add(new ItemPedido() { cantidadPedida = art.Cant, Descripcion = art.Articulo.Descripcion });
             }
 
-            return View(items);
+            return View(detallePedido);
         }
 
 

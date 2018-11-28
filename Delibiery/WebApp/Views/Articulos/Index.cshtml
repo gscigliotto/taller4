@@ -18,7 +18,7 @@
 
 
     @{
-        if (u!=null && u.roles[0].rol == 1)
+        if (u!=null && u.Roles[0].rol == 1)
         {
             <ul class="nav justify-content-start">
                 <li class="nav-item">
@@ -103,7 +103,7 @@
 
 
                                 @{
-                                    if (u!=null && u.roles[0].rol == 1)
+                                    if (u!=null && u.Roles[0].rol == 1)
                                     {
 
                                         @Html.ActionLink("Edit | ", "Edit", new { id = Model.articulos[i].Id });

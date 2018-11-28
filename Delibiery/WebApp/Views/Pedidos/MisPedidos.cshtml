@@ -97,7 +97,10 @@
             @{
                 if (usuario.Roles.ToArray()[0].rol==1 || usuario.Roles.ToArray()[0].rol==2 )
                 {
-                    @Html.ActionLink("Despachar", "Edit", new { id = item.Id }, new { onclick = "return cambiarEstado('" + item.Id + "');" });
+                    @Html.ActionLink(" Despachar ", "Edit", new { id = item.Id }, new { onclick = "return cambiarEstado('" + item.Id + "');" });
+
+                    @Html.Label(" | ");
+                    @Html.ActionLink(" Ver ", "Detalles", new { id = item.Id }, null);
 
                     @*Html.ActionLink("Ver", "Details", new { id = item.Id });*@
                     

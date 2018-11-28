@@ -23,5 +23,10 @@ namespace Negocio
             return db.Articulos.ToList();
         }
 
+
+        public Articulo obtenerArticulo(int id) {
+            return db.Articulos.SingleOrDefault(a => a.Id == id);
+        }
+
     }
 }

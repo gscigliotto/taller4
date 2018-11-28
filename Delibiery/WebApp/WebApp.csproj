@@ -309,7 +309,8 @@
     <Content Include="Views\Pedidos\Index.cshtml" />
     <Content Include="Views\Pedidos\FinPedido.cshtml" />
     <Content Include="Views\Home\Err.cshtml" />
-    <Content Include="Views\Pedidos\VerDetallePedido.cshtml" />
+    <Content Include="Views\Pedidos\Detalles.cshtml" />
+    <Content Include="Views\Pedidos\MisPedidos.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

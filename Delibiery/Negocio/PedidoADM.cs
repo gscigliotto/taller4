@@ -31,10 +31,10 @@ namespace Negocio
 
         }
 
-        public List<ItemArticulo> ObtenerDetallePedido(int id) {
+        public Pedido obtenerPedidoById(int id) {
 
-            db.Pedidos.SingleOrDefault(p => p.Id == id);
-            return db.itemsArticulos.ToList();
+            
+            return db.Pedidos.SingleOrDefault(p => p.Id == id);
 
         }
 

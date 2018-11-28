@@ -50,6 +50,7 @@ namespace Negocio
         }
 
 
+        /*
         public List<TopArticuloCantidad> listarTopArticulos(DateTime fecDesde, DateTime fecHasta)
         {
             Dictionary<int, int> articuloCantidad = new Dictionary<int, int>();
@@ -79,7 +80,7 @@ namespace Negocio
             return articuloList;
         }
 
-
+        */
 
         private List<TopArticuloCantidad> ordernarListaDeArticulosDesdeUnDicctionario(Dictionary<int, int> articuloCantidad)
         {
