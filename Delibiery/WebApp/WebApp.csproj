@@ -175,6 +175,7 @@
   <ItemGroup>
     <Compile Include="Controllers\PedidosController.cs" />
     <Compile Include="Controllers\PromoController.cs" />
+    <Compile Include="Controllers\ReportesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -186,6 +187,7 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
     <Compile Include="Models\ArticuloModel.cs" />
+    <Compile Include="Models\DetallePedidoModel.cs" />
     <Compile Include="Models\MenuModel.cs" />
     <Compile Include="Models\PedidosSelecModel.cs" />
     <Compile Include="Models\PedidoModel.cs" />
@@ -307,11 +309,13 @@
     <Content Include="Views\Pedidos\Index.cshtml" />
     <Content Include="Views\Pedidos\FinPedido.cshtml" />
     <Content Include="Views\Home\Err.cshtml" />
+    <Content Include="Views\Pedidos\VerDetallePedido.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\Uploads\Originals\" />
     <Folder Include="Content\Uploads\Thumbnails\" />
+    <Folder Include="Views\Reportes\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Negocio
 {
-    class ReporteADM
+   public  class ReporteADM
     {
         ContextDB db;
 

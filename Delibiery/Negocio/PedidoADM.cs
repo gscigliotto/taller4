@@ -31,7 +31,12 @@ namespace Negocio
 
         }
 
+        public List<ItemArticulo> ObtenerDetallePedido(int id) {
 
+            db.Pedidos.SingleOrDefault(p => p.Id == id);
+            return db.itemsArticulos.ToList();
+
+        }
 
         public Pedido crarPedido(List<PedidoArt> articulosIds, List<PedidoPromoArt> promoArts) {
 

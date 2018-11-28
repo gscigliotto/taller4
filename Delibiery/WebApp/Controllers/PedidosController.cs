@@ -26,7 +26,7 @@ namespace WebApp.Controllers
         {
             int pageNumber = (page ?? 1);
             Entities.Usuario u = (Entities.Usuario)System.Web.HttpContext.Current.Session["usuario"];
-            return View("Index", new PedidoADM().obtenerPedidosUsuario(u.ID).ToPagedList(pageNumber, 10));
+            return View("Index", new PedidoADM().obtenerPedidosUsuario(u.Id).ToPagedList(pageNumber, 10));
         }
 
 
@@ -68,7 +68,7 @@ namespace WebApp.Controllers
             Pedido pedido = pedidosManager.crarPedido(articulos, null);
 
             Entities.Usuario u = (Entities.Usuario)System.Web.HttpContext.Current.Session["usuario"];
-            pedido.IdSolicitante = u.ID;
+            pedido.IdSolicitante = u.Id;
             
             
             
@@ -84,6 +84,27 @@ namespace WebApp.Controllers
 
 
             return Json(cambio, JsonRequestBehavior.AllowGet);
+        }
+
+        public ViewResult VerDetallePedido(int id)
+        {
+           
+            PedidoADM pedidoMnger = new PedidoADM();
+            Pedido pedido = pedidoMnger.buscarPedido(id);
+            DetallePedidoModel detallePedido = new DetallePedidoModel();
+
+            detallePedido.Estado = pedido.estado.ToString();
+            detallePedido.FechaPedido = pedido.Fecha;
+            detallePedido.Id = pedido.Id;
+            detallePedido.Monto = pedido.Total;
+            detallePedido.Usuario = "cambiar";
+            detallePedido.Articulos = new List<ItemPedido>();
+            foreach (ItemArticulo art in pedido.Items) {
+
+                detallePedido.Articulos.Add(new ItemPedido() { cantidadPedida = art.Cant });
+            }
+
+            return View(items);
         }
 
 
