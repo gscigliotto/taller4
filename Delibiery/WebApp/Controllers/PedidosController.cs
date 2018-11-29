@@ -26,7 +26,7 @@ namespace WebApp.Controllers
         {
             int pageNumber = (page ?? 1);
             Entities.Usuario u = (Entities.Usuario)System.Web.HttpContext.Current.Session["usuario"];
-            return View("Index", new PedidoADM().obtenerPedidosUsuario(u.ID).ToPagedList(pageNumber, 10));
+            return View("Index", new PedidoADM().obtenerPedidosUsuario(u.Id).ToPagedList(pageNumber, 10));
         }
 
 
@@ -68,7 +68,7 @@ namespace WebApp.Controllers
             Pedido pedido = pedidosManager.crarPedido(articulos, null);
 
             Entities.Usuario u = (Entities.Usuario)System.Web.HttpContext.Current.Session["usuario"];
-            pedido.IdSolicitante = u.ID;
+            pedido.IdSolicitante = u.Id;
             
             
             
