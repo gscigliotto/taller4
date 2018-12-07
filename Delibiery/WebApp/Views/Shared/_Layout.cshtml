@@ -55,11 +55,11 @@
                                         while (count < strRol.Length && !encontre)
                                         {
                                             int rolcount = 0;
-                                            while (rolcount < usuario.roles.Count && !encontre)
+                                            while (rolcount < usuario.Roles.Count && !encontre)
                                             {
 
 
-                                                if (strRol[count] == usuario.roles.ToArray()[rolcount].rol.ToString())
+                                                if (strRol[count] == usuario.Roles.ToArray()[rolcount].rol.ToString())
                                                 {
                                                     encontre = true;
                                                     @Html.ActionLink(item.Value.descripcion, item.Value.actionName, item.Value.controllerName, new { area = "" }, new { @class = "dropdown-item" })

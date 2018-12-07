@@ -10,7 +10,8 @@ namespace Entities
     public class ItemPromo
     {
         public int Id { get; set; }
-        public PromoAlgoritmo Promo { get; set; }
+        //public PromoAlgoritmo Promo { get; set; }
+        public int IdPromo { get; set; }
         public Articulo Articulo { get; set; }
         public int Cant { get; set; }
         public double Precio { get; set; }
@@ -18,20 +19,22 @@ namespace Entities
 
         public ItemPromo() { }
 
-        public ItemPromo(PromoAlgoritmo promo, Articulo articulo, int cant, double precio)
+        public ItemPromo(Promocion promo, Articulo articulo, int cant, double precio)
         {
-            this.Promo    = promo;
+            this.IdPromo  = promo.Id;
             this.Articulo = articulo;
             this.Cant     = cant;
             this.Precio   = precio;
         }
 
-        public ItemPromo(PromoAlgoritmo promo, Articulo articulo, int cant)
+        /*
+        public ItemPromo2(PromoAlgoritmo promo, Articulo articulo, int cant)
         {
-            this.Promo    = promo;
+            this.Promo = promo;
             this.Articulo = articulo;
-            this.Cant     = cant;
-            this.Precio   = Promo.promoPrecio(this.Articulo) * Cant;
+            this.Cant = cant;
+            this.Precio = Promo.promoPrecio(this.Articulo) * Cant;
         }
+        */
     }
 }

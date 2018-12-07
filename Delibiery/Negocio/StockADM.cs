@@ -49,7 +49,7 @@ namespace Negocio
             db.Stock.Add(stock);
 
             Articulo articulo = db.Articulos.SingleOrDefault(a => a.Id == idArt);
-            articulo.Stock += idArt;
+            articulo.Stock += cantidad;
 
             db.SaveChanges();
         }

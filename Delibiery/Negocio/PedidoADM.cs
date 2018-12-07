@@ -83,7 +83,8 @@ namespace Negocio
                     if (articulo.Stock < (promoAlgoritmo.promoStock() * pedPromoArt.Cant))
                         throw new Exception("Error al armar el pedido - No hay stock suficiente para la promocion cod: " + promocion.Id + " con el articulo cod: " + articulo.Id);
 
-                    promo = new ItemPromo(promoAlgoritmo, articulo, pedPromoArt.Cant);
+                    //promo = new ItemPromo(promoAlgoritmo, articulo, pedPromoArt.Cant);
+                    promo = new ItemPromo(promocion, articulo, pedPromoArt.Cant, promoAlgoritmo.promoPrecio(articulo));
 
                     promos.Add(promo);
                 }
@@ -140,7 +141,9 @@ namespace Negocio
         {
 
             StockADM stockADM = new StockADM(db);
-
+            PromocionADM promoADM = new PromocionADM(db);
+            db.Pedidos.Add(pedido);
+            db.SaveChanges();
             foreach (ItemArticulo item in pedido.Items)
             {
                 //Articulo articulo = db.Articulos.SingleOrDefault(a => a.Id == item.Articulo.Id);
@@ -153,11 +156,13 @@ namespace Negocio
                 {
                     Articulo articulo = db.Articulos.SingleOrDefault(a => a.Id == itemPromo.Articulo.Id);
                     //articulo.Stock -= itemPromo.Promo.promoStock() * itemPromo.Cant;
-                    stockADM.cargarStock(itemPromo.Articulo.Id, pedido.Id, 0, (itemPromo.Promo.promoStock() * itemPromo.Cant * (-1)));
+                    Promocion promo = db.Promociones.SingleOrDefault(p => p.Id == itemPromo.IdPromo);
+                    PromoAlgoritmo promoAlgoritmo = promoADM.getAlgoritmoFromPromo(promo);
+                    stockADM.cargarStock(itemPromo.Articulo.Id, pedido.Id, 0, (promoAlgoritmo.promoStock() * itemPromo.Cant * (-1)));
                 }
             }
 
-            db.Pedidos.Add(pedido);
+          
            
             db.SaveChanges();
 

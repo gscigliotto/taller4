@@ -95,7 +95,7 @@
         </td>
         <td>
             @{
-                if (usuario.roles.ToArray()[0].rol==1 || usuario.roles.ToArray()[0].rol==2 )
+                if (usuario.Roles.ToArray()[0].rol==1 || usuario.Roles.ToArray()[0].rol==2 )
                 {
                     @Html.ActionLink("Despachar", "Edit", new { id = item.Id }, new { onclick = "return cambiarEstado('" + item.Id + "');" });
 

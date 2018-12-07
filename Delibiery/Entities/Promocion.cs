@@ -11,8 +11,6 @@ namespace Entities
 
         public Promocion() { }
 
-
-
         public int Id { get; set; }
         public string Tipo { get; set; }
         public string Descripcion { get; set; }
