@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Edit</h2>
+
 
 
 @using (Html.BeginForm())
@@ -39,10 +39,13 @@
     </div>
 
     <div class="form-row">
-        <label class="control-label col-md-2" for="precio">Precio</label>
+        <label class="control-label col-md-2" for="precio">Precio de Venta</label>
         <input class="form-control text-box single-line valid" id="precio" name="precio" type="text" value=@Model.Precio>
     </div>
-
+    <div class="form-row">
+        <label class="control-label col-md-2" for="precio">Costo</label>
+        <input class="form-control text-box single-line valid" id="costo" name="precio" type="text" value=@Model.costo>
+    </div>
     @*Prueba
     <input id="imagen" name="imagen" value=@Model.imagen>*@
     
@@ -55,7 +58,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Volver", "Index")
 </div>
 
 @section Scripts {

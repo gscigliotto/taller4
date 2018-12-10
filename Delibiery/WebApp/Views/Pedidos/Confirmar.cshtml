@@ -15,12 +15,14 @@
     <h2>Articulo Seleccionados</h2>
 
     <div class="table-responsive-sm">
-        @using (Html.BeginForm( "ArmarPedido","Pedidos"))
+        @using (Html.BeginForm())
         {
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th scope="col" align="left">Articulo</th>
+                        <th scope="col" align="left">ID</th>
+                        <th scope="col" align="left">Estilo</th>
+                        <th scope="col" align="left">Marca</th>
                         <th scope="col" align="left">Descripcion</th>
                         <th scope="col" align="left">Cantidad</th>
                         
@@ -39,30 +41,47 @@
                                 @Html.DisplayFor(modelItem => Model.Pedidos[i].estilo)
                                 @Html.HiddenFor(modelItem => Model.Pedidos[i].estilo)
                             </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => Model.Pedidos[i].Marca)
+                                @Html.HiddenFor(modelItem => Model.Pedidos[i].Marca)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => Model.Pedidos[i].Descripcion)
+                                @Html.HiddenFor(modelItem => Model.Pedidos[i].Descripcion)
+                            </td>
                             <td align="left">
                                 @Html.EditorFor(modelItem => Model.Pedidos[i].cant)
                                 @Html.HiddenFor(modelItem => Model.Pedidos[i].cant)
+                                @Html.HiddenFor(modelItem => Model.Pedidos[i].Precio)
                             </td>
                             
                         </tr>
                     }
                    
+                        <tr>
+                            <td colspan="5">
+                                @Html.DropDownList("promos", Model.promos, "Elige una Promoción")
+                                <br />
+                                *(Podes elegir alguna de nuestras promociones disponibles la misma se aplicara automáticamente al producto con el que tengas el mejor beneficio).
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
-                <input type="submit" onclick="return validateCantidad()" value="Preparar Pedido" class="btn btn-primary" />
-
+                
+            <br />
+                <input id="button1" type="button" value="Preparar Pedido" class="btn btn-primary" />
         }
         </div>
         
     <br />
     <br />
     <div id="alert" class="alert alert-success" role="alert" style="display:none">
-        <h4 class="alert-heading">Confirmacion de Pedido!</h4>
+        <h4 class="alert-heading">Estas a punto de confirmar tu pedido!</h4>
         <hr>
-        <p>Estas a punto de confirmar tu pedido!</p>
+ 
 
-        <p id="monto" class="mb-0">Monto: </p>
-        <p class="mb-0"><a href="#"  onclick="javascript: confirmar();" class="alert-link">Confirmar!!</a> </p>
+        <p id="monto" class="mb-0">Monto Total: </p>
+        <p class="mb-0"><a href="#"  onclick="javascript: confirmar();" class="btn btn-success">Confirmar!!</a> </p>
     </div>
 
     </body>
@@ -75,7 +94,7 @@
         var pedido = "";
 
         function confirmar() {
-            var data = pedido;
+            var data = JSON.stringify(pedido);
             $.ajax({
                 type: "POST",
                 traditional: true,
@@ -83,6 +102,8 @@
                 cache: false,
                 url: '@Url.Action("ConfirmarPedido","Pedidos")',
                 context: document.body,
+                contentType: 'application/json;',
+                dataType: 'json',
                 data: data,
                 success: function (result) {
                     window.location.replace("../FinPedido/"+result.Id);
@@ -104,7 +125,7 @@
            
         }
 
-     
+
         function validateCantidad() {
            
             $('input[type=number]').each(function (){
@@ -114,45 +135,43 @@
                     event.preventDefault();
                     return false;
                 }
-                else {
 
-                    var data = $('form').serialize();
-                    $.ajax({
-                        type: "POST",
-                        traditional: true,
-                        async: false,
-                        cache: false,
-                        url: '@Url.Action("ArmarPedido","Pedidos")',
-                        context: document.body,
-                        data: data,
-                        success: function (result) {
+            });
 
-
-                            pedido = result;
-                            $("#resultado").html('');
-                            var total = pedido.Total;
-                            $('.table-responsive-sm').find('input, textarea, button, select').attr('disabled', 'disabled');
-
-                            $("#alert").show();
-                            document.getElementById('monto').innerText = "Monto Total: " + total;
+            var data = $('form').serialize();
+            $.ajax({
+                type: "POST",
+                traditional: true,
+                async: false,
+                cache: false,
+                url: '@Url.Action("ArmarPedido","Pedidos")',
+                context: document.body,
+                data: data,
+                success: function (result) {
 
 
-                        },
-                        error: function (xhr) {
-                            //debugger;
-                            console.log(xhr.responseText);
-                            alert("Error has occurred.." + xhr.responseText);
-                        }
-                    });
+                    pedido = result;
+                    $("#resultado").html('');
+                    var total = pedido.Total;
+                    $('.table-responsive-sm').find('input, textarea, button, select').attr('disabled', 'disabled');
 
+                    $("#alert").show();
+                    document.getElementById('monto').innerText = "Monto Total: " + total;
+                    return false;
 
+                },
+                error: function (xhr) {
+                    //debugger;
+                    console.log(xhr.responseText);
+                    alert("Error has occurred.." + xhr.responseText);
                 }
             });
+
             
  
 
 
             return false;
         }
-
+        $('#button1').one('click', validateCantidad);
     </script>

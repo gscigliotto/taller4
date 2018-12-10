@@ -50,16 +50,15 @@
         <dd>
             @Html.DisplayFor(model => model.Precio)
         </dd>
-
     </dl>
 </div>
 <p>
 @{
     if (System.Web.HttpContext.Current.Session["Usuario"] != null)
     {
-        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }); 
+        @Html.ActionLink("Modificar", "Edit", new { id = Model.Id }); 
         
-        @Html.ActionLink("Back to List", "Index");
+        @Html.ActionLink("Volver", "Index");
     }
 }
 </p>

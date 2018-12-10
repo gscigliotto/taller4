@@ -78,7 +78,7 @@
 
  
     function Mostrar(campo) {
-        if (campo.value == "DESC") {
+        if (campo.value == "DESCUENTO") {
             $('#DESC').show();
             $('#XY').hide();
         } else {
@@ -89,7 +89,7 @@
     }
 </script>
 
-<h2>Create</h2>
+
 
 @using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data", onsubmit="return validateForm(this);" }))
 {
@@ -149,14 +149,7 @@
 
 
         <div id="DESC">
-                <div class="form-group">
-                    @Html.LabelFor(model => model.cantidadLlevar, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.cantidadLlevar, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.cantidadLlevar, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-                <div class="form-group">
+             <div class="form-group">
                     @Html.LabelFor(model => model.descuento, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
                         @Html.EditorFor(model => model.descuento, new { htmlAttributes = new { @class = "form-control" } })

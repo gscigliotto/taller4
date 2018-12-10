@@ -83,9 +83,9 @@ namespace WebApp.Controllers
                 if (collection["cantPaga"] != "")
                     promocion.CantPaga = Convert.ToInt32(collection["cantPaga"]);
                 if (collection["descuento"] != "")
-                    promocion.CantPaga = Convert.ToInt32(collection["descuento"]);
+                    promocion.Descuento = Convert.ToInt32(collection["descuento"]);
                 if (collection["cantidadLlevar"] != "")
-                    promocion.CantPaga = Convert.ToInt32(collection["cantidadLlevar"]);
+                    promocion.CantidadLlevar = Convert.ToInt32(collection["cantidadLlevar"]);
 
          
                 promocion.Url = savedFileName;

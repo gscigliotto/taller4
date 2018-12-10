@@ -3,6 +3,7 @@ using Entities;
 using Negocio.Model;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -104,16 +105,37 @@ namespace Negocio
             pedido.estado = Pedido.ePedido.ENTREGADO;
             db.SaveChanges();
         }
+        public void AnularPedido(int id)
+        {
+            //aca sube el estock
+            cancelarPedido(id);
+            Pedido pedido = db.Pedidos.FirstOrDefault(p => p.Id == id);
+            pedido.estado = Pedido.ePedido.ANULADO;
+            db.SaveChanges();
+        }
+
+        public void ProcesarPedido(int id)
+        {
+            Pedido pedido = db.Pedidos.FirstOrDefault(p => p.Id == id);
+            pedido.estado = Pedido.ePedido.PROCESO;
+            db.SaveChanges();
+        }
 
         public Pedido buscarPedido(int id)
         {
-            return  db.Pedidos.Include("Items").SingleOrDefault(p => p.Id == id);
+            return  db.Pedidos.Include("Items.Articulo").SingleOrDefault(p => p.Id == id);
         }
 
         public void confirmarPedido(Pedido pedido)
         {
-            Pedido pedidoRepo = db.Pedidos.SingleOrDefault(p => p.Id == pedido.Id);
-            pedidoRepo.estado = Pedido.ePedido.PROCESO;
+            pedido.Fecha = DateTime.Now;
+
+            foreach(ItemArticulo itemArt in pedido.Items) {
+                db.Entry<Articulo>(itemArt.Articulo).State = EntityState.Unchanged;
+
+            }
+            concretarPedido(pedido);
+            //pedidoRepo.estado = Pedido.ePedido.PROCESO;
             db.SaveChanges();
 
         }
@@ -172,7 +194,21 @@ namespace Negocio
 
         public void cancelarPedido(int idPedido) {
 
+
             StockADM stockADM = new StockADM(db);
+
+            /*
+            Pedido pedido = db.Pedidos.Include("Items.Articulo").SingleOrDefault(p => p.Id == idPedido);
+
+            pedido.Items.ForEach(item => {
+
+                Articulo artAct=db.Articulos.SingleOrDefault(art => art.Id == item.Articulo.Id);
+                artAct.Stock = artAct.Stock + item.Cant;
+            });
+            foreach (ItemArticulo articulo in pedido.Items) {
+
+            }
+            */
 
             var list = from stock in db.Stock
                        where (stock.IdPedido == idPedido)

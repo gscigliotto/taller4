@@ -193,6 +193,7 @@
     <Compile Include="Models\SubirFotoModel.cs" />
     <Compile Include="Models\AutenticacionModel.cs" />
     <Compile Include="Models\TipoPromo.cs" />
+    <Compile Include="Models\VerPedidoModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -307,6 +308,8 @@
     <Content Include="Views\Pedidos\Index.cshtml" />
     <Content Include="Views\Pedidos\FinPedido.cshtml" />
     <Content Include="Views\Home\Err.cshtml" />
+    <Content Include="Views\Pedidos\MisPedidos.cshtml" />
+    <Content Include="Views\Pedidos\View.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

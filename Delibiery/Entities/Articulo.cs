@@ -8,6 +8,8 @@ namespace Entities
 {
     public class Articulo
     {
+      
+
         public int Id { get; set; }
 
         public string Estilo  { get; set; }
@@ -19,7 +21,7 @@ namespace Entities
         public int Stock { get; set; }
 
         public double Precio { get; set; }
-
+        public double costo { get; set; }
         public byte[] Imagen { get; set; }
         public Boolean Agregado { get; set; }
 

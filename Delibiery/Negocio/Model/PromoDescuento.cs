@@ -17,7 +17,9 @@ namespace Negocio.Model
 
         public override double promoPrecio(Articulo articulo)
         {
-            return (articulo.Precio * (1 - (Descuento / 100)));
+            double porcent =(double) Descuento / 100;
+            double coef = (1 - porcent);
+            return ((articulo.Precio) * coef);
 
         }
 

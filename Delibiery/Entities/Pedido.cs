@@ -17,7 +17,7 @@ namespace Entities
         public List<ItemPromo> Promos { get; set; }
         public double Total { get; set; }
 
-        public enum ePedido { INCIADO=1,PROCESO=2,ENTREGADO=3}
+        public enum ePedido { INCIADO=1,PROCESO=2,ENTREGADO=3,ANULADO=4}
         public Pedido(DateTime fecha, List<ItemArticulo> items, List<ItemPromo> promos, double total)
         {
             this.Fecha  = fecha;

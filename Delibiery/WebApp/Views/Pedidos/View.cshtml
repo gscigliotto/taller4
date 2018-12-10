@@ -1,0 +1,193 @@
+﻿@model WebApp.Models.VerPedidoModel
+@using Entities
+
+@{
+    ViewBag.Title = "View";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script>
+
+
+    function cambiarEstado(url, estado) {
+
+        $.ajax({
+            type: "POST",
+            traditional: true,
+            async: false,
+            cache: false,
+            url: url,
+            context: document.body,
+            data: null,
+            success: function (result) {
+                $("#estado").html('<strong>Estado:</strong> ' + estado);
+                //alert(result);
+                //pedido = result;
+                //$("#resultado").html('');
+                //var total = pedido.Total;
+                //$('.table-responsive-sm').find('input, textarea, button, select').attr('disabled', 'disabled');
+
+                //$("#alert").show();
+                //document.getElementById('monto').innerText = "Monto Total: " + total;
+
+
+            },
+            error: function (xhr) {
+                //debugger;
+                //console.log(xhr.responseText);
+                //alert("Error has occurred.." + xhr.responseText);
+            }
+        });
+        return false;
+
+    }
+
+    function despachar(id) {
+        cambiarEstado('@Url.Action("CambiarEstadoDespachado")' + '/' + id, 'ENTREGADO');
+        $("#anular").prop("disabled", true);
+        $("#procesar").prop("disabled", true);
+        return false;
+    }
+    function procesar(id) {
+        cambiarEstado('@Url.Action("CambiarEstadoProceso")' + '/' + id, 'PROCESO');
+        $("#entregar").prop("disabled", false);
+        $("#procesar").prop("disabled", true);
+        return false;
+    }
+    function anular(id) {
+        cambiarEstado('@Url.Action("CambiarEstadoAnulado")' + '/' + id, 'ANULADO');
+        $("#entregar").prop("disabled", true);
+        $("#anular").prop("disabled", true);
+        $("#procesar").prop("disabled", true);
+        return false;
+
+    }
+</script>
+
+<div>
+    <h4>Ficha de Pedido</h4>
+    <hr />
+    
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <strong>Fecha Solicitud: @Html.DisplayFor(model => model.pedido.Fecha)</strong><br />
+                <div id="estado"><strong>Estado:</strong> @Html.DisplayFor(model => model.pedido.estado)</div>
+
+            </div>
+            <div class="card-body">
+                <div class="row mb-4">
+                    <div class="col-sm-6">
+                        <h6 class="mb-3">Usuario:</h6>
+                        <div>
+                            <strong>@Html.DisplayFor(model => model.usuario.Nombre), @Html.DisplayFor(model => model.usuario.Apellido) </strong>
+                        </div>
+                        <div>@Html.DisplayFor(model => model.usuario.Mail)</div>
+
+                    </div>
+
+
+
+
+                </div>
+
+                <div class="table-responsive-sm">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th class="center">#</th>
+                                <th>Estilo</th>
+                                <th>Articulo</th>
+                                <th>Cantidad</th>
+                                <th class="center">Precio unitario</th>
+                                <th class="center">Total</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+@{
+    int i = 1;
+    foreach (ItemArticulo art in Model.pedido.Items)
+    {
+                            <tr>
+                                <td class="center">@i</td>
+                                <td class="center strong">@art.Articulo.Estilo</td>
+                                <td class="center">@art.Articulo.Descripcion</td>
+                                <td class="center">@art.Cant</td>
+                                <td class="center">$ @art.Articulo.Precio</td>
+                                <td class="center">$ @art.Precio</td>
+                            </tr>
+
+        i++;
+    }
+    }
+                         </tbody>
+                    </table>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 col-sm-5">
+
+                    </div>
+
+                    <div class="col-lg-4 col-sm-5 ml-auto">
+                        <table class="table table-clear">
+                            <tbody>
+                                <tr>
+                                    <td class="left">
+                                        <strong>Subtotal</strong>
+                                    </td>
+                                    <td class="right">$ @Model.pedido.Total</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <br />
+
+@{
+    if (Model.pedido.estado == Pedido.ePedido.PROCESO || Model.pedido.estado == Pedido.ePedido.INCIADO)
+    {
+
+    }
+    string statusProcesar="";
+    string statusDespachar="";
+    string statusAnular="";
+    switch (Model.pedido.estado) {
+        case Pedido.ePedido.ANULADO:
+            statusAnular = "disabled";
+            statusDespachar = "disabled";
+            statusProcesar = "disabled";
+            break;
+
+        case Pedido.ePedido.ENTREGADO:
+            statusAnular = "disabled";
+            statusDespachar = "disabled";
+            statusProcesar = "disabled";
+            break;
+        case Pedido.ePedido.INCIADO:
+            statusAnular = "";
+            statusDespachar = "disabled";
+            statusProcesar = "";
+            break;
+        case Pedido.ePedido.PROCESO:
+            statusAnular = "";
+            statusDespachar = "";
+            statusProcesar = "disabled";
+            break;
+    }
+    <button id="procesar" @statusProcesar type="button" class="btn btn-primary" onclick="javascript: procesar('@Model.pedido.Id');">Procesar Pedido</button>
+    <button id="entregar" @statusDespachar type="button" class="btn btn-primary" onclick="javascript: despachar('@Model.pedido.Id');">Entregar</button>
+    <button id="anular"  @statusAnular type="button" class="btn btn-danger" onclick="javascript: anular('@Model.pedido.Id');">Anular</button>
+
+    }
+    
+  
+</div>
+

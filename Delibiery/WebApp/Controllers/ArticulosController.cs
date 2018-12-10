@@ -11,6 +11,8 @@ using Datos;
 using Entities;
 using WebApp.Models;
 using PagedList;
+using Negocio;
+
 namespace WebApp.Controllers
 {
     public class ArticulosController : Controller
@@ -58,11 +60,16 @@ namespace WebApp.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,estilo,marca,descripcion,stock,precio")] Articulo articulo)
+        public ActionResult Create([Bind(Include = "Id,estilo,marca,descripcion,stock,precio,costo")] Articulo articulo)
         {
             if (ModelState.IsValid)
             {
                 db.Articulos.Add(articulo);
+ 
+                db.SaveChanges();
+
+                Stock stock = new Stock(articulo.Id, 0, articulo.costo, articulo.Stock, DateTime.Now);
+                db.Stock.Add(stock);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -90,7 +97,7 @@ namespace WebApp.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,estilo,marca,descripcion,stock,precio")] Articulo aux)
+        public ActionResult Edit([Bind(Include = "Id,estilo,marca,descripcion,stock,precio,costo")] Articulo aux)
         {
             if (ModelState.IsValid)
             {
@@ -106,9 +113,17 @@ namespace WebApp.Controllers
                 articulo.Descripcion = aux.Descripcion;
                 articulo.Stock = aux.Stock;
                 articulo.Precio = aux.Precio;
+                articulo.costo = aux.costo;
+                
                                                                       
                 db.Entry(articulo).State = EntityState.Modified;
                 db.SaveChanges();
+                StockADM stockADM = new StockADM(db);
+                int cantidadActualizada = articulo.Stock - aux.Stock;
+                cantidadActualizada = (cantidadActualizada < 0) ? cantidadActualizada * (-1):cantidadActualizada;
+                stockADM.cargarStock(articulo.Id, 0, aux.costo,cantidadActualizada);
+                
+                
                 return RedirectToAction("Index");
             }
 

@@ -7,6 +7,7 @@ namespace WebApp.Models
 {
     public enum TipoPromo
     {
-        XY=1,DESC=2
+        //XY=1,
+        DESCUENTO =2
     }
 }

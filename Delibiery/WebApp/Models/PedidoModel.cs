@@ -9,6 +9,13 @@ namespace WebApp.Models
     {
         public int  idArt { get; set; }
         public string estilo { get; set; }
+
+        public string Marca { get; set; }
+
+        public string Descripcion { get; set; }
+
+        public double Precio { get; set; }
+
         public int cant { get; set; }
     }
 }
